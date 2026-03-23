@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRB Frères Sàrl - Sanitaire & Chauffage Lausanne | Dépannage & Pompe à chaleur</title>
-    <meta name="description" content="FRB Frères Sàrl - Votre partenaire de confiance pour le chauffage et la plomberie à Lausanne. Dépannage, installation chauffage, pompe à chaleur. ☎ 079 952 40 80">
     <style>
         * {
             margin: 0;
@@ -13,10 +12,10 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #F2EDE4;
             line-height: 1.6;
             color: #333;
-            background-color: #F2EDE4;
         }
 
         .container {
@@ -27,28 +26,25 @@
 
         /* Navigation */
         nav {
-            background: rgba(44, 95, 138, 0.95);
+            background-color: #2C5F8A;
             padding: 1rem 0;
             position: fixed;
-            top: 0;
             width: 100%;
+            top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
-        .nav-container {
+        nav .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
         }
 
         .logo {
+            color: white;
             font-size: 1.5rem;
             font-weight: bold;
-            color: white;
         }
 
         .nav-links {
@@ -60,11 +56,11 @@
         .nav-links a {
             color: white;
             text-decoration: none;
-            transition: color 0.3s;
+            transition: opacity 0.3s;
         }
 
         .nav-links a:hover {
-            color: #F2EDE4;
+            opacity: 0.8;
         }
 
         .mobile-menu {
@@ -76,7 +72,7 @@
         .mobile-menu span {
             width: 25px;
             height: 3px;
-            background: white;
+            background-color: white;
             margin: 3px 0;
             transition: 0.3s;
         }
@@ -85,97 +81,73 @@
         .hero {
             background: linear-gradient(135deg, #2C5F8A 0%, #4A7BA7 100%);
             color: white;
-            padding: 8rem 0 4rem;
+            padding: 120px 0 80px;
             text-align: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
-            opacity: 0.1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
         }
 
         .hero h1 {
             font-size: 3rem;
             margin-bottom: 1rem;
-            font-weight: 700;
+            font-weight: bold;
         }
 
-        .tagline {
+        .hero .tagline {
             font-size: 1.3rem;
             margin-bottom: 2rem;
             opacity: 0.9;
         }
 
         .cta-button {
-            display: inline-block;
-            background: #F2EDE4;
+            background-color: white;
             color: #2C5F8A;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
             font-size: 1.1rem;
-            transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .cta-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
 
         /* Rating Badge */
         .rating-badge {
-            background: white;
-            padding: 2rem 0;
+            background-color: white;
+            padding: 40px 0;
             text-align: center;
         }
 
         .rating-container {
             display: inline-block;
-            background: linear-gradient(135deg, #2C5F8A, #4A7BA7);
+            background-color: #2C5F8A;
             color: white;
-            padding: 1.5rem 3rem;
-            border-radius: 15px;
-            box-shadow: 0 8px 25px rgba(44, 95, 138, 0.2);
+            padding: 20px 40px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(44, 95, 138, 0.3);
         }
 
-        .stars {
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
+        .rating-stars {
+            font-size: 2rem;
             color: #FFD700;
+            margin-bottom: 10px;
         }
 
         .rating-text {
             font-size: 1.2rem;
-            font-weight: 600;
-            margin-bottom: 0.3rem;
-        }
-
-        .review-count {
-            opacity: 0.9;
-            font-size: 0.9rem;
+            font-weight: bold;
         }
 
         /* Services Section */
         .services {
-            padding: 4rem 0;
-            background: white;
+            padding: 80px 0;
         }
 
-        .section-title {
+        .services h2 {
             text-align: center;
             font-size: 2.5rem;
             margin-bottom: 3rem;
@@ -184,96 +156,125 @@
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
         .service-card {
-            background: #F2EDE4;
+            background-color: white;
             padding: 2rem;
-            border-radius: 15px;
+            border-radius: 10px;
             text-align: center;
-            transition: all 0.3s;
-            border: 3px solid transparent;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            border-color: #2C5F8A;
-            box-shadow: 0 10px 30px rgba(44, 95, 138, 0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
         .service-icon {
             font-size: 3rem;
-            margin-bottom: 1rem;
             color: #2C5F8A;
+            margin-bottom: 1rem;
         }
 
         .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 1rem;
             color: #2C5F8A;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
         }
 
         .service-card p {
             color: #666;
+            line-height: 1.6;
         }
 
         /* Contact Section */
         .contact {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #2C5F8A 0%, #4A7BA7 100%);
+            background-color: #2C5F8A;
             color: white;
+            padding: 80px 0;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
         }
 
         .contact-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 3rem;
-            margin-top: 2rem;
         }
 
         .contact-info {
-            background: rgba(255,255,255,0.1);
-            padding: 2rem;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
+            text-align: center;
         }
 
-        .contact-info h3 {
-            font-size: 1.4rem;
+        .contact-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background-color: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+
+        .contact-item h3 {
             margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
+            font-size: 1.3rem;
         }
 
-        .contact-info p {
-            margin-bottom: 0.5rem;
+        .contact-item p {
+            font-size: 1.1rem;
             opacity: 0.9;
         }
 
-        .phone-link {
-            color: #F2EDE4;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.2rem;
-        }
-
-        .phone-link:hover {
-            color: white;
+        .phone-number {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #FFD700;
         }
 
         /* Footer */
         footer {
-            background: #333;
+            background-color: #1a3d5c;
             color: white;
+            padding: 40px 0 20px;
             text-align: center;
-            padding: 2rem 0;
         }
 
-        /* Responsive Design */
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 1rem;
+            opacity: 0.7;
+        }
+
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -287,11 +288,12 @@
                 font-size: 2rem;
             }
 
-            .tagline {
+            .hero .tagline {
                 font-size: 1.1rem;
             }
 
-            .section-title {
+            .services h2,
+            .contact h2 {
                 font-size: 2rem;
             }
 
@@ -303,27 +305,32 @@
                 grid-template-columns: 1fr;
             }
 
-            .rating-container {
-                padding: 1rem 2rem;
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
             }
-        }
 
-        @media (max-width: 480px) {
             .container {
                 padding: 0 15px;
             }
+        }
 
-            .hero {
-                padding: 6rem 0 3rem;
-            }
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
 
-            .hero h1 {
-                font-size: 1.8rem;
-            }
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards;
+        }
 
-            .cta-button {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
     </style>
@@ -331,7 +338,7 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="nav-container">
+        <div class="container">
             <div class="logo">FRB Frères</div>
             <ul class="nav-links">
                 <li><a href="#accueil">Accueil</a></li>
@@ -349,11 +356,9 @@
     <!-- Hero Section -->
     <section id="accueil" class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1>FRB Frères Sàrl</h1>
-                <p class="tagline">Votre partenaire de confiance pour le chauffage et la plomberie</p>
-                <a href="tel:+41799524080" class="cta-button">📞 Appelez maintenant</a>
-            </div>
+            <h1>FRB Frères Sàrl</h1>
+            <p class="tagline">Votre expert en chauffage et sanitaire à Lausanne</p>
+            <a href="#contact" class="cta-button">Contactez-nous</a>
         </div>
     </section>
 
@@ -361,9 +366,8 @@
     <section class="rating-badge">
         <div class="container">
             <div class="rating-container">
-                <div class="stars">⭐⭐⭐⭐⭐</div>
-                <div class="rating-text">4.9/5</div>
-                <div class="review-count">Basé sur 78 avis clients</div>
+                <div class="rating-stars">★★★★★</div>
+                <div class="rating-text">4.9/5 - 78 avis clients</div>
             </div>
         </div>
     </section>
@@ -371,27 +375,37 @@
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="container">
-            <h2 class="section-title">Nos Services</h2>
+            <h2>Nos Services</h2>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card fade-in">
                     <div class="service-icon">🔧</div>
-                    <h3>Dépannage Plomberie</h3>
-                    <p>Intervention rapide 24h/7j pour tous vos problèmes de plomberie. Fuites, canalisations bouchées, réparations d'urgence.</p>
+                    <h3>Dépannage Sanitaire</h3>
+                    <p>Intervention rapide 7j/7 pour tous vos problèmes de plomberie et sanitaires. Service d'urgence disponible.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-in">
                     <div class="service-icon">🔥</div>
                     <h3>Installation Chauffage</h3>
-                    <p>Installation et remplacement de systèmes de chauffage modernes et économiques. Expertise en radiateurs et chaudières.</p>
+                    <p>Installation et rénovation de systèmes de chauffage modernes et économiques adaptés à vos besoins.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">♨️</div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">⚡</div>
                     <h3>Pompe à Chaleur</h3>
-                    <p>Installation et maintenance de pompes à chaleur haute performance. Solutions écologiques pour votre confort thermique.</p>
+                    <p>Installation et maintenance de pompes à chaleur pour un chauffage écologique et économique.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🚿</div>
-                    <h3>Maintenance Sanitaire</h3>
-                    <p>Entretien régulier et préventif de vos installations sanitaires. Garantissons la longévité de vos équipements.</p>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🛠️</div>
+                    <h3>Maintenance Chaudière</h3>
+                    <p>Service de maintenance préventive et réparation de tous types de chaudières pour garantir leur performance.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🚰</div>
+                    <h3>Installation Tuyauterie</h3>
+                    <p>Pose et rénovation de réseaux de tuyauterie pour eau, gaz et chauffage selon les normes en vigueur.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📞</div>
+                    <h3>Service d'Urgence</h3>
+                    <p>Disponible 24h/24 pour tous vos dépannages urgents. Intervention rapide dans tout Lausanne.</p>
                 </div>
             </div>
         </div>
@@ -400,24 +414,28 @@
     <!-- Contact Section -->
     <section id="contact" class="contact">
         <div class="container">
-            <h2 class="section-title">Contactez-nous</h2>
+            <h2>Contactez-nous</h2>
             <div class="contact-grid">
                 <div class="contact-info">
-                    <h3>📍 Notre Adresse</h3>
-                    <p>Chemin de la Vuachère 14</p>
-                    <p>1005 Lausanne</p>
-                    <p>Suisse</p>
+                    <div class="contact-item">
+                        <h3>📱 Téléphone</h3>
+                        <p class="phone-number">079 952 40 80</p>
+                        <p>Disponible 7j/7</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>📍 Adresse</h3>
+                        <p>Chemin de la Vuachère 14<br>1005 Lausanne<br>Suisse</p>
+                    </div>
                 </div>
                 <div class="contact-info">
-                    <h3>📞 Téléphone</h3>
-                    <a href="tel:+41799524080" class="phone-link">079 952 40 80</a>
-                    <p>Disponible 24h/7j pour les urgences</p>
-                </div>
-                <div class="contact-info">
-                    <h3>⏰ Horaires</h3>
-                    <p>Lun-Ven: 7h00 - 19h00</p>
-                    <p>Sam: 8h00 - 17h00</p>
-                    <p>Urgences: 24h/7j</p>
+                    <div class="contact-item">
+                        <h3>🕐 Horaires</h3>
+                        <p>Lun - Ven: 7h00 - 18h00<br>Sam: 8h00 - 16h00<br>Urgences: 24h/24</p>
+                    </div>
+                    <div class="contact-item">
+                        <h3>🎯 Zone d'intervention</h3>
+                        <p>Lausanne et région<br>Vaud<br>Déplacements rapides</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -426,9 +444,46 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 FRB Frères Sàrl - Sanitaire Lausanne. Tous droits réservés.</p>
-            <p>Dépannage & Chauffage - Pompe à chaleur - Votre partenaire de confiance</p>
+            <div class="footer-content">
+                <h3>FRB Frères Sàrl</h3>
+                <p>Sanitaire, Chauffage & Dépannage à Lausanne</p>
+            </div>
+            <div class="footer-links">
+                <a href="#accueil">Accueil</a>
+                <a href="#services">Services</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2024 FRB Frères Sàrl. Tous droits réservés.</p>
+            </div>
         </div>
     </footer>
+
+    <script>
+        // Simple mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = Math.random() * 0.3 + 's';
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
 </body>
 </html>
