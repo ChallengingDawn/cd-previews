@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maison Hertig - Tradition horlogère depuis Fribourg</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Georgia, 'Times New Roman', serif;
+            background-color: #F2EDE4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            background-color: #F2EDE4;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(44, 95, 138, 0.1);
+            border-bottom: 1px solid rgba(44, 95, 138, 0.2);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2C5F8A;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: #2C5F8A;
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: #2C5F8A;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #2C5F8A;
+            margin-bottom: 20px;
+            font-weight: normal;
+        }
+
+        .tagline {
+            font-size: 1.3rem;
+            color: #666;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            color: #555;
+        }
+
+        .cta-button {
+            background-color: #2C5F8A;
+            color: white;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background-color 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #1e4259;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2C5F8A;
+            margin-bottom: 60px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(44, 95, 138, 0.15);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #2C5F8A;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Rating Badge */
+        .rating-section {
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .rating-badge {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            display: inline-block;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .stars {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 10px;
+        }
+
+        .rating-text {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .reviews-count {
+            color: #666;
+            margin-top: 5px;
+        }
+
+        /* Contact Form */
+        .contact {
+            padding: 80px 0;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            color: #2C5F8A;
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .info-icon {
+            color: #2C5F8A;
+            font-size: 1.2rem;
+            margin-top: 2px;
+        }
+
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2C5F8A;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #2C5F8A;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 30px;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 20px;
+            color: rgba(255,255,255,0.6);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #F2EDE4;
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            }
+
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .tagline {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 60px 0;
+            }
+
+            .services,
+            .contact {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="#" class="logo">Maison Hertig</a>
+            <ul class="nav-menu" id="nav-menu">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <button class="mobile-menu" id="mobile-menu">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Maison Hertig</h1>
+                <p class="tagline">Tradition horlogère depuis Fribourg</p>
+                <p>Découvrez l'excellence de l'horlogerie suisse dans notre atelier familial au cœur de Fribourg. Depuis des générations, nous perpétuons l'art de la mesure du temps avec passion et savoir-faire.</p>
+                <a href="#contact" class="cta-button">Nous contacter</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title">Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🕰️</div>
+                    <h3>Horlogerie</h3>
+                    <p>Service complet d'horlogerie traditionnelle avec expertise dans les mécanismes les plus complexes. Nos maîtres horlogers perpétuent les techniques ancestrales.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Réparation de montres</h3>
+                    <p>Réparation professionnelle de toutes marques de montres mécaniques et à quartz. Diagnostic précis et restauration dans les règles de l'art.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💎</div>
+                    <h3>Bijouterie</h3>
+                    <p>Création et réparation de bijoux sur mesure. Nos artisans bijoutiers travaillent les métaux précieux avec un savoir-faire exceptionnel.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">⌚</div>
+                    <h3>Vente de montres de luxe</h3>
+                    <p>Sélection exclusive de montres de prestige des plus grandes manufactures horlogères suisses. Conseils personnalisés pour votre acquisition.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rating Section -->
+    <section class="rating-section">
+        <div class="container">
+            <div class="rating-badge">
+                <div class="stars">★★★★☆</div>
+                <div class="rating-text">4/5 - Excellence reconnue</div>
+                <div class="reviews-count">Basé sur 50 avis clients</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informations</h3>
+                    <div class="info-item">
+                        <span class="info-icon">📍</span>
+                        <div>
+                            <strong>Adresse</strong><br>
+                            Rue du Pont-Muré 24<br>
+                            1700 Fribourg, Suisse
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">📞</span>
+                        <div>
+                            <strong>Téléphone</strong><br>
+                            026 322 35 37
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-icon">🕒</span>
+                        <div>
+                            <strong>Horaires</strong><br>
+                            Lun-Ven: 9h00-18h00<br>
+                            Samedi: 9h00-17h00
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="nom">Nom *</label>
+                        <input type="text" id="nom" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telephone">Téléphone</label>
+                        <input type="tel" id="telephone" name="telephone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" placeholder="Décrivez votre demande..." required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button" style="width: 100%;">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Maison Hertig</h4>
+                    <p>Tradition horlogère depuis Fribourg</p>
+                    <p>Rue du Pont-Muré 24<br>1700 Fribourg, Suisse</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <p>Horlogerie<br>Réparation de montres<br>Bijouterie<br>Vente de montres de luxe</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>Téléphone: 026 322 35 37</p>
+                    <p>Ouvert du lundi au samedi</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Maison Hertig. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobile-menu').addEventListener('click', function() {
+            const navMenu = document.getElementById('nav-menu');
+            navMenu.classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('nav-menu').classList.remove('active');
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Nous vous contacterons bientôt.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
