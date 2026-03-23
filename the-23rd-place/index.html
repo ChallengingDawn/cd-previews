@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="{{ $json.lang || 'en' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ $json.name }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #F2EDE4;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: {{ $json.p && $json.p.color1 || '#2C5F8A' }};
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+        
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, {{ $json.p && $json.p.color1 || '#2C5F8A' }}, {{ $json.p && $json.p.color1 || '#2C5F8A' }}CC);
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .hero .tagline {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .rating {
+            background-color: rgba(255,255,255,0.2);
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 25px;
+            margin-bottom: 2rem;
+        }
+        
+        .stars {
+            color: #FFD700;
+            margin-right: 10px;
+        }
+        
+        .cta-button {
+            background-color: white;
+            color: {{ $json.p && $json.p.color1 || '#2C5F8A' }};
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: {{ $json.p && $json.p.color1 || '#2C5F8A' }};
+            margin-bottom: 3rem;
+            font-weight: 700;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: {{ $json.p && $json.p.color1 || '#2C5F8A' }};
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .service-card h3 {
+            color: {{ $json.p && $json.p.color1 || '#2C5F8A' }};
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: white;
+            padding: 100px 0;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .contact-info h3 {
+            color: {{ $json.p && $json.p.color1 || '#2C5F8A' }};
+            margin-bottom: 2rem;
+            font-size: 1.5rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #F2EDE4;
+            border-radius: 10px;
+        }
+        
+        .contact-icon {
+            background-color: {{ $json.p && $json.p.color1 || '#2C5F8A' }};
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+        
+        .contact-form {
+            background-color: #F2EDE4;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: {{ $json.p && $json.p.color1 || '#2C5F8A' }};
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid transparent;
+            border-radius: 8px;
+            background-color: white;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: {{ $json.p && $json.p.color1 || '#2C5F8A' }};
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            background-color: {{ $json.p && $json.p.color1 || '#2C5F8A' }};
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .submit-btn:hover {
+            background-color: #1e4766;
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: {{ $json.p && $json.p.color1 || '#2C5F8A' }};
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            line-height: 1.6;
+        }
+        
+        .footer-section a:hover {
+            color: white;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 2rem;
+            margin-top: 2rem;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: {{ $json.p && $json.p.color1 || '#2C5F8A' }};
+                flex-direction: column;
+                padding: 1rem;
+                gap: 1rem;
+            }
+            
+            .nav-links.active {
+                display: flex;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .services,
+            .contact {
+                padding: 60px 0;
+            }
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .service-card,
+        .contact-item {
+            animation: fadeInUp 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">{{ $json.name }}</a>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#hero">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu" id="mobileMenu">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="container">
+            <h1>{{ $json.name }}</h1>
+            {% if $json.p && $json.p.tagline %}
+            <p class="tagline">{{ $json.p.tagline }}</p>
+            {% endif %}
+            {% if $json.rating %}
+            <div class="rating">
+                <span class="stars">★★★★★</span>
+                <span>{{ $json.rating }}/5 ({{ $json.reviews }} reviews)</span>
+            </div>
+            {% endif %}
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Our Services</h2>
+            {% if $json.p && $json.p.services %}
+            <div class="services-grid">
+                {% for service in $json.p.services %}
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>{{ service }}</h3>
+                    <p>Professional {{ service.toLowerCase() }} services tailored to your needs with quality and reliability you can trust.</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">⚡</div>
+                    <h3>Professional Services</h3>
+                    <p>High-quality professional services delivered with expertise and attention to detail.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏆</div>
+                    <h3>Quality Guarantee</h3>
+                    <p>We stand behind our work with a commitment to excellence and customer satisfaction.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">📞</div>
+                    <h3>24/7 Support</h3>
+                    <p>Round-the-clock customer support to address your questions and concerns.</p>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    {% if $json.address %}
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>Address</strong><br>
+                            {{ $json.address }}
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% if $json.phone %}
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>
+                            <strong>Phone</strong><br>
+                            <a href="tel:{{ $json.phone }}">{{ $json.phone }}</a>
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="contact-item">
+                        <div class="contact-icon">🕒</div>
+                        <div>
+                            <strong>Business Hours</strong><br>
+                            Monday - Friday: 9:00 AM - 6:00 PM<br>
+                            Saturday: 9:00 AM - 4:00 PM
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Tell us about your project..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>{{ $json.name }}</h4>
+                    <p>{% if $json.p && $json.p.tagline %}{{ $json.p.tagline }}{% else %}Professional services you can trust.{% endif %}</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact Info</h4>
+                    {% if $json.phone %}<p>Phone: {{ $json.phone }}</p>{% endif %}
+                    {% if $json.address %}<p>{{ $json.address }}</p>{% endif %}
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    {% if $json.p && $json.p.services %}
+                        {% for service in $json.p.services.slice(0, 3) %}
+                        <p>{{ service }}</p>
+                        {% endfor %}
+                    {% else %}
+                    <p>Professional Services</p>
+                    <p>Quality Guarantee</p>
+                    <p>Customer Support</p>
+                    {% endif %}
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 {{ $json.name }}. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('mobileMenu').addEventListener('click', function() {
+            document.getElementById('navLinks').classList.toggle('active');
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu if open
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(44, 95, 138, 0.95)';
+            } else {
+                nav.style.background = '{{ $json.p && $json.p.color1 || "#2C5F8A" }}';
+            }
+        });
+    </script>
+</body>
+</html>
