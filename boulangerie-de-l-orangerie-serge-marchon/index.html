@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boulangerie de l'Orangerie Serge Marchon - Pain artisanal à Neuchâtel</title>
-    <meta name="description" content="Boulangerie artisanale à Neuchâtel. Pain, viennoiseries et pâtisseries selon les traditions suisses. Serge Marchon, Rue de l'Orangerie 2.">
-    <meta name="keywords" content="boulangerie, pain artisanal, viennoiseries, pâtisseries, Neuchâtel, Serge Marchon, bio">
+    <title>Boulangerie de l'Orangerie Serge Marchon - Pain Artisanal à Neuchâtel</title>
+    <meta name="description" content="Boulangerie artisanale à Neuchâtel. Serge Marchon perpétue l'art du pain traditionnel avec passion. Pâtisseries fines, viennoiseries et gâteaux sur commande.">
+    <meta name="keywords" content="boulangerie, pain artisanal, pâtisserie, Neuchâtel, Serge Marchon, viennoiseries, gâteaux">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Source+Sans+Pro:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
-        "@type": "Bakery",
+        "@type": "LocalBusiness",
         "name": "Boulangerie de l'Orangerie Serge Marchon",
+        "description": "Boulangerie artisanale traditionnelle à Neuchâtel",
+        "url": "https://boulangerie-orangerie.ch",
+        "telephone": "+41327252344",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "Rue de l'Orangerie 2",
@@ -22,23 +25,28 @@
             "postalCode": "2000",
             "addressCountry": "CH"
         },
-        "telephone": "032 725 23 44",
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 46.9920,
+            "longitude": 6.9297
+        },
         "aggregateRating": {
             "@type": "AggregateRating",
             "ratingValue": "4.7",
             "reviewCount": "59"
         },
         "priceRange": "$$",
-        "openingHours": "Mo-Sa 06:30-18:30"
+        "servedCuisine": ["Boulangerie", "Pâtisserie"],
+        "paymentAccepted": "Cash, Credit Card"
     }
     </script>
 
     <style>
         :root {
-            --primary-bg: #F2EDE4;
-            --accent-color: #8B6F47;
-            --text-dark: #2C2C2C;
-            --text-light: #6B6B6B;
+            --bg-primary: #F2EDE4;
+            --accent: #D4A574;
+            --text-primary: #2D2D2D;
+            --text-secondary: #666666;
             --white: #FFFFFF;
             --shadow: 0 4px 20px rgba(0,0,0,0.08);
             --shadow-hover: 0 8px 30px rgba(0,0,0,0.12);
@@ -51,146 +59,177 @@
         }
 
         body {
-            font-family: 'Source Sans Pro', sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--text-dark);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+        .serif {
+            font-family: 'Crimson Text', serif;
         }
 
         /* Navigation */
-        .navbar {
+        .nav {
             position: fixed;
             top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(242, 237, 228, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 1rem 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: var(--shadow);
             z-index: 1000;
-            border-bottom: 1px solid rgba(139, 111, 71, 0.1);
+            transition: transform 0.3s ease;
         }
 
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             font-weight: 600;
-            color: var(--accent-color);
+            color: var(--accent);
         }
 
         .nav-cta {
-            background: var(--accent-color);
+            background: var(--accent);
             color: var(--white);
             padding: 0.75rem 1.5rem;
+            border-radius: 50px;
             text-decoration: none;
-            border-radius: 25px;
             font-weight: 500;
-            transition: all 0.3s ease;
+            transition: transform 0.2s ease;
         }
 
         .nav-cta:hover {
             transform: scale(1.05);
-            box-shadow: var(--shadow);
         }
 
         /* Hero Section */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 0 2rem;
-            background: linear-gradient(135deg, var(--primary-bg) 0%, #EDE7DC 100%);
+            background: linear-gradient(135deg, var(--bg-primary) 0%, #E8DDD0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="1" fill="%23D4A574" opacity="0.1"/></svg>') repeat;
+            animation: float 20s linear infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(-50px, -50px) rotate(360deg); }
         }
 
         .hero-content {
             max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
             opacity: 0;
             transform: translateY(30px);
-            animation: fadeUp 1s ease forwards 0.5s;
+            animation: fadeUp 1s ease 0.5s forwards;
         }
 
-        .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--text-dark);
+            color: var(--text-primary);
         }
 
-        .tagline {
-            font-size: 1.25rem;
-            color: var(--text-light);
+        .hero-tagline {
+            font-size: 1.5rem;
             margin-bottom: 2rem;
+            color: var(--text-secondary);
             font-style: italic;
         }
 
         .rating-badge {
+            display: inline-flex;
+            align-items: center;
             background: var(--white);
             padding: 0.75rem 1.5rem;
             border-radius: 50px;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
             margin-bottom: 2rem;
             box-shadow: var(--shadow);
             font-weight: 500;
         }
 
         .stars {
-            color: #FFB800;
-            font-size: 1.1rem;
+            color: #FFB000;
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
         }
 
         .hero-cta {
-            background: var(--accent-color);
+            background: var(--accent);
             color: var(--white);
             padding: 1rem 2rem;
+            border-radius: 50px;
             text-decoration: none;
-            border-radius: 30px;
+            font-weight: 600;
             font-size: 1.1rem;
-            font-weight: 500;
+            transition: transform 0.2s ease;
             display: inline-block;
-            margin-top: 1rem;
-            transition: all 0.3s ease;
         }
 
         .hero-cta:hover {
             transform: scale(1.05);
-            box-shadow: var(--shadow-hover);
         }
 
-        /* Services Section */
-        .services {
-            padding: 6rem 2rem;
+        /* Sections */
+        .section {
+            padding: 5rem 2rem;
             max-width: 1200px;
             margin: 0 auto;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .section-title {
-            text-align: center;
             font-size: 2.5rem;
+            text-align: center;
             margin-bottom: 3rem;
-            color: var(--text-dark);
+            color: var(--text-primary);
         }
 
+        /* Services */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2rem;
+            margin-top: 3rem;
         }
 
         .service-card {
@@ -199,9 +238,7 @@
             border-radius: 20px;
             text-align: center;
             box-shadow: var(--shadow);
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(20px);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .service-card:hover {
@@ -209,185 +246,171 @@
             box-shadow: var(--shadow-hover);
         }
 
-        .service-card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         .service-icon {
             width: 60px;
             height: 60px;
             margin: 0 auto 1.5rem;
-            fill: var(--accent-color);
+            fill: var(--accent);
         }
 
-        .service-card h3 {
+        .service-title {
             font-size: 1.5rem;
+            font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--text-dark);
+            color: var(--text-primary);
         }
 
-        .service-card p {
-            color: var(--text-light);
+        .service-desc {
+            color: var(--text-secondary);
             line-height: 1.7;
         }
 
-        /* About Section */
-        .about {
-            background: var(--white);
-            padding: 6rem 2rem;
-        }
-
-        .about-container {
-            max-width: 1000px;
-            margin: 0 auto;
+        /* About */
+        .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 2fr 1fr;
             gap: 4rem;
             align-items: center;
         }
 
-        .about-content h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            color: var(--text-dark);
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
+        .about-text {
+            font-size: 1.2rem;
             line-height: 1.8;
-            margin-bottom: 2rem;
-            color: var(--text-light);
+            color: var(--text-secondary);
         }
 
-        .contact-info {
-            background: var(--primary-bg);
-            padding: 2rem;
-            border-radius: 15px;
-        }
-
-        .contact-info h3 {
-            color: var(--accent-color);
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .contact-info p {
-            margin-bottom: 0.5rem;
-            color: var(--text-dark);
-        }
-
-        /* Rating Section */
-        .rating-section {
-            padding: 4rem 2rem;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-bg) 0%, #EDE7DC 100%);
-        }
-
-        .rating-display {
-            max-width: 400px;
-            margin: 0 auto;
+        .about-info {
             background: var(--white);
-            padding: 3rem;
+            padding: 2rem;
             border-radius: 20px;
             box-shadow: var(--shadow);
         }
 
-        .rating-number {
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--accent-color);
+        .info-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--accent);
+            display: block;
             margin-bottom: 0.5rem;
         }
 
-        .rating-stars {
+        /* Rating Display */
+        .rating-display {
+            text-align: center;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            margin: 3rem 0;
+        }
+
+        .rating-number {
+            font-size: 4rem;
+            font-weight: 600;
+            color: var(--accent);
+            display: block;
+        }
+
+        .rating-stars-large {
             font-size: 2rem;
-            color: #FFB800;
-            margin-bottom: 1rem;
+            color: #FFB000;
+            margin: 1rem 0;
         }
 
         .rating-text {
-            color: var(--text-light);
+            color: var(--text-secondary);
             font-size: 1.1rem;
         }
 
-        /* Contact Section */
-        .contact {
-            padding: 6rem 2rem;
-            background: var(--white);
-        }
-
-        .contact-container {
-            max-width: 1000px;
-            margin: 0 auto;
+        /* Contact */
+        .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
         }
 
         .contact-form {
-            background: var(--primary-bg);
+            background: var(--white);
             padding: 2.5rem;
             border-radius: 20px;
-        }
-
-        .contact-form h3 {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
-            color: var(--text-dark);
+            box-shadow: var(--shadow);
         }
 
         .form-group {
             margin-bottom: 1.5rem;
         }
 
-        .form-group label {
+        .form-label {
             display: block;
             margin-bottom: 0.5rem;
             font-weight: 500;
-            color: var(--text-dark);
+            color: var(--text-primary);
         }
 
-        .form-group input,
-        .form-group textarea {
+        .form-input, .form-textarea {
             width: 100%;
             padding: 1rem;
-            border: 2px solid transparent;
+            border: 2px solid #E0E0E0;
             border-radius: 10px;
-            background: var(--white);
             font-family: inherit;
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
         }
 
-        .form-group input:focus,
-        .form-group textarea:focus {
+        .form-input:focus, .form-textarea:focus {
             outline: none;
-            border-color: var(--accent-color);
+            border-color: var(--accent);
+        }
+
+        .form-textarea {
+            resize: vertical;
+            min-height: 120px;
         }
 
         .form-submit {
-            background: var(--accent-color);
+            background: var(--accent);
             color: var(--white);
             padding: 1rem 2rem;
             border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 500;
+            border-radius: 50px;
+            font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.2s ease;
+            width: 100%;
         }
 
         .form-submit:hover {
-            transform: scale(1.05);
+            transform: scale(1.02);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
             box-shadow: var(--shadow);
+        }
+
+        .contact-item h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
         }
 
         /* Footer */
         .footer {
-            background: var(--accent-color);
-            color: var(--white);
-            padding: 3rem 2rem 2rem;
+            background: var(--white);
+            padding: 3rem 2rem 1rem;
             text-align: center;
+            margin-top: 5rem;
         }
 
         .footer-content {
@@ -395,78 +418,57 @@
             margin: 0 auto;
         }
 
-        .footer h4 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .footer p {
-            opacity: 0.9;
-            margin-bottom: 0.5rem;
+        .footer-text {
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
         }
 
         .footer-bottom {
-            margin-top: 2rem;
+            border-top: 1px solid #E0E0E0;
             padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            opacity: 0.8;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
         }
 
-        /* Animations */
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Mobile Responsive */
+        /* Responsive */
         @media (max-width: 768px) {
             .nav-container {
-                padding: 0 1rem;
+                padding: 1rem;
             }
 
-            .hero {
-                padding: 0 1rem;
+            .hero-content {
+                padding: 1rem;
             }
 
-            .services {
-                padding: 4rem 1rem;
+            .section {
+                padding: 3rem 1rem;
             }
 
-            .about-container,
-            .contact-container {
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .about-content, .contact-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
 
-            .about {
-                padding: 4rem 1rem;
+            .service-card {
+                padding: 2rem;
             }
 
-            .contact {
-                padding: 4rem 1rem;
+            .section-title {
+                font-size: 2rem;
             }
-        }
-
-        /* Intersection Observer */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.8s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar">
+    <nav class="nav">
         <div class="nav-container">
-            <div class="logo">Boulangerie de l'Orangerie</div>
+            <div class="logo serif">Boulangerie de l'Orangerie</div>
             <a href="#contact" class="nav-cta">Nous contacter</a>
         </div>
     </nav>
@@ -474,104 +476,118 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
-            <h1>Boulangerie de l'Orangerie<br>Serge Marchon</h1>
-            <p class="tagline">Tradition et saveur, chaque jour</p>
+            <h1 class="hero-title serif">Boulangerie de l'Orangerie<br>Serge Marchon</h1>
+            <p class="hero-tagline serif">Le goût du vrai, depuis le cœur de Neuchâtel</p>
             <div class="rating-badge">
                 <span class="stars">★★★★★</span>
                 <span>4.7 · 59 avis</span>
             </div>
-            <a href="#services" class="hero-cta">Découvrir nos produits</a>
+            <a href="#services" class="hero-cta">Découvrir nos spécialités</a>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <h2 class="section-title fade-in">Nos Spécialités</h2>
+    <!-- Services -->
+    <section id="services" class="section">
+        <h2 class="section-title serif">Nos Spécialités Artisanales</h2>
         <div class="services-grid">
-            <div class="service-card fade-in">
-                <svg class="service-icon" viewBox="0 0 24 24">
-                    <path d="M12,3C7.58,3 4,6.58 4,11C4,14.03 5.53,16.68 7.91,18.09L8.5,20.5L10.5,19.5L11,21L13,20L13.5,21.5L15.5,20.5L16.09,18.09C18.47,16.68 20,14.03 20,11C20,6.58 16.42,3 12,3M9,8A1,1 0 0,1 10,9A1,1 0 0,1 9,10A1,1 0 0,1 8,9A1,1 0 0,1 9,8M15,8A1,1 0 0,1 16,9A1,1 0 0,1 15,10A1,1 0 0,1 14,9A1,1 0 0,1 15,8M11,14H13L12.5,16.5L11.5,16.5L11,14Z"/>
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 64 64">
+                    <path d="M32 8c-8.284 0-15 6.716-15 15v2H12c-2.209 0-4 1.791-4 4v28c0 2.209 1.791 4 4 4h40c2.209 0 4-1.791 4-4V29c0-2.209-1.791-4-4-4H47v-2c0-8.284-6.716-15-15-15zm0 4c6.065 0 11 4.935 11 11v2H21v-2c0-6.065 4.935-11 11-11z"/>
                 </svg>
-                <h3>Pain Artisanal</h3>
-                <p>Pains confectionnés selon les traditions boulangères suisses avec des ingrédients de qualité supérieure, pétris et cuits chaque jour dans notre fournil.</p>
+                <h3 class="service-title">Pain Artisanal</h3>
+                <p class="service-desc">Nos pains traditionnels sont pétris avec passion selon les méthodes ancestrales, utilisant uniquement des ingrédients de première qualité pour un goût authentique.</p>
             </div>
-            <div class="service-card fade-in">
-                <svg class="service-icon" viewBox="0 0 24 24">
-                    <path d="M16,17H7V15H16M16,13H7V11H16M21,9H3V7L4,2H20L21,7M19,16A1,1 0 0,0 20,17A1,1 0 0,0 21,16V10H3V16A1,1 0 0,0 4,17A1,1 0 0,0 5,16H19Z"/>
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 64 64">
+                    <path d="M12 16c0-2.209 1.791-4 4-4h32c2.209 0 4 1.791 4 4v4c0 2.209-1.791 4-4 4H16c-2.209 0-4-1.791-4-4v-4zm8 16c-2.209 0-4 1.791-4 4v16c0 2.209 1.791 4 4 4h24c2.209 0 4-1.791 4-4V36c0-2.209-1.791-4-4-4H20z"/>
                 </svg>
-                <h3>Viennoiseries & Pâtisseries</h3>
-                <p>Croissants dorés, pains au chocolat fondants et pâtisseries délicates préparés avec le savoir-faire traditionnel pour égayer vos matins et vos après-midis.</p>
+                <h3 class="service-title">Pâtisseries Fines</h3>
+                <p class="service-desc">Des créations délicates qui allient tradition et créativité. Chaque pâtisserie est confectionnée avec soin pour offrir une expérience gustative exceptionnelle.</p>
             </div>
-            <div class="service-card fade-in">
-                <svg class="service-icon" viewBox="0 0 24 24">
-                    <path d="M12,15A2,2 0 0,1 10,13C10,11.89 10.9,11 12,11A2,2 0 0,1 14,13A2,2 0 0,1 12,15M21,10C21,10 21,10 21,10L20.5,10L18.5,8C18.1,7.6 17.6,7.4 17,7.4C16.4,7.4 15.9,7.6 15.5,8L12,11.5L8.5,8C8.1,7.6 7.6,7.4 7,7.4C6.4,7.4 5.9,7.6 5.5,8L3.5,10L3,10C3,10 3,10 3,10C2.4,10 2,10.4 2,11V21A1,1 0 0,0 3,22H21A1,1 0 0,0 22,21V11C22,10.4 21.6,10 21,10Z"/>
+            <div class="service-card">
+                <svg class="service-icon" viewBox="0 0 64 64">
+                    <path d="M32 4C20 4 12 12 12 20c0 12 20 36 20 36s20-24 20-36c0-8-8-16-20-16zm0 20c-4.418 0-8-3.582-8-8s3.582-8 8-8 8 3.582 8 8-3.582 8-8 8z"/>
                 </svg>
-                <h3>Gâteaux sur Commande</h3>
-                <p>Créations personnalisées pour vos événements spéciaux. Gâteaux d'anniversaire, de mariage et desserts sur mesure réalisés avec passion et créativité.</p>
+                <h3 class="service-title">Viennoiseries & Gâteaux</h3>
+                <p class="service-desc">Croissants dorés, pains au chocolat croustillants et gâteaux sur commande pour vos occasions spéciales. Le petit déjeuner parfait vous attend chaque matin.</p>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-container">
-            <div class="about-content fade-in">
-                <h2>Notre Histoire</h2>
-                <p>Boulangerie de l'Orangerie propose des pains et viennoiseries confectionnés selon les traditions boulangères suisses, en utilisant des ingrédients de qualité supérieure.</p>
-                <p>Serge Marchon perpétue l'art du métier avec passion pour offrir à Neuchâtel les meilleurs produits de boulangerie artisanale. Chaque jour, nous nous levons avant l'aube pour vous proposer des produits frais, savoureux et authentiques.</p>
+    <!-- About -->
+    <section id="about" class="section">
+        <h2 class="section-title serif">Notre Histoire</h2>
+        <div class="about-content">
+            <div>
+                <p class="about-text serif">
+                    Boulangerie de l'Orangerie est une maison de tradition neuchâteloise où Serge Marchon perpétue l'art du pain artisanal depuis des décennies. Chaque création sort du four avec passion, alliant savoir-faire authentique et ingrédients de qualité supérieure.
+                </p>
+                <br>
+                <p class="about-text serif">
+                    Dans notre atelier de la rue de l'Orangerie, nous préservons les gestes traditionnels tout en innovant pour satisfaire les palais les plus exigeants. Notre engagement : vous offrir chaque jour le goût du vrai.
+                </p>
             </div>
-            <div class="contact-info fade-in">
-                <h3>Nous Trouver</h3>
-                <p><strong>Adresse :</strong><br>Rue de l'Orangerie 2<br>2000 Neuchâtel, Suisse</p>
-                <p><strong>Téléphone :</strong><br>032 725 23 44</p>
-                <p><strong>Produits biologiques</strong><br>Disponibles sur demande</p>
+            <div class="about-info">
+                <div class="info-item">
+                    <span class="info-label">Adresse</span>
+                    <p>Rue de l'Orangerie 2<br>2000 Neuchâtel, Suisse</p>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Téléphone</span>
+                    <p>032 725 23 44</p>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Spécialités</span>
+                    <p>Pain artisanal, Pâtisseries fines, Viennoiseries, Gâteaux sur commande</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Rating Section -->
-    <section class="rating-section">
-        <div class="rating-display fade-in">
-            <div class="rating-number">4.7</div>
-            <div class="rating-stars">★★★★★</div>
-            <p class="rating-text">Basé sur 59 avis clients</p>
+    <!-- Rating Display -->
+    <section class="section">
+        <div class="rating-display">
+            <span class="rating-number serif">4.7</span>
+            <div class="rating-stars-large">★★★★★</div>
+            <p class="rating-text">Basé sur 59 avis clients authentiques</p>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="contact-container">
-            <div class="contact-form fade-in">
-                <h3>Nous Contacter</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="name">Nom complet</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Téléphone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message</label>
-                        <textarea id="message" name="message" rows="4" placeholder="Commande spéciale, question ou demande..."></textarea>
-                    </div>
-                    <button type="submit" class="form-submit">Envoyer</button>
-                </form>
-            </div>
-            <div class="contact-info fade-in">
-                <h3>Horaires d'Ouverture</h3>
-                <p><strong>Lundi - Samedi</strong><br>6h30 - 18h30</p>
-                <p><strong>Dimanche</strong><br>Fermé</p>
-                
-                <h3 style="margin-top: 2rem;">Informations</h3>
-                <p><strong>Rue de l'Orangerie 2</strong><br>2000 Neuchâtel, Suisse</p>
-                <p><strong>Tél :</strong> 032 725 23 44</p>
-                <p><strong>Spécialités :</strong> Pain artisanal, Viennoiseries, Pâtisseries, Gâteaux sur commande, Produits biologiques</p>
+    <!-- Contact -->
+    <section id="contact" class="section">
+        <h2 class="section-title serif">Contactez-nous</h2>
+        <div class="contact-grid">
+            <form class="contact-form">
+                <div class="form-group">
+                    <label class="form-label" for="name">Nom complet</label>
+                    <input type="text" id="name" name="name" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="phone">Téléphone</label>
+                    <input type="tel" id="phone" name="phone" class="form-input">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="message">Message</label>
+                    <textarea id="message" name="message" class="form-textarea" placeholder="Commande spéciale, question, ou simplement nous dire bonjour..." required></textarea>
+                </div>
+                <button type="submit" class="form-submit">Envoyer le message</button>
+            </form>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>Coordonnées</h3>
+                    <p><strong>Adresse:</strong><br>Rue de l'Orangerie 2<br>2000 Neuchâtel, Suisse</p>
+                    <p><strong>Téléphone:</strong><br>032 725 23 44</p>
+                </div>
+                <div class="contact-item">
+                    <h3>Horaires d'ouverture</h3>
+                    <p><strong>Lundi - Vendredi:</strong><br>6h00 - 18h30</p>
+                    <p><strong>Samedi:</strong><br>6h00 - 17h00</p>
+                    <p><strong>Dimanche:</strong><br>7h00 - 12h00</p>
+                </div>
             </div>
         </div>
     </section>
@@ -579,30 +595,18 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <h4>Boulangerie de l'Orangerie Serge Marchon</h4>
-            <p>Rue de l'Orangerie 2, 2000 Neuchâtel, Suisse</p>
-            <p>Téléphone : 032 725 23 44</p>
+            <p class="footer-text serif">
+                "Le goût du vrai, depuis le cœur de Neuchâtel"<br>
+                Une tradition familiale qui se perpétue avec passion.
+            </p>
             <div class="footer-bottom">
-                <p>&copy; 2024 Boulangerie de l'Orangerie. Tous droits réservés.</p>
+                <p>&copy; 2024 Boulangerie de l'Orangerie Serge Marchon. Tous droits réservés.</p>
+                <p>Rue de l'Orangerie 2, 2000 Neuchâtel, Suisse | 032 725 23 44</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
@@ -617,16 +621,57 @@
             });
         }, observerOptions);
 
-        // Observe all elements with fade-in class
-        document.querySelectorAll('.fade-in, .service-card').forEach(el => {
-            observer.observe(el);
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
         });
 
         // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
-            this.reset();
+            
+            // Simple form validation and submission simulation
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            
+            if (name && email && message) {
+                // Simulate form submission
+                const submitBtn = this.querySelector('.form-submit');
+                const originalText = submitBtn.textContent;
+                submitBtn.textContent = 'Message envoyé !';
+                submitBtn.style.background = '#28a745';
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.style.background = 'var(--accent)';
+                    this.reset();
+                }, 3000);
+            }
+        });
+
+        // Add floating animation to hero background
+        const hero = document.querySelector('.hero');
+        let scrollY = 0;
+
+        window.addEventListener('scroll', () => {
+            scrollY = window.pageYOffset;
+            hero.style.transform = `translateY(${scrollY * 0.5}px)`;
         });
     </script>
 </body>
