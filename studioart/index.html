@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudioArt - Libérez votre créativité</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #F2EDE4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(242, 237, 228, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(44, 95, 138, 0.1);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #2C5F8A;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #2C5F8A;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #2C5F8A;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 100px;
+            text-align: center;
+            background: linear-gradient(135deg, #F2EDE4 0%, rgba(44, 95, 138, 0.1) 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #2C5F8A;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 3rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #2C5F8A;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 95, 138, 0.3);
+        }
+
+        .cta-button:hover {
+            background-color: #1e4a6b;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(44, 95, 138, 0.4);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background-color: #F2EDE4;
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2C5F8A;
+            margin-bottom: 3rem;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #2C5F8A;
+            box-shadow: 0 10px 30px rgba(44, 95, 138, 0.2);
+        }
+
+        .service-card h3 {
+            color: #2C5F8A;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: #2C5F8A;
+        }
+
+        /* Rating Badge */
+        .rating-badge {
+            text-align: center;
+            padding: 60px 0;
+            background: rgba(44, 95, 138, 0.1);
+            margin: 50px 0;
+            border-radius: 20px;
+        }
+
+        .rating-content {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.4);
+            padding: 2rem 3rem;
+            border-radius: 15px;
+            border: 2px solid #2C5F8A;
+        }
+
+        .stars {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2C5F8A;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating-reviews {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background-color: #F2EDE4;
+        }
+
+        .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2C5F8A;
+            margin-bottom: 3rem;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #2C5F8A;
+        }
+
+        .contact-info h3 {
+            color: #2C5F8A;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-info p {
+            margin-bottom: 1rem;
+            color: #555;
+            font-size: 1.1rem;
+        }
+
+        .contact-info i {
+            color: #2C5F8A;
+            margin-right: 0.5rem;
+            width: 20px;
+        }
+
+        .contact-form {
+            background: rgba(255, 255, 255, 0.3);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 2px solid #2C5F8A;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #2C5F8A;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.8);
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2C5F8A;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: #2C5F8A;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #1e4a6b;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(44, 95, 138, 0.1);
+            padding: 3rem 0 1rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 2rem;
+        }
+
+        .footer-content h3 {
+            color: #2C5F8A;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-content p {
+            color: #666;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 2px solid #2C5F8A;
+            padding-top: 1rem;
+            color: #666;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #F2EDE4;
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .services h2,
+            .contact h2 {
+                font-size: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rating-content {
+                padding: 1.5rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 120px 0 80px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .services,
+            .contact {
+                padding: 60px 0;
+            }
+
+            .service-card,
+            .contact-info,
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-content">
+            <div class="logo">StudioArt</div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#avis">Avis</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="accueil" class="hero">
+        <div class="container">
+            <h1>StudioArt</h1>
+            <p class="tagline">Libérez votre créativité</p>
+            <p>Découvrez votre potentiel artistique avec nos cours personnalisés de dessin et peinture. Notre studio vous accompagne dans votre parcours créatif, que vous soyez débutant ou artiste confirmé.</p>
+            <a href="#contact" class="cta-button">Réservez votre cours</a>
+        </div>
+    </section>
+
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">✏️</div>
+                    <h3>Cours de dessin</h3>
+                    <p>Apprenez les techniques fondamentales du dessin avec nos professeurs expérimentés. Du croquis aux techniques avancées.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Cours de peinture</h3>
+                    <p>Explorez différentes techniques de peinture : acrylique, huile, aquarelle. Développez votre style unique.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌟</div>
+                    <h3>Ateliers créatifs</h3>
+                    <p>Participez à nos ateliers thématiques et découvrez de nouvelles approches artistiques dans une ambiance conviviale.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💡</div>
+                    <h3>Consulting artistique</h3>
+                    <p>Bénéficiez de conseils personnalisés pour développer votre projet artistique et perfectionner votre technique.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="avis" class="rating-badge">
+        <div class="container">
+            <div class="rating-content">
+                <div class="stars">★★★★★</div>
+                <div class="rating-text">4.8/5</div>
+                <div class="rating-reviews">Basé sur 245 avis</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Informations</h3>
+                    <p><i>📍</i> Rue Lombard 5, 1205 Genève, Suisse</p>
+                    <p><i>🕒</i> Lun - Ven: 9h00 - 20h00</p>
+                    <p><i>🕒</i> Sam - Dim: 10h00 - 18h00</p>
+                    <p><i>✉️</i> info@studioart-geneve.ch</p>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="nom">Nom complet</label>
+                            <input type="text" id="nom" name="nom" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="service">Service d'intérêt</label>
+                            <input type="text" id="service" name="service" placeholder="Cours de dessin, peinture...">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Décrivez votre projet ou vos questions..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Envoyer le message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>StudioArt</h3>
+                <p>Libérez votre créativité</p>
+                <p>Rue Lombard 5, 1205 Genève, Suisse</p>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 StudioArt. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+                // Close mobile menu after clicking
+                document.getElementById('navLinks').classList.remove('active');
+            });
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Nous vous répondrons bientôt.');
+            this.reset();
+        });
+
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const nav = document.querySelector('nav');
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (!nav.contains(e.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+</body>
+</html>
