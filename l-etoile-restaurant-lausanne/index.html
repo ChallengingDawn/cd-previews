@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $json.name }}</title>
+    <title>L'Étoile - Restaurant Gastronomique Lausanne | Cuisine Française</title>
+    <meta name="description" content="L'Étoile, restaurant gastronomique à Lausanne. Cuisine française d'excellence, bar à vins et service catering. Réservez votre table dès maintenant.">
     <style>
         * {
             margin: 0;
@@ -27,283 +28,342 @@
         /* Navigation */
         nav {
             background: rgba(44, 95, 138, 0.95);
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
             backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 0;
         }
         
         .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 20px;
         }
         
         .logo {
-            font-size: 1.5rem;
+            font-size: 24px;
             font-weight: bold;
-            color: white;
+            color: #F2EDE4;
+            text-decoration: none;
         }
         
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 30px;
         }
         
         .nav-links a {
-            color: white;
+            color: #F2EDE4;
             text-decoration: none;
-            transition: color 0.3s;
+            font-weight: 500;
+            transition: color 0.3s ease;
         }
         
         .nav-links a:hover {
-            color: #F2EDE4;
+            color: #FFD700;
         }
         
-        .mobile-menu {
+        .menu-toggle {
             display: none;
-            flex-direction: column;
+            background: none;
+            border: none;
+            color: #F2EDE4;
+            font-size: 24px;
             cursor: pointer;
-        }
-        
-        .mobile-menu span {
-            width: 25px;
-            height: 3px;
-            background: white;
-            margin: 3px 0;
-            transition: 0.3s;
         }
         
         /* Hero Section */
         .hero {
+            background: linear-gradient(135deg, #2C5F8A 0%, #4A7BA7 100%);
+            color: #F2EDE4;
             padding: 120px 0 80px;
             text-align: center;
-            background: linear-gradient(135deg, #F2EDE4 0%, #E8DFD2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="rgba(255,215,0,0.3)"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+            opacity: 0.1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
         
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: #2C5F8A;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            font-weight: 400;
+            letter-spacing: 2px;
         }
         
-        .hero .tagline {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: #666;
-            font-style: italic;
-        }
-        
-        .hero .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 3rem;
-            margin: 2rem 0;
-            flex-wrap: wrap;
-        }
-        
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 1.1rem;
-        }
-        
-        .rating {
-            margin: 2rem 0;
-            font-size: 1.2rem;
-        }
-        
-        .stars {
-            color: #FFD700;
-            margin: 0 0.5rem;
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
         }
         
         .cta-button {
-            display: inline-block;
-            background: #2C5F8A;
-            color: white;
-            padding: 15px 30px;
-            text-decoration: none;
-            border-radius: 5px;
+            background: #FFD700;
+            color: #2C5F8A;
+            padding: 15px 35px;
+            border: none;
+            border-radius: 50px;
             font-size: 1.1rem;
-            transition: background 0.3s;
-            margin-top: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
         }
         
         .cta-button:hover {
-            background: #234d73;
+            background: #FFC700;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
+        }
+        
+        /* Rating Badge */
+        .rating-badge {
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+            background: rgba(255, 215, 0, 0.9);
+            color: #2C5F8A;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .rating-badge .stars {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #FFD700;
+        }
+        
+        .rating-badge .score {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .rating-badge .reviews {
+            font-size: 14px;
+            opacity: 0.8;
         }
         
         /* Services Section */
         .services {
             padding: 80px 0;
-            background: white;
+            background: #F2EDE4;
         }
         
         .services h2 {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 3rem;
+            margin-bottom: 50px;
             color: #2C5F8A;
         }
         
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
         }
         
         .service-card {
-            background: #F2EDE4;
-            padding: 2rem;
-            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 40px 30px;
+            border-radius: 15px;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(44, 95, 138, 0.1);
         }
         
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(44, 95, 138, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .service-icon {
+            font-size: 3rem;
+            color: #2C5F8A;
+            margin-bottom: 20px;
         }
         
         .service-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
             color: #2C5F8A;
-            margin-bottom: 1rem;
-            font-size: 1.5rem;
+        }
+        
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
         }
         
         /* Contact Section */
         .contact {
             padding: 80px 0;
-            background: #F2EDE4;
+            background: linear-gradient(135deg, #2C5F8A 0%, #4A7BA7 100%);
+            color: #F2EDE4;
         }
         
         .contact h2 {
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: #2C5F8A;
+            margin-bottom: 50px;
         }
         
         .contact-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: start;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
         }
         
-        .contact-info-section {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        .contact-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
         }
         
-        .contact-info-section h3 {
-            color: #2C5F8A;
-            margin-bottom: 1.5rem;
+        .contact-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #FFD700;
         }
         
-        .contact-details {
-            list-style: none;
+        .contact-info p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         
-        .contact-details li {
-            margin: 1rem 0;
-            font-size: 1.1rem;
-        }
-        
-        .contact-form {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #333;
-            font-weight: bold;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-        }
-        
-        .form-group input:focus,
-        .form-group textarea:focus {
-            border-color: #2C5F8A;
-            outline: none;
-        }
-        
-        .submit-btn {
-            background: #2C5F8A;
-            color: white;
-            padding: 12px 30px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background 0.3s;
-        }
-        
-        .submit-btn:hover {
-            background: #234d73;
+        .contact-info .icon {
+            color: #FFD700;
+            font-size: 1.2rem;
         }
         
         /* Footer */
         footer {
             background: #2C5F8A;
-            color: white;
+            color: #F2EDE4;
+            padding: 40px 0;
             text-align: center;
-            padding: 2rem 0;
         }
         
-        /* Mobile Responsive */
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .footer-section h4 {
+            margin-bottom: 15px;
+            color: #FFD700;
+        }
+        
+        .footer-section p {
+            opacity: 0.8;
+            line-height: 1.6;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 20px;
+            opacity: 0.7;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
+            .menu-toggle {
+                display: block;
             }
             
-            .mobile-menu {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #2C5F8A;
+                flex-direction: column;
+                padding: 20px;
+                gap: 20px;
+            }
+            
+            .nav-links.active {
                 display: flex;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .rating-badge {
+                position: static;
+                transform: none;
+                margin: 30px auto 0;
+                display: inline-block;
+            }
+            
+            .services h2,
+            .contact h2 {
+                font-size: 2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .hero {
+                padding: 100px 0 60px;
             }
             
             .hero h1 {
                 font-size: 2rem;
             }
             
-            .hero .tagline {
-                font-size: 1.2rem;
+            .services,
+            .contact {
+                padding: 60px 0;
             }
             
-            .hero .contact-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .services h2,
-            .contact h2 {
-                font-size: 2rem;
+            .service-card,
+            .contact-info {
+                padding: 30px 20px;
             }
         }
     </style>
@@ -311,106 +371,94 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="nav-container">
-            <div class="logo">{{ $json.name }}</div>
-            <ul class="nav-links">
-                <li><a href="#hero">Home</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">L'Étoile</a>
+                <ul class="nav-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#reservation">Réservation</a></li>
+                </ul>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="hero" class="hero">
+    <section class="hero" id="accueil">
         <div class="container">
-            <h1>{{ $json.name }}</h1>
-            <p class="tagline">{{ $json.p && $json.p.tagline }}</p>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <span>📍</span>
-                    <span>{{ $json.address }}</span>
-                </div>
-                <div class="contact-item">
-                    <span>📞</span>
-                    <span>{{ $json.phone }}</span>
+            <div class="hero-content">
+                <h1>L'Étoile</h1>
+                <p>L'excellence gastronomique à Lausanne</p>
+                <a href="#contact" class="cta-button">Réserver votre table</a>
+                
+                <div class="rating-badge">
+                    <div class="stars">★★★★★</div>
+                    <div class="score">4.7/5</div>
+                    <div class="reviews">497 avis</div>
                 </div>
             </div>
-            
-            <div class="rating">
-                <span class="stars">⭐⭐⭐⭐⭐</span>
-                <span>{{ $json.rating }}/5 ({{ $json.reviews }} reviews)</span>
-            </div>
-            
-            <a href="#contact" class="cta-button">Get In Touch</a>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="services">
+    <section class="services" id="services">
         <div class="container">
-            <h2>Our Services</h2>
+            <h2>Nos Services</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <h3>Professional Services</h3>
-                    <p>{{ ($json.p && $json.p.services) ? $json.p.services.join(", ") : "Quality services tailored to your needs" }}</p>
+                    <div class="service-icon">🍽️</div>
+                    <h3>Cuisine Française</h3>
+                    <p>Découvrez notre cuisine française authentique préparée par nos chefs expérimentés avec des ingrédients de qualité supérieure.</p>
                 </div>
+                
                 <div class="service-card">
-                    <h3>Expert Consultation</h3>
-                    <p>Get professional advice and guidance from our experienced team.</p>
+                    <div class="service-icon">⭐</div>
+                    <h3>Restaurant Gastronomique</h3>
+                    <p>Une expérience culinaire raffinée dans un cadre élégant, parfait pour vos occasions spéciales et dîners d'affaires.</p>
                 </div>
+                
                 <div class="service-card">
-                    <h3>Customer Support</h3>
-                    <p>Dedicated support to ensure your complete satisfaction with our services.</p>
+                    <div class="service-icon">📅</div>
+                    <h3>Réservation de Table</h3>
+                    <p>Réservez facilement votre table pour profiter de notre atmosphère chaleureuse et de notre service impeccable.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🎉</div>
+                    <h3>Service de Catering</h3>
+                    <p>Nos services traiteur pour vos événements privés et professionnels avec la même qualité gastronomique.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">🍷</div>
+                    <h3>Bar à Vins</h3>
+                    <p>Une sélection exceptionnelle de vins français et internationaux pour accompagner parfaitement vos repas.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section class="contact" id="contact">
         <div class="container">
-            <h2>Contact Us</h2>
+            <h2>Contactez-nous</h2>
             <div class="contact-grid">
-                <div class="contact-info-section">
-                    <h3>Get In Touch</h3>
-                    <ul class="contact-details">
-                        <li><strong>Address:</strong> {{ $json.address }}</li>
-                        <li><strong>Phone:</strong> {{ $json.phone }}</li>
-                        <li><strong>Rating:</strong> {{ $json.rating }}/5 stars ({{ $json.reviews }} reviews)</li>
-                    </ul>
+                <div class="contact-info">
+                    <h3>Informations</h3>
+                    <p><span class="icon">📍</span> Rue de Genève 102, 1004 Lausanne, Suisse</p>
+                    <p><span class="icon">⭐</span> Restaurant gastronomique français</p>
+                    <p><span class="icon">🕒</span> Ouvert du mardi au dimanche</p>
+                    <p><span class="icon">💳</span> Toutes cartes acceptées</p>
                 </div>
                 
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="phone">Phone</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
+                <div class="contact-info" id="reservation">
+                    <h3>Réservation</h3>
+                    <p><span class="icon">📞</span> Appelez-nous pour réserver</p>
+                    <p><span class="icon">✉️</span> Réservation en ligne disponible</p>
+                    <p><span class="icon">👥</span> Groupes et événements bienvenus</p>
+                    <p><span class="icon">🎂</span> Menus personnalisés disponibles</p>
                 </div>
             </div>
         </div>
@@ -419,11 +467,37 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2024 {{ $json.name }}. All rights reserved.</p>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>L'Étoile Restaurant</h4>
+                    <p>L'excellence gastronomique française au cœur de Lausanne. Une expérience culinaire inoubliable vous attend.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Nos Spécialités</h4>
+                    <p>Cuisine française traditionnelle et moderne, sélection de vins d'exception, service catering professionnel.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Horaires</h4>
+                    <p>Mardi - Dimanche: 12h00 - 14h30 et 19h00 - 22h30<br>
+                    Fermé le lundi<br>
+                    Réservation recommandée</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 L'Étoile Restaurant Lausanne. Tous droits réservés. | Rue de Genève 102, 1004 Lausanne, Suisse</p>
+            </div>
         </div>
     </footer>
 
     <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+        
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -435,13 +509,19 @@
                         block: 'start'
                     });
                 }
+                // Close mobile menu if open
+                document.querySelector('.nav-links').classList.remove('active');
             });
         });
         
-        // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your message! We will get back to you soon.');
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(44, 95, 138, 0.98)';
+            } else {
+                nav.style.background = 'rgba(44, 95, 138, 0.95)';
+            }
         });
     </script>
 </body>
