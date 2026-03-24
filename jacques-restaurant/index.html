@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jacques Restaurant - Cuisine Raffinée</title>
+    <title>Jacques Restaurant - Cuisine Française Authentique</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         * {
@@ -15,15 +15,20 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #F2EDE4;
-            color: #2C5F8A;
+            color: #2C2C2C;
             line-height: 1.6;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .fade-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Navigation */
@@ -35,10 +40,13 @@
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 1rem 0;
-            border-bottom: 1px solid rgba(44, 95, 138, 0.1);
+            transition: all 0.3s ease;
         }
 
-        .nav-content {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -46,7 +54,7 @@
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
             color: #2C5F8A;
         }
@@ -59,85 +67,93 @@
 
         .nav-links a {
             text-decoration: none;
-            color: #2C5F8A;
+            color: #2C2C2C;
             font-weight: 500;
             transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #1e4066;
+            color: #2C5F8A;
         }
 
         /* Hero Section */
         .hero {
-            margin-top: 80px;
-            padding: 6rem 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            background: linear-gradient(135deg, #F2EDE4 0%, #E8E0D6 100%);
             position: relative;
+            padding: 0 2rem;
         }
 
-        .rating-badge {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            background: #2C5F8A;
-            color: #F2EDE4;
-            padding: 1rem 1.5rem;
-            border-radius: 50px;
-            font-weight: 600;
-            box-shadow: 0 10px 30px rgba(44, 95, 138, 0.2);
+        .hero-content {
+            max-width: 800px;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
             font-size: 4rem;
             font-weight: 700;
+            color: #2C5F8A;
             margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeUp 1s ease forwards;
         }
 
         .hero p {
-            font-size: 1.25rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeUp 1s ease 0.2s forwards;
+            color: #5A5A5A;
         }
 
-        .cta-button {
-            display: inline-block;
-            background: #2C5F8A;
-            color: #F2EDE4;
-            padding: 1rem 2rem;
-            text-decoration: none;
-            border-radius: 50px;
+        .rating-badge {
+            position: absolute;
+            top: 50%;
+            right: 5%;
+            transform: translateY(-50%);
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(44, 95, 138, 0.1);
+            text-align: center;
+            min-width: 200px;
+        }
+
+        .rating-stars {
+            color: #FFB800;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .rating-text {
             font-weight: 600;
-            transition: all 0.3s ease;
-            opacity: 0;
-            transform: translateY(50px);
-            animation: fadeUp 1s ease 0.4s forwards;
+            color: #2C5F8A;
+            margin-bottom: 0.25rem;
         }
 
-        .cta-button:hover {
-            background: #1e4066;
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(44, 95, 138, 0.3);
+        .rating-reviews {
+            font-size: 0.9rem;
+            color: #666;
         }
 
-        /* Services */
+        /* Services Section */
         .services {
             padding: 6rem 0;
+            background: #F2EDE4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-size: 2.5rem;
             text-align: center;
-            margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(50px);
+            color: #2C5F8A;
+            margin-bottom: 3rem;
         }
 
         .services-grid {
@@ -148,124 +164,127 @@
         }
 
         .service-card {
-            background: rgba(255, 255, 255, 0.5);
+            background: white;
             padding: 2.5rem;
             border-radius: 20px;
             text-align: center;
+            box-shadow: 0 5px 20px rgba(44, 95, 138, 0.08);
             transition: all 0.3s ease;
-            border: 2px solid transparent;
-            opacity: 0;
-            transform: translateY(50px);
+            cursor: pointer;
         }
 
         .service-card:hover {
             transform: translateY(-10px);
-            border-color: #2C5F8A;
-            box-shadow: 0 20px 50px rgba(44, 95, 138, 0.15);
+            box-shadow: 0 20px 40px rgba(44, 95, 138, 0.15);
         }
 
         .service-icon {
             font-size: 3rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .service-card h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
+            color: #2C5F8A;
             margin-bottom: 1rem;
         }
 
-        /* About */
+        /* About Section */
         .about {
             padding: 6rem 0;
+            background: linear-gradient(135deg, #F2EDE4 0%, #F8F4EE 100%);
+        }
+
+        .about-content {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 2fr 1fr;
             gap: 4rem;
             align-items: center;
         }
 
-        .about-content {
-            opacity: 0;
-            transform: translateY(50px);
-        }
-
-        .about h2 {
+        .about-text h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            color: #2C5F8A;
+            margin-bottom: 2rem;
         }
 
-        .about-info {
-            background: rgba(255, 255, 255, 0.5);
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            color: #5A5A5A;
+        }
+
+        .address-card {
+            background: white;
             padding: 2rem;
             border-radius: 15px;
-            opacity: 0;
-            transform: translateY(50px);
+            box-shadow: 0 10px 30px rgba(44, 95, 138, 0.1);
         }
 
-        .about-info h3 {
+        .address-card h3 {
             font-family: 'Playfair Display', serif;
+            color: #2C5F8A;
             margin-bottom: 1rem;
         }
 
-        /* Reviews */
+        /* Reviews Section */
         .reviews {
             padding: 6rem 0;
+            background: #F2EDE4;
             text-align: center;
         }
 
-        .stars {
+        .reviews-stars {
             display: flex;
             justify-content: center;
             gap: 0.5rem;
-            font-size: 2rem;
-            color: #FFD700;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(50px);
+            font-size: 3rem;
+            color: #FFB800;
+            margin: 2rem 0;
         }
 
-        .review-text {
-            font-size: 1.25rem;
-            font-style: italic;
-            margin-bottom: 1rem;
-            opacity: 0;
-            transform: translateY(50px);
+        .reviews-text {
+            font-size: 1.2rem;
+            color: #2C5F8A;
+            font-weight: 600;
         }
 
-        /* Contact Form */
+        /* Contact Section */
         .contact {
             padding: 6rem 0;
+            background: linear-gradient(135deg, #F8F4EE 0%, #F2EDE4 100%);
         }
 
         .contact-form {
             max-width: 600px;
-            margin: 0 auto;
-            background: rgba(255, 255, 255, 0.5);
+            margin: 3rem auto 0;
+            background: white;
             padding: 3rem;
             border-radius: 20px;
-            opacity: 0;
-            transform: translateY(50px);
+            box-shadow: 0 15px 40px rgba(44, 95, 138, 0.1);
         }
 
         .form-group {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            font-weight: 600;
+            font-weight: 500;
+            color: #2C5F8A;
         }
 
         .form-group input,
         .form-group textarea {
             width: 100%;
             padding: 1rem;
-            border: 2px solid transparent;
+            border: 2px solid #E5E5E5;
             border-radius: 10px;
-            background: rgba(255, 255, 255, 0.8);
             font-family: 'Inter', sans-serif;
+            font-size: 1rem;
             transition: border-color 0.3s ease;
         }
 
@@ -276,24 +295,27 @@
         }
 
         .submit-btn {
+            width: 100%;
             background: #2C5F8A;
-            color: #F2EDE4;
-            padding: 1rem 2rem;
+            color: white;
+            padding: 1.2rem;
             border: none;
-            border-radius: 50px;
+            border-radius: 10px;
+            font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
         .submit-btn:hover {
-            background: #1e4066;
+            background: #1E4A6F;
             transform: translateY(-2px);
         }
 
         /* Footer */
         footer {
-            background: rgba(44, 95, 138, 0.1);
+            background: #2C5F8A;
+            color: white;
             padding: 3rem 0;
             text-align: center;
         }
@@ -302,18 +324,18 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
+            margin-bottom: 2rem;
         }
 
-        /* Animations */
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .footer-section h3 {
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 1rem;
         }
 
-        .fade-in {
-            animation: fadeUp 0.8s ease forwards;
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            color: rgba(255, 255, 255, 0.7);
         }
 
         /* Mobile Responsive */
@@ -326,13 +348,17 @@
                 font-size: 2.5rem;
             }
 
-            .rating-badge {
-                position: static;
-                display: inline-block;
-                margin-bottom: 2rem;
+            .hero p {
+                font-size: 1.1rem;
             }
 
-            .about {
+            .rating-badge {
+                position: static;
+                transform: none;
+                margin-top: 2rem;
+            }
+
+            .about-content {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
@@ -341,8 +367,8 @@
                 grid-template-columns: 1fr;
             }
 
-            .section-title {
-                font-size: 2rem;
+            .container {
+                padding: 0 1rem;
             }
         }
     </style>
@@ -350,121 +376,120 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="container">
-            <div class="nav-content">
-                <div class="logo">Jacques</div>
-                <ul class="nav-links">
-                    <li><a href="#home">Accueil</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#about">À propos</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
+        <div class="nav-container">
+            <div class="logo">Jacques</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#apropos">À Propos</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="container">
-            <div class="rating-badge">
-                ⭐ 4.8/5 (304 avis)
-            </div>
+    <section class="hero" id="accueil">
+        <div class="hero-content fade-up">
             <h1>Jacques Restaurant</h1>
-            <p>Une expérience culinaire exceptionnelle au cœur de la ville</p>
-            <a href="#contact" class="cta-button">Réserver une table</a>
+            <p>Une expérience culinaire française authentique au cœur de la ville</p>
+        </div>
+        <div class="rating-badge fade-up">
+            <div class="rating-stars">★★★★★</div>
+            <div class="rating-text">4.8/5</div>
+            <div class="rating-reviews">304 avis</div>
         </div>
     </section>
 
-    <!-- Services -->
-    <section id="services" class="services">
+    <!-- Services Section -->
+    <section class="services" id="services">
         <div class="container">
-            <h2 class="section-title">Nos Services</h2>
+            <h2 class="section-title fade-up">Nos Services</h2>
             <div class="services-grid">
-                <div class="service-card">
+                <div class="service-card fade-up">
                     <div class="service-icon">🍽️</div>
                     <h3>Cuisine Gastronomique</h3>
-                    <p>Des plats raffinés préparés avec des ingrédients de première qualité par nos chefs expérimentés.</p>
+                    <p>Des plats raffinés préparés avec des ingrédients de première qualité par notre chef expérimenté.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-up">
                     <div class="service-icon">🍷</div>
                     <h3>Cave à Vins</h3>
-                    <p>Une sélection exceptionnelle de vins locaux et internationaux pour accompagner vos repas.</p>
+                    <p>Une sélection exceptionnelle de vins français et internationaux pour accompagner vos repas.</p>
                 </div>
-                <div class="service-card">
+                <div class="service-card fade-up">
                     <div class="service-icon">🎉</div>
                     <h3>Événements Privés</h3>
-                    <p>Organisation de repas d'affaires, anniversaires et célébrations dans un cadre élégant.</p>
+                    <p>Organisation de dîners privés et événements spéciaux dans une ambiance élégante et chaleureuse.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="about">
+    <!-- About Section -->
+    <section class="about" id="apropos">
         <div class="container">
             <div class="about-content">
-                <h2>Notre Histoire</h2>
-                <p>Depuis 1985, le Restaurant Jacques offre une expérience culinaire unique alliant tradition et innovation. Notre équipe passionnée s'engage à vous proposer une cuisine d'exception dans un cadre chaleureux et raffiné.</p>
-                <p>Chaque plat est préparé avec soin, utilisant uniquement les meilleurs ingrédients locaux et de saison.</p>
-            </div>
-            <div class="about-info">
-                <h3>📍 Notre Adresse</h3>
-                <p>Rue de la Barre 5<br>
-                Lausanne, Suisse</p>
-                <br>
-                <h3>📞 Réservations</h3>
-                <p>+41 21 312 34 56</p>
-                <br>
-                <h3>🕐 Horaires</h3>
-                <p>Mardi - Samedi: 18h00 - 23h00<br>
-                Dimanche: 12h00 - 15h00<br>
-                Fermé le lundi</p>
+                <div class="about-text fade-up">
+                    <h2>Notre Histoire</h2>
+                    <p>Depuis plus de 20 ans, Jacques Restaurant incarne l'excellence de la gastronomie française. Notre passion pour la cuisine authentique et notre engagement envers la qualité nous ont permis de créer un lieu unique où tradition et innovation se rencontrent.</p>
+                    <p>Chaque plat raconte une histoire, chaque saveur évoque un souvenir. Venez découvrir notre univers culinaire dans un cadre élégant et chaleureux.</p>
+                </div>
+                <div class="address-card fade-up">
+                    <h3>Nous Trouver</h3>
+                    <p><strong>Adresse:</strong><br>Rue de la Barre 5<br>Lausanne, Suisse</p>
+                    <p><strong>Téléphone:</strong><br>+41 21 312 34 56</p>
+                    <p><strong>Horaires:</strong><br>Mar-Sam: 18:00-23:00<br>Dim: 12:00-15:00</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Reviews -->
+    <!-- Reviews Section -->
     <section class="reviews">
         <div class="container">
-            <h2 class="section-title">Ce que disent nos clients</h2>
-            <div class="stars">
-                ⭐⭐⭐⭐⭐
+            <h2 class="section-title fade-up">Ce Que Disent Nos Clients</h2>
+            <div class="reviews-stars fade-up">
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
+                <span>★</span>
             </div>
-            <p class="review-text">"Une expérience inoubliable ! La qualité des plats et le service impeccable font de Jacques notre restaurant préféré."</p>
-            <p><strong>4.8/5 étoiles</strong> basé sur 304 avis clients</p>
+            <div class="reviews-text fade-up">
+                304 clients nous ont fait confiance et nous ont attribué la note de 4.8/5
+            </div>
         </div>
     </section>
 
-    <!-- Contact Form -->
-    <section id="contact" class="contact">
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">Réservez votre table</h2>
-            <form class="contact-form">
+            <h2 class="section-title fade-up">Réservez Votre Table</h2>
+            <form class="contact-form fade-up">
                 <div class="form-group">
-                    <label for="name">Nom complet</label>
-                    <input type="text" id="name" name="name" required>
+                    <label for="nom">Nom complet</label>
+                    <input type="text" id="nom" name="nom" required>
                 </div>
                 <div class="form-group">
                     <label for="email">Email</label>
                     <input type="email" id="email" name="email" required>
                 </div>
                 <div class="form-group">
-                    <label for="phone">Téléphone</label>
-                    <input type="tel" id="phone" name="phone" required>
+                    <label for="telephone">Téléphone</label>
+                    <input type="tel" id="telephone" name="telephone" required>
                 </div>
                 <div class="form-group">
                     <label for="date">Date souhaitée</label>
                     <input type="date" id="date" name="date" required>
                 </div>
                 <div class="form-group">
-                    <label for="guests">Nombre de personnes</label>
-                    <input type="number" id="guests" name="guests" min="1" max="10" required>
+                    <label for="personnes">Nombre de personnes</label>
+                    <input type="number" id="personnes" name="personnes" min="1" max="12" required>
                 </div>
                 <div class="form-group">
                     <label for="message">Message (optionnel)</label>
-                    <textarea id="message" name="message" rows="4" placeholder="Demandes spéciales, allergies, etc."></textarea>
+                    <textarea id="message" name="message" rows="4"></textarea>
                 </div>
-                <button type="submit" class="submit-btn">Envoyer la réservation</button>
+                <button type="submit" class="submit-btn">Envoyer la Demande</button>
             </form>
         </div>
     </section>
@@ -473,27 +498,27 @@
     <footer>
         <div class="container">
             <div class="footer-content">
-                <div>
+                <div class="footer-section">
                     <h3>Jacques Restaurant</h3>
-                    <p>Cuisine raffinée depuis 1985</p>
+                    <p>Une expérience culinaire authentique depuis 2003</p>
                 </div>
-                <div>
+                <div class="footer-section">
                     <h3>Contact</h3>
-                    <p>Rue de la Barre 5<br>
-                    +41 21 312 34 56</p>
+                    <p>Rue de la Barre 5<br>Lausanne, Suisse<br>+41 21 312 34 56</p>
                 </div>
-                <div>
-                    <h3>Suivez-nous</h3>
-                    <p>Instagram | Facebook | TripAdvisor</p>
+                <div class="footer-section">
+                    <h3>Horaires</h3>
+                    <p>Mardi-Samedi: 18:00-23:00<br>Dimanche: 12:00-15:00<br>Lundi: Fermé</p>
                 </div>
             </div>
-            <hr style="margin: 2rem 0; border: none; border-top: 1px solid rgba(44, 95, 138, 0.2);">
-            <p>&copy; 2024 Jacques Restaurant. Tous droits réservés.</p>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Jacques Restaurant. Tous droits réservés.</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Intersection Observer for fade-in animations
+        // Intersection Observer for fade-up animations
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -502,35 +527,45 @@
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
 
-        // Observe all elements that should animate
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('.section-title, .service-card, .about-content, .about-info, .stars, .review-text, .contact-form');
-            animatedElements.forEach(el => observer.observe(el));
+        // Observe all fade-up elements
+        document.querySelectorAll('.fade-up').forEach(el => {
+            observer.observe(el);
+        });
 
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
-
-            // Form submission
-            document.querySelector('.contact-form').addEventListener('submit', function(e) {
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                alert('Merci pour votre réservation ! Nous vous contacterons sous peu.');
-                this.reset();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre demande de réservation ! Nous vous contactons sous peu.');
+            this.reset();
+        });
+
+        // Service card hover effects
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-15px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
             });
         });
     </script>
