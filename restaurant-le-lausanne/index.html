@@ -1,0 +1,931 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Le Lausanne | Lausanne | Cuisine Suisse Traditionnelle</title>
+    <meta name="description" content="Restaurant Le Lausanne à Place de la Palud 2, Lausanne. Cuisine suisse authentique, ambiance chaleureuse. 4.6/5 étoiles - 312 avis Google. Réservez maintenant.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <meta property="og:title" content="Restaurant Le Lausanne | Cuisine Suisse Authentique">
+    <meta property="og:description" content="Découvrez notre cuisine suisse traditionnelle au cœur de Lausanne. Place de la Palud 2, réservations +41 21 312 34 56">
+    <meta property="og:type" content="restaurant">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Restaurant Le Lausanne",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Place de la Palud 2",
+            "postalCode": "1003",
+            "addressLocality": "Lausanne",
+            "addressCountry": "CH"
+        },
+        "telephone": "+41 21 312 34 56",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.6",
+            "reviewCount": "312"
+        },
+        "servesCuisine": "Swiss",
+        "priceRange": "$$"
+    }
+    </script>
+
+    <style>
+        :root {
+            --bg-primary: #F2EDE4;
+            --bg-secondary: #EBE4D8;
+            --accent: #B8860B;
+            --text-primary: #2C2C2C;
+            --text-secondary: #5A5A5A;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--bg-primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 20px 0;
+        }
+
+        .navbar.scrolled {
+            background: rgba(242, 237, 228, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 15px 0;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background: var(--accent);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: var(--bg-primary);
+            position: relative;
+        }
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards;
+        }
+
+        .hero-content .tagline {
+            font-size: clamp(1.2rem, 3vw, 1.8rem);
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease 0.3s forwards;
+        }
+
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            background: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease 0.5s forwards;
+        }
+
+        .stars {
+            display: flex;
+            margin-right: 10px;
+        }
+
+        .star {
+            width: 20px;
+            height: 20px;
+            fill: #FFD700;
+            margin-right: 2px;
+        }
+
+        .rating-text {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease 0.7s forwards;
+        }
+
+        .btn-primary, .btn-secondary {
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.04);
+            box-shadow: 0 12px 30px rgba(184, 134, 11, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border-color: var(--accent);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(1.04);
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 40px 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .service-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 20px;
+            fill: var(--accent);
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 0;
+            background: var(--bg-primary);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-text {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .about-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.2rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 25px;
+        }
+
+        .about-text p {
+            font-size: 16px;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .about-details {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .about-details.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .detail-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent);
+            margin-right: 15px;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            padding: 100px 0;
+            background: var(--bg-secondary);
+            text-align: center;
+        }
+
+        .rating-display {
+            margin-bottom: 40px;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .rating-display.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease;
+        }
+
+        .rating-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .rating-stars {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .rating-star {
+            width: 40px;
+            height: 40px;
+            fill: #FFD700;
+            margin: 0 5px;
+            transform: scale(0);
+            animation: starPop 0.5s ease forwards;
+        }
+
+        .rating-star:nth-child(1) { animation-delay: 0.1s; }
+        .rating-star:nth-child(2) { animation-delay: 0.2s; }
+        .rating-star:nth-child(3) { animation-delay: 0.3s; }
+        .rating-star:nth-child(4) { animation-delay: 0.4s; }
+        .rating-star:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes starPop {
+            0% { transform: scale(0) rotate(0deg); }
+            50% { transform: scale(1.2) rotate(180deg); }
+            100% { transform: scale(1) rotate(360deg); }
+        }
+
+        .reviews-count {
+            font-size: 18px;
+            color: var(--text-secondary);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: var(--bg-primary);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .contact-info.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease;
+        }
+
+        .contact-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .contact-item-icon {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent);
+            margin-right: 15px;
+            margin-top: 2px;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .contact-form.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.8s ease 0.2s;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E5E5E5;
+            border-radius: 6px;
+            font-family: inherit;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .form-submit {
+            background: var(--accent);
+            color: var(--white);
+            padding: 16px 32px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.35s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        .form-submit:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 25px rgba(184, 134, 11, 0.3);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            margin-bottom: 30px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .footer-address {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #D5CFC5;
+            padding-top: 30px;
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        .footer-credit {
+            margin-top: 10px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rating-number {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+
+            .nav-content {
+                padding: 0 15px;
+            }
+
+            .service-card,
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+
+        /* Animation utility */
+        .fade-up {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <a href="#" class="logo">Le Lausanne</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#avis">Avis</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#contact" class="nav-cta">Réserver</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Restaurant Le Lausanne</h1>
+            <p class="tagline">Authenticité Suisse au Cœur de Lausanne</p>
+            <div class="rating-badge">
+                <div class="stars">
+                    <svg class="star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                </div>
+                <span class="rating-text">4.6/5 • 312 avis</span>
+            </div>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn-primary">Réserver une Table</a>
+                <a href="#services" class="btn-secondary">Découvrir</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-up">Nos Spécialités</h2>
+                <p class="section-subtitle fade-up">Une cuisine suisse authentique préparée avec passion et des ingrédients locaux de qualité</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/>
+                    </svg>
+                    <h3>Fondues & Raclettes</h3>
+                    <p>Nos fondues au fromage et raclettes traditionnelles préparées avec des fromages suisses d'exception. Une expérience conviviale authentique dans une ambiance chaleureuse typiquement lausannoise.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                    </svg>
+                    <h3>Plats du Terroir</h3>
+                    <p>Découvrez nos spécialités régionales : rösti croustillant, saucisses de veau aux herbes, et papet vaudois. Chaque plat raconte l'histoire culinaire de notre belle région lausannoise.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M9 11H7v9a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3V5a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v6zm0-6h3v2H9V5zm5 2v9H9V9h5z"/>
+                    </svg>
+                    <h3>Vins & Spiritueux</h3>
+                    <p>Notre cave propose une sélection raffinée de vins vaudois et suisses, accompagnés de spiritueux artisanaux. Nos sommeliers vous conseillent pour des accords parfaits avec nos mets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Notre Histoire</h2>
+                    <p>Situé au cœur historique de Lausanne, sur la célèbre Place de la Palud, le Restaurant Le Lausanne perpétue depuis des années l'art de la gastronomie suisse traditionnelle.</p>
+                    <p>Notre établissement familial vous accueille dans un cadre authentique où se mêlent tradition culinaire et hospitalité lausannoise. Chaque plat est préparé avec passion selon les recettes transmises de génération en génération.</p>
+                    <p>Nous nous approvisionnons exclusivement auprès de producteurs locaux, garantissant fraîcheur et qualité exceptionnelle pour une expérience gustative inoubliable.</p>
+                </div>
+                <div class="about-details">
+                    <div class="detail-item">
+                        <svg class="detail-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <div>
+                            <strong>Adresse</strong><br>
+                            Place de la Palud 2<br>
+                            1003 Lausanne, Suisse
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <svg class="detail-icon" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        <div>
+                            <strong>Téléphone</strong><br>
+                            +41 21 312 34 56
+                        </div>
+                    </div>
+                    <div class="detail-item">
+                        <svg class="detail-icon" viewBox="0 0 24 24">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                        <div>
+                            <strong>Horaires</strong><br>
+                            Lun-Dim: 11h30 - 22h00
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Proof Section -->
+    <section id="avis" class="social-proof">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title fade-up">Ce Que Disent Nos Clients</h2>
+            </div>
+            <div class="rating-display">
+                <div class="rating-number">4.6</div>
+                <div class="rating-stars">
+                    <svg class="rating-star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="rating-star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="rating-star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="rating-star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="rating-star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                </div>
+                <p class="reviews-count">Basé sur 312 avis Google</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h2>Nous Contacter</h2>
+                    <div class="contact-item">
+                        <svg class="contact-item-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        <div>
+                            <strong>Restaurant Le Lausanne</strong><br>
+                            Place de la Palud 2<br>
+                            1003 Lausanne, Suisse
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-item-icon" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        <div>
+                            <strong>Téléphone</strong><br>
+                            +41 21 312 34 56
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <svg class="contact-item-icon" viewBox="0 0 24 24">
+                            <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                        </svg>
+                        <div>
+                            <strong>Horaires d'ouverture</strong><br>
+                            Lundi - Dimanche: 11h30 - 22h00
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Téléphone</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Date souhaitée</label>
+                        <input type="date" id="date" name="date">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Nombre de personnes, préférences alimentaires..."></textarea>
+                    </div>
+                    <button type="submit" class="form-submit">Envoyer la Réservation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Restaurant Le Lausanne</div>
+                <div class="footer-address">
+                    Place de la Palud 2, 1003 Lausanne, Suisse<br>
+                    Tél: +41 21 312 34 56
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Restaurant Le Lausanne. Tous droits réservés.</p>
+                <p class="footer-credit">Conçu par Challenging Dawn</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all elements with fade-up class and service cards
+        document.addEventListener('DOMContentLoaded', function() {
+            const elementsToObserve = document.querySelectorAll('.fade-up, .service-card, .about-text, .about-details, .contact-info, .contact-form, .rating-display');
+            elementsToObserve.forEach(el => observer.observe(el));
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Form validation and submission logic would go here
+            alert('Merci pour votre réservation ! Nous vous contacterons bientôt.');
+        });
+    </script>
+</body>
+</html>
