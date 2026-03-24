@@ -3,8 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Académie de Coiffure de Genève - L'excellence en coiffure depuis des générations</title>
+    <title>Académie de Coiffure de Genève - Maîtrisez l'art de la coiffure à Genève</title>
+    <meta name="description" content="Formation professionnelle en coiffure à Genève. Cours techniques capillaires, préparation aux certifications avec instructeurs expérimentés. 4.7/5 étoiles.">
+    <meta property="og:title" content="Académie de Coiffure de Genève - Formation professionnelle">
+    <meta property="og:description" content="Maîtrisez l'art de la coiffure à Genève avec nos formations professionnelles et nos instructeurs expérimentés.">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
     <style>
+        :root {
+            --bg-primary: #F2EDE4;
+            --accent: #8B4789;
+            --text-dark: #2D2D2D;
+            --text-light: #6B6B6B;
+            --white: #FFFFFF;
+            --cream: #FAF7F2;
+            --shadow-light: rgba(139, 71, 137, 0.1);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,39 +31,48 @@
         }
 
         body {
-            font-family: 'Georgia', serif;
-            background-color: #F2EDE4;
-            color: #333;
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-dark);
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Navigation */
         nav {
-            background-color: #2C5F8A;
-            position: fixed;
+            position: sticky;
             top: 0;
-            width: 100%;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            background: rgba(242, 237, 228, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(139, 71, 137, 0.1);
         }
 
-        .nav-content {
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 0;
         }
 
         .logo {
-            color: white;
+            font-family: 'Cormorant Garamond', serif;
             font-size: 1.5rem;
-            font-weight: bold;
+            font-weight: 700;
+            color: var(--accent);
             text-decoration: none;
         }
 
@@ -55,77 +83,125 @@
         }
 
         .nav-links a {
-            color: white;
             text-decoration: none;
-            transition: opacity 0.3s;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
         }
 
         .nav-links a:hover {
-            opacity: 0.8;
+            color: var(--accent);
         }
 
-        .menu-toggle {
-            display: none;
-            background: none;
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .cta-button {
+            background: var(--accent);
+            color: var(--white);
+            padding: 0.75rem 1.5rem;
             border: none;
-            color: white;
-            font-size: 1.5rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
             cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--shadow-light);
         }
 
         /* Hero Section */
         .hero {
-            margin-top: 80px;
-            padding: 4rem 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--cream) 100%);
+        }
+
+        .hero-content {
+            max-width: 800px;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            color: #2C5F8A;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            color: var(--accent);
             margin-bottom: 1rem;
+            line-height: 1.2;
         }
 
-        .hero .tagline {
-            font-size: 1.3rem;
-            color: #666;
+        .tagline {
+            font-size: 1.5rem;
+            color: var(--text-light);
             margin-bottom: 2rem;
-            font-style: italic;
+            font-weight: 300;
         }
 
-        .hero .address {
-            font-size: 1.1rem;
-            color: #555;
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--white);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px var(--shadow-light);
             margin-bottom: 2rem;
+            transition: var(--transition);
         }
 
-        .cta-button {
-            background-color: #2C5F8A;
-            color: white;
-            padding: 1rem 2rem;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1rem;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: background-color 0.3s;
+        .rating-badge:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px var(--shadow-light);
         }
 
-        .cta-button:hover {
-            background-color: #234a6b;
+        .stars {
+            color: #FFD700;
+            font-size: 1.2rem;
+        }
+
+        .rating-text {
+            font-weight: 600;
+            color: var(--accent);
         }
 
         /* Services Section */
         .services {
-            padding: 4rem 0;
+            padding: 5rem 2rem;
+            background: var(--bg-primary);
         }
 
-        .services h2 {
-            text-align: center;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
-            color: #2C5F8A;
+            color: var(--accent);
+            text-align: center;
             margin-bottom: 3rem;
+            font-weight: 600;
         }
 
         .services-grid {
@@ -135,79 +211,148 @@
         }
 
         .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px var(--shadow-light);
+            transition: var(--transition);
             text-align: center;
-            transition: transform 0.3s;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px var(--shadow-light);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
         }
 
         .service-card h3 {
-            color: #2C5F8A;
-            font-size: 1.4rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            color: var(--accent);
             margin-bottom: 1rem;
+            font-weight: 600;
         }
 
         .service-card p {
-            color: #666;
-            line-height: 1.5;
+            color: var(--text-light);
+            line-height: 1.7;
         }
 
-        /* Rating Badge */
-        .rating-section {
-            text-align: center;
-            padding: 3rem 0;
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: var(--cream);
         }
 
-        .rating-badge {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            display: inline-block;
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
         }
 
-        .rating-badge .stars {
-            color: #FFD700;
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .rating-badge .rating-text {
-            font-size: 1.2rem;
-            color: #2C5F8A;
-            font-weight: bold;
-        }
-
-        .rating-badge .reviews-count {
-            color: #666;
-            margin-top: 0.5rem;
-        }
-
-        /* Contact Form */
-        .contact {
-            padding: 4rem 0;
-        }
-
-        .contact h2 {
-            text-align: center;
+        .about-text h2 {
+            font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
-            color: #2C5F8A;
-            margin-bottom: 3rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .about-text p {
+            color: var(--text-dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px var(--shadow-light);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .contact-icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+            width: 20px;
+        }
+
+        /* Reviews Section */
+        .reviews {
+            padding: 5rem 2rem;
+            background: var(--bg-primary);
+            text-align: center;
+        }
+
+        .reviews-badge {
+            display: inline-block;
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .reviews-badge:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 60px var(--shadow-light);
+        }
+
+        .reviews-badge h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .big-stars {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .review-text {
+            font-size: 1.2rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            background: var(--cream);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
         }
 
         .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px var(--shadow-light);
         }
 
         .form-group {
@@ -217,26 +362,26 @@
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #2C5F8A;
-            font-weight: bold;
+            font-weight: 600;
+            color: var(--accent);
         }
 
         .form-group input,
-        .form-group textarea,
-        .form-group select {
+        .form-group textarea {
             width: 100%;
-            padding: 0.8rem;
-            border: 2px solid #ddd;
-            border-radius: 5px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
+            padding: 1rem;
+            border: 2px solid var(--bg-primary);
+            border-radius: 8px;
+            font-family: inherit;
+            transition: var(--transition);
+            background: var(--bg-primary);
         }
 
         .form-group input:focus,
-        .form-group textarea:focus,
-        .form-group select:focus {
+        .form-group textarea:focus {
             outline: none;
-            border-color: #2C5F8A;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(139, 71, 137, 0.1);
         }
 
         .form-group textarea {
@@ -246,101 +391,67 @@
 
         /* Footer */
         footer {
-            background-color: #2C5F8A;
-            color: white;
-            padding: 3rem 0 2rem;
+            background: var(--accent);
+            color: var(--white);
+            padding: 3rem 2rem 2rem;
+            text-align: center;
         }
 
         .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
             gap: 2rem;
             margin-bottom: 2rem;
+            flex-wrap: wrap;
         }
 
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            font-size: 1.3rem;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: rgba(255,255,255,0.8);
+        .footer-links a {
+            color: var(--white);
             text-decoration: none;
-            margin-bottom: 0.5rem;
-            display: block;
+            transition: var(--transition);
         }
 
-        .footer-section a:hover {
-            color: white;
+        .footer-links a:hover {
+            opacity: 0.8;
         }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            color: rgba(255,255,255,0.7);
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.9rem;
         }
 
-        /* Mobile Responsive */
+        /* Mobile Styles */
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                width: 100%;
-                background-color: #2C5F8A;
-                flex-direction: column;
-                padding: 1rem;
             }
 
-            .nav-links.active {
-                display: flex;
-            }
-
-            .menu-toggle {
-                display: block;
-            }
-
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero .tagline {
-                font-size: 1.1rem;
-            }
-
-            .services h2,
-            .contact h2 {
-                font-size: 2rem;
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .services-grid {
                 grid-template-columns: 1fr;
             }
 
-            .contact-form {
-                margin: 0 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 15px;
-            }
-
             .hero {
-                padding: 2rem 0;
+                min-height: 80vh;
             }
 
-            .hero h1 {
-                font-size: 1.8rem;
+            .section-title {
+                font-size: 2rem;
             }
 
-            .services,
-            .contact {
-                padding: 2rem 0;
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
             }
         }
     </style>
@@ -348,160 +459,164 @@
 <body>
     <!-- Navigation -->
     <nav>
-        <div class="container">
-            <div class="nav-content">
-                <a href="#" class="logo">Académie de Coiffure</a>
-                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-                <ul class="nav-links" id="navLinks">
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#avis">Avis</a></li>
-                </ul>
-            </div>
+        <div class="nav-container">
+            <a href="#" class="logo">Académie de Coiffure de Genève</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">À propos</a></li>
+                <li><a href="#reviews">Avis</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#contact" class="cta-button">Nous contacter</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="accueil">
-        <div class="container">
+    <section class="hero">
+        <div class="hero-content fade-in">
             <h1>Académie de Coiffure de Genève</h1>
-            <p class="tagline">L'excellence en coiffure depuis des générations</p>
-            <p class="address">Rue du Môle 34B, 1201 Genève, Suisse</p>
-            <a href="#contact" class="cta-button">Prendre Rendez-vous</a>
+            <p class="tagline">Maîtrisez l'art de la coiffure à Genève</p>
+            <div class="rating-badge">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">4.7/5 (389 avis)</span>
+            </div>
+            <a href="#contact" class="cta-button">Commencer votre formation</a>
         </div>
     </section>
 
     <!-- Services Section -->
-    <section class="services" id="services">
+    <section id="services" class="services">
         <div class="container">
-            <h2>Nos Services</h2>
+            <h2 class="section-title fade-in">Nos Services</h2>
             <div class="services-grid">
-                <div class="service-card">
-                    <h3>Coiffure Femme</h3>
-                    <p>Coupes modernes et élégantes adaptées à votre style et personnalité. Nos coiffeurs experts créent des looks uniques qui subliment votre beauté naturelle.</p>
+                <div class="service-card fade-in">
+                    <div class="service-icon">✂️</div>
+                    <h3>Formation en coiffure</h3>
+                    <p>Programmes complets de formation professionnelle adaptés à tous les niveaux, du débutant à l'expert.</p>
                 </div>
-                <div class="service-card">
-                    <h3>Coiffure Homme</h3>
-                    <p>Coupes classiques et contemporaines pour hommes. Du style business au look décontracté, nous réalisons la coupe parfaite pour chaque occasion.</p>
+                <div class="service-card fade-in">
+                    <div class="service-icon">🎓</div>
+                    <h3>Cours professionnels</h3>
+                    <p>Cours spécialisés en techniques capillaires avancées dispensés par nos instructeurs expérimentés.</p>
                 </div>
-                <div class="service-card">
-                    <h3>Coloration</h3>
-                    <p>Techniques de coloration avancées avec des produits de qualité premium. Balayage, mèches, couleurs unies pour transformer votre look avec style.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Traitement Capillaire</h3>
-                    <p>Soins réparateurs et nourrissants pour tous types de cheveux. Redonnez vitalité et brillance à votre chevelure avec nos traitements professionnels.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Mise en Plis</h3>
-                    <p>Coiffage professionnel pour événements spéciaux. Chignons, brushings et coiffures de mariage réalisés avec expertise et créativité.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Formation Professionnelle</h3>
-                    <p>Programmes de formation certifiants pour futurs coiffeurs. Apprenez les techniques modernes et traditionnelles dans notre académie reconnue.</p>
+                <div class="service-card fade-in">
+                    <div class="service-icon">📜</div>
+                    <h3>Préparation aux certifications</h3>
+                    <p>Préparation complète aux examens et certifications professionnelles du secteur de la coiffure.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Rating Section -->
-    <section class="rating-section" id="avis">
+    <!-- About Section -->
+    <section id="about" class="about">
         <div class="container">
-            <div class="rating-badge">
-                <div class="stars">★★★★★</div>
-                <div class="rating-text">4.7/5</div>
-                <div class="reviews-count">Basé sur 389 avis clients</div>
+            <div class="about-content">
+                <div class="about-text fade-in">
+                    <h2>Notre Histoire</h2>
+                    <p>L'Académie de Coiffure de Genève est un établissement de formation spécialisé dans l'enseignement professionnel des techniques de coiffure et de mise en beauté.</p>
+                    <p>Nous préparons nos étudiants aux certifications et métiers du secteur capillaire avec des instructeurs expérimentés qui transmettent leur passion et leur expertise.</p>
+                    <p>Notre approche traditionnelle privilégie l'excellence technique et l'artisanat d'art, formant les futurs maîtres coiffeurs de demain.</p>
+                </div>
+                <div class="contact-info fade-in">
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span>Rue du Môle 34B, 1201 Genève, Switzerland</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <span>022 732 27 11</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="reviews">
+        <div class="container">
+            <div class="reviews-badge fade-in">
+                <h2>Nos Étudiants Nous Font Confiance</h2>
+                <div class="big-stars">★★★★★</div>
+                <p class="review-text">4.7/5 étoiles sur 389 avis Google</p>
             </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section class="contact" id="contact">
+    <section id="contact" class="contact">
         <div class="container">
-            <h2>Prendre Rendez-vous</h2>
-            <form class="contact-form" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Nom complet *</label>
-                    <input type="text" id="name" name="name" required>
+            <h2 class="section-title fade-in">Contactez-nous</h2>
+            <div class="contact-grid">
+                <div class="contact-form fade-in">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Parlez-nous de vos objectifs de formation..." required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Envoyer le message</button>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required>
+                <div class="contact-info fade-in">
+                    <h3 style="color: var(--accent); font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; margin-bottom: 2rem;">Informations de contact</h3>
+                    <div class="contact-item">
+                        <span class="contact-icon">📍</span>
+                        <span>Rue du Môle 34B<br>1201 Genève, Switzerland</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">📞</span>
+                        <span>022 732 27 11</span>
+                    </div>
+                    <div class="contact-item">
+                        <span class="contact-icon">⭐</span>
+                        <span>4.7/5 étoiles (389 avis Google)</span>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label for="phone">Téléphone</label>
-                    <input type="tel" id="phone" name="phone">
-                </div>
-                <div class="form-group">
-                    <label for="service">Service souhaité</label>
-                    <select id="service" name="service">
-                        <option value="">Sélectionner un service</option>
-                        <option value="coiffure-femme">Coiffure Femme</option>
-                        <option value="coiffure-homme">Coiffure Homme</option>
-                        <option value="coloration">Coloration</option>
-                        <option value="traitement">Traitement Capillaire</option>
-                        <option value="mise-en-plis">Mise en Plis</option>
-                        <option value="formation">Formation Professionnelle</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" placeholder="Décrivez vos besoins ou préférences..."></textarea>
-                </div>
-                <button type="submit" class="cta-button" style="width: 100%;">Envoyer la Demande</button>
-            </form>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>Rue du Môle 34B</p>
-                    <p>1201 Genève, Suisse</p>
-                    <a href="#contact">Prendre rendez-vous</a>
-                </div>
-                <div class="footer-section">
-                    <h3>Services</h3>
-                    <a href="#services">Coiffure Femme</a>
-                    <a href="#services">Coiffure Homme</a>
-                    <a href="#services">Coloration</a>
-                    <a href="#services">Formation</a>
-                </div>
-                <div class="footer-section">
-                    <h3>Horaires</h3>
-                    <p>Lundi - Vendredi: 9h - 19h</p>
-                    <p>Samedi: 9h - 17h</p>
-                    <p>Dimanche: Sur rendez-vous</p>
-                </div>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#services">Services</a>
+                <a href="#about">À propos</a>
+                <a href="#reviews">Avis</a>
+                <a href="#contact">Contact</a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Académie de Coiffure de Genève. Tous droits réservés.</p>
-            </div>
+            <p class="copyright">&copy; 2024 Académie de Coiffure de Genève. Tous droits réservés.</p>
         </div>
     </footer>
 
     <script>
-        function toggleMenu() {
-            const navLinks = document.getElementById('navLinks');
-            navLinks.classList.toggle('active');
-        }
+        // Smooth scroll animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-        function handleSubmit(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(event.target);
-            const name = formData.get('name');
-            
-            alert(`Merci ${name}! Votre demande de rendez-vous a été reçue. Nous vous contacterons rapidement pour confirmer votre rendez-vous à l'Académie de Coiffure de Genève.`);
-            
-            event.target.reset();
-        }
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
 
-        // Smooth scrolling for navigation links
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -512,22 +627,14 @@
                         block: 'start'
                     });
                 }
-                
-                // Close mobile menu if open
-                const navLinks = document.getElementById('navLinks');
-                navLinks.classList.remove('active');
             });
         });
 
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const nav = document.querySelector('nav');
-            const navLinks = document.getElementById('navLinks');
-            const menuToggle = document.querySelector('.menu-toggle');
-            
-            if (!nav.contains(event.target) && navLinks.classList.contains('active')) {
-                navLinks.classList.remove('active');
-            }
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Simulate form submission
+            alert('Merci pour votre message ! Nous vous contacterons bientôt.');
         });
     </script>
 </body>
