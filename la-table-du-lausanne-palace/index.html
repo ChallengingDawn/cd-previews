@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Table du Lausanne Palace - Restaurant Gastronomique</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #F2EDE4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(44, 95, 138, 0.95);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #F2EDE4;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #F2EDE4;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #D4AF37;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(44, 95, 138, 0.8), rgba(44, 95, 138, 0.6)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23F2EDE4" width="1200" height="600"/><path fill="%23E8DDD1" d="M0,300 Q300,200 600,300 T1200,300 V600 H0 Z"/></svg>');
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #F2EDE4;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            color: #F2EDE4;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            background-color: #D4AF37;
+            color: #2C5F8A;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: #F2EDE4;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        /* Rating Badge */
+        .rating-badge {
+            position: fixed;
+            top: 120px;
+            right: 20px;
+            background-color: #2C5F8A;
+            color: #F2EDE4;
+            padding: 15px 20px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+            z-index: 999;
+            text-align: center;
+            min-width: 150px;
+        }
+
+        .rating-stars {
+            color: #D4AF37;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .rating-text {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+        }
+
+        .rating-reviews {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background-color: #F2EDE4;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2C5F8A;
+            margin-bottom: 3rem;
+            font-weight: bold;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(44, 95, 138, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(44, 95, 138, 0.2);
+            border-color: #2C5F8A;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #2C5F8A;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            color: #2C5F8A;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, #2C5F8A, #1E4A6B);
+            color: #F2EDE4;
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: #F2EDE4;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            background-color: rgba(242, 237, 228, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .contact-item h3 {
+            color: #D4AF37;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item p {
+            color: #F2EDE4;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1E4A6B;
+            color: #F2EDE4;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rating-badge {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin: 20px auto;
+                display: block;
+                width: fit-content;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .service-card,
+            .contact-item {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">La Table du Lausanne Palace</a>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="rating-badge">
+        <div class="rating-stars">★★★★★</div>
+        <div class="rating-text">4.9/5</div>
+        <div class="rating-reviews">228 avis</div>
+    </div>
+
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h1>La Table du Lausanne Palace</h1>
+            <p>L'excellence gastronomique à Lausanne - Cuisine française raffinée dans un cadre d'exception</p>
+            <a href="#contact" class="cta-button">Réserver une table</a>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Nos Services d'Excellence</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🍽️</div>
+                    <h3>Restaurant Gastronomique</h3>
+                    <p>Une expérience culinaire d'exception avec des plats créatifs préparés par nos chefs étoilés, dans un cadre raffiné et élégant.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🇫🇷</div>
+                    <h3>Cuisine Française Raffinée</h3>
+                    <p>Découvrez l'art de la gastronomie française revisitée avec des ingrédients de première qualité et des techniques culinaires d'avant-garde.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🥂</div>
+                    <h3>Événements et Réceptions</h3>
+                    <p>Organisez vos événements privés et professionnels dans nos salons prestigieux avec un service personnalisé et une cuisine sur mesure.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎩</div>
+                    <h3>Service de Table</h3>
+                    <p>Un service impeccable assuré par notre équipe expérimentée, garantissant une attention particulière à chaque détail de votre expérience.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🍷</div>
+                    <h3>Cave à Vins</h3>
+                    <p>Une sélection exceptionnelle de grands crus et de vins rares, soigneusement choisie par notre sommelier pour accompagner parfaitement nos mets.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contactez-Nous</h2>
+            <p>Réservez votre table pour une expérience gastronomique inoubliable</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h3>📍 Adresse</h3>
+                    <p>Rue du Grand-Chêne 7-9<br>1003 Lausanne, Suisse</p>
+                </div>
+                <div class="contact-item">
+                    <h3>🕐 Horaires</h3>
+                    <p>Mardi - Samedi: 19h00 - 22h00<br>Fermé Dimanche et Lundi</p>
+                </div>
+                <div class="contact-item">
+                    <h3>📧 Réservations</h3>
+                    <p>reservation@latable-lausanne.ch<br>Réservation recommandée</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 La Table du Lausanne Palace. Tous droits réservés. | L'excellence gastronomique à Lausanne</p>
+        </div>
+    </footer>
+</body>
+</html>
