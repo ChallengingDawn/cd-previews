@@ -3,24 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jacques Restaurant - Cuisine Française Raffinée à Lausanne | Rue de la Barre 5</title>
-    <meta name="description" content="Restaurant Jacques à Lausanne - Cuisine française raffinée au cœur de la ville. Rue de la Barre 5. Réservations: +41 21 312 34 56. Note Google: 4.8/5 avec 304 avis.">
-    <meta name="keywords" content="restaurant Jacques, cuisine française, Lausanne, Rue de la Barre, restaurant gastronomique">
+    <title>Jacques Restaurant - Cuisine Française Authentique | Rue de la Barre 5</title>
+    <meta name="description" content="Jacques Restaurant vous accueille dans un cadre chaleureux pour une expérience culinaire française authentique. Réservez dès maintenant au +41 21 312 34 56.">
+    <meta property="og:title" content="Jacques Restaurant - Cuisine Française Authentique">
+    <meta property="og:description" content="Découvrez notre cuisine française raffinée dans un cadre chaleureux au cœur de la ville.">
+    <meta property="og:type" content="restaurant">
+    <meta property="og:image" content="/og-image.jpg">
+    <link rel="canonical" href="https://jacques-restaurant.ch">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
         "@type": "Restaurant",
         "name": "Jacques Restaurant",
-        "image": "https://example.com/jacques-restaurant.jpg",
-        "description": "Restaurant français raffiné au cœur de Lausanne",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "Rue de la Barre 5",
-            "addressLocality": "Lausanne",
             "addressCountry": "CH"
         },
         "telephone": "+41 21 312 34 56",
@@ -30,100 +32,132 @@
             "reviewCount": "304"
         },
         "servesCuisine": "French",
-        "priceRange": "$$$"
+        "priceRange": "€€€"
     }
     </script>
-    
+
     <style>
         :root {
             --bg-primary: #F2EDE4;
             --bg-secondary: #EBE4D8;
-            --accent: #2C5F8A;
+            --accent: #8B1538;
+            --accent-light: #A61E42;
+            --text-dark: #2D2D2D;
+            --text-medium: #5A5A5A;
+            --text-light: #8A8A8A;
             --white: #FFFFFF;
-            --text-dark: #2A2A2A;
-            --text-light: #6B6B6B;
-            --shadow: 0 4px 20px rgba(44, 95, 138, 0.1);
-            --shadow-hover: 0 8px 30px rgba(44, 95, 138, 0.15);
+            --shadow: 0 10px 30px rgba(139, 21, 56, 0.1);
+            --shadow-hover: 0 20px 60px rgba(139, 21, 56, 0.15);
+            
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Source Sans Pro', sans-serif;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-primary);
+            font-family: var(--font-body);
+            line-height: 1.7;
             color: var(--text-dark);
-            line-height: 1.6;
+            background-color: var(--bg-primary);
             overflow-x: hidden;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem;
+            padding: 0 24px;
         }
-        
+
         /* Navigation */
-        .nav {
+        nav {
             position: fixed;
             top: 0;
-            width: 100%;
-            background: rgba(242, 237, 228, 0.95);
-            backdrop-filter: blur(10px);
+            left: 0;
+            right: 0;
             z-index: 1000;
-            padding: 1rem 0;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
         }
-        
-        .nav.scrolled {
-            backdrop-filter: blur(20px);
+
+        nav.scrolled {
+            background-color: rgba(242, 237, 228, 0.95);
             box-shadow: var(--shadow);
         }
-        
+
         .nav-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 0;
+            transition: padding 0.3s ease;
         }
-        
+
+        nav.scrolled .nav-content {
+            padding: 15px 0;
+        }
+
         .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
+            font-family: var(--font-display);
+            font-size: 2rem;
             font-weight: 700;
             color: var(--accent);
             text-decoration: none;
         }
-        
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
         .nav-cta {
             background: var(--accent);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 6px;
             text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
+
         .nav-cta:hover {
-            transform: scale(1.03);
+            background: var(--accent-light);
+            transform: scale(1.04);
             box-shadow: var(--shadow-hover);
         }
-        
+
         /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
             align-items: center;
-            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+            justify-content: center;
+            text-align: center;
             position: relative;
+            background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
             overflow: hidden;
         }
-        
+
         .hero::before {
             content: '';
             position: absolute;
@@ -131,473 +165,669 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, transparent 30%, rgba(44, 95, 138, 0.03) 50%, transparent 70%);
-            animation: shimmer 8s infinite;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(139, 21, 56, 0.03) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(139, 21, 56, 0.03) 0%, transparent 50%);
+            animation: float 20s ease-in-out infinite;
         }
-        
-        @keyframes shimmer {
-            0%, 100% { transform: translateX(-100%); }
-            50% { transform: translateX(100%); }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
         }
-        
+
         .hero-content {
             position: relative;
             z-index: 2;
+            max-width: 800px;
         }
-        
+
         .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 7vw, 6rem);
             font-weight: 700;
             color: var(--accent);
-            margin-bottom: 1rem;
+            margin-bottom: 24px;
             opacity: 0;
-            animation: fadeUp 1s ease forwards;
+            transform: translateY(60px);
+            animation: fadeUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.2s forwards;
         }
-        
-        .hero-tagline {
+
+        .hero p {
             font-size: 1.5rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
+            color: var(--text-medium);
+            margin-bottom: 32px;
             opacity: 0;
-            animation: fadeUp 1s ease 0.3s forwards;
+            transform: translateY(60px);
+            animation: fadeUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.4s forwards;
         }
-        
+
         .rating-badge {
             display: inline-flex;
             align-items: center;
+            gap: 12px;
             background: var(--white);
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
+            padding: 16px 24px;
+            border-radius: 50px;
             box-shadow: var(--shadow);
-            margin-bottom: 2rem;
+            margin-bottom: 48px;
             opacity: 0;
-            animation: fadeUp 1s ease 0.6s forwards;
+            transform: translateY(60px);
+            animation: fadeUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
         }
-        
+
         .stars {
             color: #FFB800;
-            margin-right: 0.5rem;
             font-size: 1.2rem;
         }
-        
+
         .rating-text {
             font-weight: 600;
-            color: var(--accent);
+            color: var(--text-dark);
         }
-        
-        .hero-buttons {
+
+        .hero-ctas {
             display: flex;
-            gap: 1rem;
+            gap: 24px;
+            justify-content: center;
             opacity: 0;
-            animation: fadeUp 1s ease 0.9s forwards;
+            transform: translateY(60px);
+            animation: fadeUp 1.2s cubic-bezier(0.4, 0, 0.2, 1) 0.8s forwards;
         }
-        
-        .btn-primary {
+
+        .cta-primary, .cta-secondary {
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cta-primary {
             background: var(--accent);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+            color: var(--white);
         }
-        
-        .btn-secondary {
-            background: transparent;
-            color: var(--accent);
-            padding: 1rem 2rem;
-            border: 2px solid var(--accent);
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover, .btn-secondary:hover {
-            transform: scale(1.03);
+
+        .cta-primary:hover {
+            background: var(--accent-light);
+            transform: scale(1.04);
             box-shadow: var(--shadow-hover);
         }
-        
-        .btn-secondary:hover {
-            background: var(--accent);
-            color: white;
+
+        .cta-secondary {
+            background: var(--white);
+            color: var(--accent);
+            border: 2px solid var(--accent);
         }
-        
+
+        .cta-secondary:hover {
+            background: var(--accent);
+            color: var(--white);
+            transform: scale(1.04);
+        }
+
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
-        
+
         /* Sections */
-        .section {
-            padding: 6rem 0;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+        section {
+            padding: 120px 0;
+            position: relative;
         }
-        
-        .section.visible {
+
+        section:nth-child(even) {
+            background-color: var(--bg-secondary);
+        }
+
+        .section-content {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .section-content.visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
-        .section:nth-child(even) {
-            background-color: var(--bg-secondary);
-        }
-        
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
-            font-weight: 600;
-            color: var(--accent);
+
+        .section-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 80px;
         }
-        
-        /* Services */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .service-card {
-            background: var(--white);
-            padding: 3rem 2rem;
-            border-radius: 20px;
-            box-shadow: var(--shadow);
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-        }
-        
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 1.5rem;
-            fill: var(--accent);
-        }
-        
-        .service-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
+
+        .section-header h2 {
+            font-family: var(--font-display);
+            font-size: 3.5rem;
             color: var(--accent);
-            margin-bottom: 1rem;
+            margin-bottom: 24px;
         }
-        
-        .service-card p {
-            color: var(--text-light);
-            line-height: 1.7;
+
+        .section-header p {
+            font-size: 1.3rem;
+            color: var(--text-medium);
+            max-width: 600px;
+            margin: 0 auto;
         }
-        
-        /* About */
+
+        /* About Section */
         .about-content {
             max-width: 800px;
             margin: 0 auto;
             text-align: center;
         }
-        
+
         .about-content p {
             font-size: 1.2rem;
             line-height: 1.8;
-            color: var(--text-light);
-            margin-bottom: 2rem;
+            color: var(--text-medium);
+            margin-bottom: 32px;
         }
-        
+
         .contact-info {
             display: flex;
             justify-content: center;
-            gap: 3rem;
-            margin-top: 3rem;
+            gap: 48px;
+            margin-top: 48px;
         }
-        
+
         .contact-item {
             text-align: center;
         }
-        
+
         .contact-item h4 {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
             color: var(--accent);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 8px;
         }
-        
+
         .contact-item p {
-            color: var(--text-light);
-            margin: 0;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            font-weight: 600;
         }
-        
-        /* Reviews */
-        .reviews-content {
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 48px 32px;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
             text-align: center;
-            max-width: 600px;
-            margin: 0 auto;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        
-        .big-rating {
-            font-size: 5rem;
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            color: var(--accent);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 16px;
+        }
+
+        .service-card p {
+            color: var(--text-medium);
+            font-size: 1.1rem;
+        }
+
+        /* Social Proof Section */
+        .social-proof {
+            text-align: center;
+        }
+
+        .rating-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .rating-number {
+            font-family: var(--font-display);
+            font-size: 4rem;
             font-weight: 700;
             color: var(--accent);
-            margin-bottom: 1rem;
         }
-        
-        .rating-details {
-            font-size: 1.5rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-        }
-        
-        .stars-large {
-            font-size: 2rem;
+
+        .rating-stars {
+            font-size: 2.5rem;
             color: #FFB800;
-            margin-bottom: 1rem;
         }
-        
-        /* Contact */
+
+        .rating-stars.animate .star {
+            animation: scaleStar 0.3s ease-in-out;
+        }
+
+        .star:nth-child(1) { animation-delay: 0.1s; }
+        .star:nth-child(2) { animation-delay: 0.2s; }
+        .star:nth-child(3) { animation-delay: 0.3s; }
+        .star:nth-child(4) { animation-delay: 0.4s; }
+        .star:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes scaleStar {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .reviews-count {
+            font-size: 1.5rem;
+            color: var(--text-medium);
+        }
+
+        /* Contact Section */
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 4rem;
+            gap: 80px;
             align-items: start;
         }
-        
+
+        .contact-info-section h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 32px;
+        }
+
+        .info-item {
+            margin-bottom: 32px;
+        }
+
+        .info-item h4 {
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .info-item p {
+            color: var(--text-medium);
+            font-size: 1rem;
+        }
+
+        .map-placeholder {
+            background: var(--bg-secondary);
+            height: 200px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-top: 24px;
+        }
+
         .contact-form {
             background: var(--white);
-            padding: 3rem;
-            border-radius: 20px;
+            padding: 48px;
+            border-radius: 16px;
             box-shadow: var(--shadow);
         }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
+
+        .contact-form h3 {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            color: var(--accent);
+            margin-bottom: 32px;
         }
-        
+
+        .form-group {
+            margin-bottom: 24px;
+        }
+
         .form-group label {
             display: block;
-            margin-bottom: 0.5rem;
-            color: var(--accent);
-            font-weight: 500;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 8px;
         }
-        
+
         .form-group input,
         .form-group textarea {
             width: 100%;
-            padding: 1rem;
+            padding: 16px;
             border: 2px solid #E5E5E5;
-            border-radius: 10px;
-            font-family: 'Inter', sans-serif;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 1rem;
             transition: border-color 0.3s ease;
         }
-        
+
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--accent);
         }
-        
+
         .form-group textarea {
             height: 120px;
             resize: vertical;
         }
-        
-        /* Footer */
-        .footer {
+
+        .submit-btn {
             background: var(--accent);
-            color: white;
+            color: var(--white);
+            border: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: var(--accent-light);
+            transform: scale(1.02);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--accent);
+            color: var(--white);
+            padding: 60px 0 40px;
             text-align: center;
-            padding: 3rem 0;
         }
-        
-        .footer p {
-            opacity: 0.8;
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 24px;
         }
-        
-        /* Mobile Responsive */
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .footer-content p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .credit {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Styles */
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .container {
+                padding: 0 20px;
             }
-            
-            .hero-tagline {
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
                 font-size: 1.2rem;
             }
-            
-            .hero-buttons {
+
+            .hero-ctas {
                 flex-direction: column;
+                align-items: center;
             }
-            
-            .section-title {
-                font-size: 2rem;
+
+            .section-header h2 {
+                font-size: 2.5rem;
             }
-            
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
+
             .contact-info {
                 flex-direction: column;
-                gap: 1.5rem;
+                gap: 24px;
             }
-            
-            .big-rating {
-                font-size: 3rem;
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .rating-display {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                padding: 0 40px;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="nav" id="navbar">
+    <nav id="navbar">
         <div class="container">
             <div class="nav-content">
                 <a href="#" class="logo">Jacques</a>
-                <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView()">Réserver</button>
+                <ul class="nav-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#a-propos">À Propos</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <a href="tel:+41213123456" class="nav-cta">Réserver</a>
             </div>
         </div>
     </nav>
 
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1>Jacques Restaurant</h1>
-                <p class="hero-tagline">Cuisine française raffinée au cœur de Lausanne</p>
-                <div class="rating-badge">
-                    <span class="stars">★★★★★</span>
-                    <span class="rating-text">4.8/5 • 304 avis</span>
-                </div>
-                <div class="hero-buttons">
-                    <a href="#contact" class="btn-primary">Réserver une table</a>
-                    <a href="#about" class="btn-secondary">Découvrir</a>
-                </div>
+    <section class="hero" id="accueil">
+        <div class="hero-content">
+            <h1>Jacques Restaurant</h1>
+            <p>L'art de la gastronomie française dans un cadre authentique</p>
+            <div class="rating-badge">
+                <span class="stars">★★★★★</span>
+                <span class="rating-text">4.8 · 304 avis</span>
+            </div>
+            <div class="hero-ctas">
+                <a href="tel:+41213123456" class="cta-primary">Réserver une Table</a>
+                <a href="#services" class="cta-secondary">Découvrir nos Services</a>
             </div>
         </div>
     </section>
 
-    <section class="section" id="services">
+    <section id="a-propos">
         <div class="container">
-            <h2 class="section-title">Nos Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <svg class="service-icon" viewBox="0 0 24 24">
-                        <path d="M8.1,13.34L3.91,9.16C2.35,7.59 2.35,5.06 3.91,3.5L10.93,10.5L8.1,13.34M13.41,13L20.29,19.88L18.88,21.29L12,14.41L5.12,21.29L3.71,19.88L10.59,13L5.42,7.83L6.83,6.42L12,11.59L17.17,6.42L18.58,7.83L13.41,13Z"/>
-                    </svg>
-                    <h3>Cuisine Gastronomique</h3>
-                    <p>Une cuisine française authentique préparée avec des ingrédients frais et locaux, dans le respect des traditions culinaires.</p>
+            <div class="section-content">
+                <div class="section-header">
+                    <h2>Notre Histoire</h2>
+                    <p>Une passion familiale transmise depuis trois générations</p>
                 </div>
-                <div class="service-card">
-                    <svg class="service-icon" viewBox="0 0 24 24">
-                        <path d="M12,2A3,3 0 0,1 15,5V11A3,3 0 0,1 12,14A3,3 0 0,1 9,11V5A3,3 0 0,1 12,2M19,11C19,14.53 16.39,17.44 13,17.93V21H11V17.93C7.61,17.44 5,14.53 5,11H7A5,5 0 0,0 12,16A5,5 0 0,0 17,11H19Z"/>
-                    </svg>
-                    <h3>Service Personnalisé</h3>
-                    <p>Notre équipe passionnée vous accueille dans un cadre élégant et chaleureux pour une expérience culinaire inoubliable.</p>
-                </div>
-                <div class="service-card">
-                    <svg class="service-icon" viewBox="0 0 24 24">
-                        <path d="M12,6.5A2.5,2.5 0 0,1 14.5,9A2.5,2.5 0 0,1 12,11.5A2.5,2.5 0 0,1 9.5,9A2.5,2.5 0 0,1 12,6.5M12,2A7,7 0 0,1 19,9C19,14.25 12,22 12,22C12,22 5,14.25 5,9A7,7 0 0,1 12,2M12,4A5,5 0 0,0 7,9C7,10 7,12 12,18.71C17,12 17,10 17,9A5,5 0 0,0 12,4Z"/>
-                    </svg>
-                    <h3>Emplacement Privilégié</h3>
-                    <p>Situé au cœur de Lausanne, notre restaurant vous offre un accès facile et un cadre authentique dans un quartier historique.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="about">
-        <div class="container">
-            <h2 class="section-title">À Propos de Jacques</h2>
-            <div class="about-content">
-                <p>Depuis plus de 15 ans, Jacques Restaurant perpétue la tradition de la cuisine française raffinée dans un cadre authentique et chaleureux. Notre chef passionné sélectionne les meilleurs produits de saison pour vous offrir une expérience gastronomique exceptionnelle.</p>
-                <p>Niché au cœur de Lausanne, notre établissement familial vous accueille dans une atmosphère conviviale où chaque détail compte. De l'apéritif au dessert, laissez-vous surprendre par notre créativité culinaire et notre service attentionné.</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <h4>Adresse</h4>
-                        <p>Rue de la Barre 5<br>Lausanne, Suisse</p>
-                    </div>
-                    <div class="contact-item">
-                        <h4>Téléphone</h4>
-                        <p>+41 21 312 34 56</p>
+                <div class="about-content">
+                    <p>Depuis 1958, Jacques Restaurant perpétue la tradition culinaire française avec passion et authenticité. Fondé par Jacques Moreau, notre établissement familial vous accueille dans un cadre chaleureux où se mêlent saveurs traditionnelles et créativité contemporaine.</p>
+                    <p>Notre chef continue de sublimer les produits locaux avec le savoir-faire transmis de génération en génération, créant une expérience gastronomique unique au cœur de la ville.</p>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <h4>Adresse</h4>
+                            <p>Rue de la Barre 5</p>
+                        </div>
+                        <div class="contact-item">
+                            <h4>Téléphone</h4>
+                            <p>+41 21 312 34 56</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="section" id="reviews">
+    <section id="services">
         <div class="container">
-            <h2 class="section-title">Avis Clients</h2>
-            <div class="reviews-content">
-                <div class="big-rating">4.8/5</div>
-                <div class="stars-large">★★★★★</div>
-                <p class="rating-details">Basé sur <strong>304 avis Google</strong></p>
-                <p>Nos clients apprécient particulièrement la qualité de notre cuisine, l'accueil chaleureux de notre équipe et l'atmosphère unique de notre restaurant. Venez découvrir pourquoi Jacques Restaurant est devenu une référence gastronomique à Lausanne.</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="section" id="contact">
-        <div class="container">
-            <h2 class="section-title">Réservation</h2>
-            <div class="contact-grid">
-                <div>
-                    <h3 style="color: var(--accent); margin-bottom: 2rem; font-family: 'Playfair Display', serif;">Informations</h3>
-                    <div style="margin-bottom: 2rem;">
-                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Adresse</h4>
-                        <p style="color: var(--text-light);">Rue de la Barre 5<br>Lausanne, Suisse</p>
+            <div class="section-content">
+                <div class="section-header">
+                    <h2>Nos Services</h2>
+                    <p>Une expérience culinaire complète pour tous vos moments précieux</p>
+                </div>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <svg class="service-icon" viewBox="0 0 100 100" fill="currentColor">
+                            <path d="M20 75h60v5H20zm5-60h50c2.76 0 5 2.24 5 5v40c0 2.76-2.24 5-5 5H25c-2.76 0-5-2.24-5-5V20c0-2.76 2.24-5 5-5zm5 10v30h40V25H30zm15 5h10v5H45zm0 10h10v5H45zm-10-10h5v20h-5z"/>
+                        </svg>
+                        <h3>Menu Dégustation</h3>
+                        <p>Découvrez notre sélection de plats signatures dans un menu dégustation exceptionnel, créé par notre chef avec des ingrédients de saison.</p>
                     </div>
-                    <div style="margin-bottom: 2rem;">
-                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Téléphone</h4>
-                        <p style="color: var(--text-light);">+41 21 312 34 56</p>
+                    <div class="service-card">
+                        <svg class="service-icon" viewBox="0 0 100 100" fill="currentColor">
+                            <path d="M50 15c19.33 0 35 15.67 35 35s-15.67 35-35 35-35-15.67-35-35 15.67-35 35-35zm0 10c-13.81 0-25 11.19-25 25s11.19 25 25 25 25-11.19 25-25-11.19-25-25-25zm0 15c5.52 0 10 4.48 10 10s-4.48 10-10 10-10-4.48-10-10 4.48-10 10-10z"/>
+                            <path d="M35 20l5 15h20l5-15M25 70l10-10h30l10 10"/>
+                        </svg>
+                        <h3>Événements Privés</h3>
+                        <p>Organisez vos célébrations dans notre salon privé. Anniversaires, mariages ou événements d'entreprise dans un cadre raffiné et intimiste.</p>
                     </div>
-                    <div>
-                        <h4 style="color: var(--accent); margin-bottom: 0.5rem;">Horaires</h4>
-                        <p style="color: var(--text-light);">Mar-Sam: 18h30 - 22h00<br>Dim-Lun: Fermé</p>
+                    <div class="service-card">
+                        <svg class="service-icon" viewBox="0 0 100 100" fill="currentColor">
+                            <path d="M30 25h40c2.76 0 5 2.24 5 5v40c0 2.76-2.24 5-5 5H30c-2.76 0-5-2.24-5-5V30c0-2.76 2.24-5 5-5zm5 10v30h30V35H35z"/>
+                            <path d="M45 15v10M55 15v10M20 45h10M70 45h10"/>
+                        </svg>
+                        <h3>Cours de Cuisine</h3>
+                        <p>Apprenez les secrets de la cuisine française avec notre chef. Des ateliers hebdomadaires pour maîtriser les techniques culinaires traditionnelles.</p>
+                    </div>
+                    <div class="service-card">
+                        <svg class="service-icon" viewBox="0 0 100 100" fill="currentColor">
+                            <path d="M25 30h50c2.76 0 5 2.24 5 5v30c0 2.76-2.24 5-5 5H25c-2.76 0-5-2.24-5-5V35c0-2.76 2.24-5 5-5zm5 10v20h40V40H30z"/>
+                            <path d="M40 25v5M60 25v5M30 75h40M15 50h10M75 50h10"/>
+                        </svg>
+                        <h3>Service Traiteur</h3>
+                        <p>Notre cuisine d'exception s'invite chez vous ou dans vos bureaux. Service traiteur haut de gamme pour tous vos événements professionnels et privés.</p>
                     </div>
                 </div>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name">Nom complet</label>
-                        <input type="text" id="name" name="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Téléphone</label>
-                        <input type="tel" id="phone" name="phone">
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Demande de réservation</label>
-                        <textarea id="message" name="message" placeholder="Date souhaitée, nombre de personnes, demandes particulières..."></textarea>
-                    </div>
-                    <button type="submit" class="btn-primary" style="width: 100%;">Envoyer la demande</button>
-                </form>
             </div>
         </div>
     </section>
 
-    <footer class="footer">
+    <section class="social-proof">
         <div class="container">
-            <p>&copy; 2024 Jacques Restaurant. Tous droits réservés. | Rue de la Barre 5, Lausanne | +41 21 312 34 56</p>
+            <div class="section-content">
+                <div class="section-header">
+                    <h2>Ils nous font confiance</h2>
+                    <p>L'excellence reconnue par nos clients</p>
+                </div>
+                <div class="rating-display">
+                    <div class="rating-number">4.8</div>
+                    <div class="rating-stars" id="ratingStars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                    </div>
+                </div>
+                <p class="reviews-count">Basé sur 304 avis clients authentiques</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="section-content">
+                <div class="section-header">
+                    <h2>Nous Contacter</h2>
+                    <p>Réservez votre table ou contactez-nous pour plus d'informations</p>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info-section">
+                        <h3>Informations</h3>
+                        <div class="info-item">
+                            <h4>Adresse</h4>
+                            <p>Rue de la Barre 5<br>1005 Lausanne, Suisse</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Téléphone</h4>
+                            <p>+41 21 312 34 56</p>
+                        </div>
+                        <div class="info-item">
+                            <h4>Horaires d'ouverture</h4>
+                            <p>Mardi - Samedi: 12h00 - 14h30 & 19h00 - 22h30<br>
+                            Dimanche: 12h00 - 15h00<br>
+                            Fermé le lundi</p>
+                        </div>
+                        <div class="map-placeholder">
+                            📍 Voir sur la carte
+                        </div>
+                    </div>
+                    <form class="contact-form">
+                        <h3>Réservation</h3>
+                        <div class="form-group">
+                            <label for="name">Nom complet</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message / Demande spéciale</label>
+                            <textarea id="message" name="message" placeholder="Nombre de personnes, date souhaitée, allergies..."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Envoyer la demande</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-logo">Jacques Restaurant</div>
+            <div class="footer-content">
+                <p>&copy; 2025 Jacques Restaurant - Rue de la Barre 5</p>
+                <p class="credit">Crafted by Challenging Dawn</p>
+            </div>
         </div>
     </footer>
 
     <script>
-        // Navbar scroll effect
+        // Navigation scroll effect
         const navbar = document.getElementById('navbar');
+        let lastScrollY = window.scrollY;
+
         window.addEventListener('scroll', () => {
             if (window.scrollY > 100) {
                 navbar.classList.add('scrolled');
@@ -606,29 +836,32 @@
             }
         });
 
-        // Intersection Observer for sections
-        const sections = document.querySelectorAll('.section');
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
+                    
+                    // Trigger star animation for rating section
+                    if (entry.target.closest('.social-proof')) {
+                        const stars = document.getElementById('ratingStars');
+                        stars.classList.add('animate');
+                    }
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, observerOptions);
 
-        sections.forEach(section => {
+        // Observe all section contents
+        document.querySelectorAll('.section-content').forEach(section => {
             observer.observe(section);
         });
 
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Merci pour votre demande de réservation ! Nous vous contacterons très bientôt.');
-        });
-
-        // Smooth scrolling for anchor links
+        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -640,6 +873,24 @@
                     });
                 }
             });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const button = this.querySelector('.submit-btn');
+            const originalText = button.textContent;
+            button.textContent = 'Envoi en cours...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = 'Message envoyé !';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.disabled = false;
+                    this.reset();
+                }, 2000);
+            }, 1500);
         });
     </script>
 </body>
