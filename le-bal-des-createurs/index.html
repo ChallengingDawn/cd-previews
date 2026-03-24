@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Bal des Créateurs - Célébrez la créativité</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            background-color: #F2EDE4;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: rgba(242, 237, 228, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(44, 95, 138, 0.1);
+        }
+        
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2C5F8A;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #2C5F8A;
+        }
+        
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #2C5F8A;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, #F2EDE4 0%, rgba(44, 95, 138, 0.05) 100%);
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            color: #2C5F8A;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: #666;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+        
+        .hero .description {
+            font-size: 1.2rem;
+            color: #555;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: #2C5F8A;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(44, 95, 138, 0.3);
+        }
+        
+        .cta-button:hover {
+            background-color: #1e4460;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(44, 95, 138, 0.4);
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+        }
+        
+        .services h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2C5F8A;
+            margin-bottom: 3rem;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(44, 95, 138, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(44, 95, 138, 0.2);
+        }
+        
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            background-color: #2C5F8A;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .service-card h3 {
+            font-size: 1.5rem;
+            color: #2C5F8A;
+            margin-bottom: 1rem;
+        }
+        
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Rating Badge */
+        .rating-section {
+            background: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .rating-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #2C5F8A, #1e4460);
+            color: white;
+            padding: 2rem 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(44, 95, 138, 0.3);
+        }
+        
+        .rating-stars {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #FFD700;
+        }
+        
+        .rating-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .rating-reviews {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: rgba(44, 95, 138, 0.05);
+        }
+        
+        .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #2C5F8A;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .contact-info {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(44, 95, 138, 0.1);
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background-color: #2C5F8A;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .contact-text h3 {
+            color: #2C5F8A;
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-text p {
+            color: #666;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(44, 95, 138, 0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            color: #2C5F8A;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2C5F8A;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background-color: #2C5F8A;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .submit-btn:hover {
+            background-color: #1e4460;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #2C5F8A;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+            
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero {
+                padding: 100px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .service-card {
+                padding: 1.5rem;
+            }
+            
+            .rating-badge {
+                padding: 1.5rem 2rem;
+            }
+            
+            .contact-info,
+            .contact-form {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="logo">Le Bal des Créateurs</a>
+                <ul class="nav-links">
+                    <li><a href="#accueil">Accueil</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#avis">Avis</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <button class="mobile-menu">☰</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="hero">
+        <div class="container">
+            <h1>Le Bal des Créateurs</h1>
+            <p class="tagline">Célébrez la créativité</p>
+            <p class="description">
+                Votre partenaire créatif à Genève pour des projets uniques et mémorables. 
+                Nous transformons vos idées en réalités exceptionnelles.
+            </p>
+            <a href="#contact" class="cta-button">Découvrir nos services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2>Nos Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🎨</div>
+                    <h3>Design</h3>
+                    <p>Création graphique sur mesure, identité visuelle, branding et supports de communication adaptés à votre image.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Création</h3>
+                    <p>Développement de concepts originaux, création artistique et solutions innovantes pour tous vos projets créatifs.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎭</div>
+                    <h3>Événementiel</h3>
+                    <p>Organisation et coordination d'événements créatifs, exhibitions, vernissages et célébrations artistiques.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rating Section -->
+    <section id="avis" class="rating-section">
+        <div class="container">
+            <div class="rating-badge">
+                <div class="rating-stars">★★★★★</div>
+                <div class="rating-text">4,7/5</div>
+                <div class="rating-reviews">Basé sur 499 avis clients</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contactez-nous</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-text">
+                            <h3>Adresse</h3>
+                            <p>Rue de l'Arquebuse 25<br>1204 Genève, Suisse</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">🎨</div>
+                        <div class="contact-text">
+                            <h3>Nos Services</h3>
+                            <p>Design • Création • Événementiel</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⭐</div>
+                        <div class="contact-text">
+                            <h3>Excellence</h3>
+                            <p>4,7/5 étoiles sur 499 avis</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="nom">Nom complet</label>
+                        <input type="text" id="nom" name="nom" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Service souhaité</label>
+                        <select id="service" name="service" style="width: 100%; padding: 12px; border: 2px solid #e0e0e0; border-radius: 8px; font-family: inherit;">
+                            <option value="">Sélectionnez un service</option>
+                            <option value="design">Design</option>
+                            <option value="creation">Création</option>
+                            <option value="evenementiel">Événementiel</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Décrivez votre projet..."></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Envoyer le message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Le Bal des Créateurs. Célébrez la créativité à Genève.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Merci pour votre message ! Nous vous recontacterons bientôt.');
+        });
+
+        // Mobile menu toggle (basic functionality)
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>
