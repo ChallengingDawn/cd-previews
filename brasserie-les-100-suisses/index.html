@@ -3,650 +3,785 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brasserie Les 100 Suisses - Restaurant Traditionnel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <title>Brasserie Les 100 Suisses - Cuisine Traditionnelle Suisse à Lausanne</title>
+    <meta name="description" content="Découvrez la Brasserie Les 100 Suisses, restaurant traditionnel suisse au cœur de Lausanne. Spécialités suisses, ambiance chaleureuse. Rue Neuve 13 - Réservations: +41 21 312 34 56">
+    <meta property="og:title" content="Brasserie Les 100 Suisses - Restaurant Traditionnel Suisse">
+    <meta property="og:description" content="Cuisine traditionnelle suisse dans une ambiance authentique au cœur de Lausanne">
+    <meta property="og:type" content="restaurant">
+    <link rel="canonical" href="https://brasserie100suisses.ch">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Restaurant",
+        "name": "Brasserie Les 100 Suisses",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Rue Neuve 13",
+            "addressLocality": "Lausanne",
+            "addressCountry": "CH"
+        },
+        "telephone": "+41 21 312 34 56",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.7",
+            "reviewCount": "599"
+        },
+        "servesCuisine": "Swiss",
+        "priceRange": "$$"
+    }
+    </script>
+
     <style>
+        :root {
+            --bg-primary: #F2EDE4;
+            --bg-secondary: #EBE4D8;
+            --accent: #8B2635;
+            --accent-light: #A73548;
+            --text-dark: #2C1810;
+            --text-medium: #5A4A3A;
+            --card-bg: #FFFFFF;
+            --shadow: 0 8px 32px rgba(44, 24, 16, 0.08);
+            --shadow-hover: 0 16px 48px rgba(44, 24, 16, 0.15);
+            
+            --font-display: 'Playfair Display', serif;
+            --font-body: 'Source Sans Pro', sans-serif;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            line-height: 1.6;
-            background-color: #F2EDE4;
-            color: #333;
+            font-family: var(--font-body);
+            color: var(--text-dark);
+            background: var(--bg-primary);
             overflow-x: hidden;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 24px;
         }
 
         /* Navigation */
-        .navbar {
-            position: sticky;
+        .nav {
+            position: fixed;
             top: 0;
-            background: rgba(242, 237, 228, 0.95);
-            backdrop-filter: blur(10px);
+            width: 100%;
             z-index: 1000;
-            padding: 15px 0;
-            border-bottom: 1px solid rgba(44, 95, 138, 0.1);
-            animation: slideDown 0.8s ease-out;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            backdrop-filter: blur(10px);
         }
 
-        .nav-content {
+        .nav.scrolled {
+            background: rgba(242, 237, 228, 0.95);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .logo {
-            font-family: 'Playfair Display', serif;
+            font-family: var(--font-display);
             font-size: 1.8rem;
             font-weight: 700;
-            color: #2C5F8A;
+            color: var(--accent);
             text-decoration: none;
         }
 
         .nav-links {
-            display: none;
+            display: flex;
             list-style: none;
-            gap: 30px;
+            gap: 2.5rem;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: #2C5F8A;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
+            color: var(--text-dark);
+            font-weight: 400;
+            transition: color 0.3s ease;
         }
 
         .nav-links a:hover {
-            transform: translateY(-2px);
+            color: var(--accent);
         }
 
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #2C5F8A;
-            transition: width 0.3s ease;
+        .cta-nav {
+            background: var(--accent);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        .menu-toggle {
-            display: block;
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: #2C5F8A;
-            cursor: pointer;
+        .cta-nav:hover {
+            background: var(--accent-light);
+            transform: scale(1.04);
+            box-shadow: var(--shadow-hover);
         }
 
         /* Hero Section */
         .hero {
-            padding: 80px 0;
-            text-align: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
             position: relative;
-            background: linear-gradient(135deg, rgba(44, 95, 138, 0.05), rgba(44, 95, 138, 0.1));
-            border-radius: 30px;
-            margin: 30px 20px;
-            animation: fadeInUp 1s ease-out;
+            background: var(--bg-primary);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 38, 53, 0.1) 0%, transparent 70%);
+            top: 10%;
+            right: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(139, 38, 53, 0.05) 0%, transparent 70%);
+            bottom: 20%;
+            left: 15%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-30px) scale(1.1); }
         }
 
         .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3rem;
+            font-family: var(--font-display);
+            font-size: clamp(3rem, 7vw, 6rem);
             font-weight: 700;
-            color: #2C5F8A;
-            margin-bottom: 20px;
-            animation: fadeInUp 1s ease-out 0.2s both;
+            color: var(--accent);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeUp 1.2s ease forwards;
         }
 
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: #666;
-            margin-bottom: 30px;
-            animation: fadeInUp 1s ease-out 0.4s both;
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: var(--text-medium);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeUp 1.2s ease 0.2s forwards;
         }
 
         .rating-badge {
             display: inline-flex;
             align-items: center;
-            background: #2C5F8A;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-weight: 600;
-            margin-bottom: 30px;
-            animation: bounce 2s infinite;
-            box-shadow: 0 10px 30px rgba(44, 95, 138, 0.3);
+            background: var(--card-bg);
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            margin-bottom: 3rem;
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeUp 1.2s ease 0.3s forwards;
         }
 
-        .rating-badge .stars {
+        .stars {
             color: #FFD700;
-            margin-right: 10px;
-            font-size: 1.1rem;
+            font-size: 1.2rem;
+            margin-right: 12px;
         }
 
-        .cta-button {
-            background: #2C5F8A;
+        .rating-text {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0;
+            transform: translateY(60px);
+            animation: fadeUp 1.2s ease 0.4s forwards;
+        }
+
+        .btn-primary {
+            background: var(--accent);
             color: white;
-            padding: 15px 35px;
+            padding: 18px 36px;
             border: none;
-            border-radius: 50px;
+            border-radius: 12px;
             font-size: 1.1rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
             text-decoration: none;
             display: inline-block;
-            animation: fadeInUp 1s ease-out 0.6s both;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(44, 95, 138, 0.4);
+        .btn-primary:hover {
+            background: var(--accent-light);
+            transform: scale(1.04);
+            box-shadow: var(--shadow-hover);
         }
 
-        /* Services Cards */
-        .services {
-            padding: 80px 0;
-            animation: fadeInUp 1s ease-out 0.8s both;
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: #2C5F8A;
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 30px;
-        }
-
-        .service-card {
-            background: white;
-            padding: 40px 30px;
-            border-radius: 20px;
-            text-align: center;
-            box-shadow: 0 10px 40px rgba(44, 95, 138, 0.1);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(44, 95, 138, 0.1), transparent);
-            transition: left 0.6s ease;
-        }
-
-        .service-card:hover::before {
-            left: 100%;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 60px rgba(44, 95, 138, 0.2);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            color: #2C5F8A;
-            margin-bottom: 20px;
-            animation: pulse 2s infinite;
-        }
-
-        .service-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: #2C5F8A;
-            margin-bottom: 15px;
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.8;
-        }
-
-        /* About Section */
-        .about {
-            padding: 80px 0;
-            background: rgba(44, 95, 138, 0.05);
-            border-radius: 30px;
-            margin: 40px 20px;
-            animation: fadeInUp 1s ease-out 1s both;
-        }
-
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .about h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            color: #2C5F8A;
-            margin-bottom: 30px;
-        }
-
-        .about p {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: #666;
-            margin-bottom: 20px;
-        }
-
-        /* Reviews Section */
-        .reviews {
-            padding: 80px 0;
-            animation: fadeInUp 1s ease-out 1.2s both;
-        }
-
-        .review-card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(44, 95, 138, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .review-card:hover {
-            transform: translateX(10px);
-        }
-
-        .review-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 15px;
-        }
-
-        .reviewer-avatar {
-            width: 50px;
-            height: 50px;
-            background: #2C5F8A;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 600;
-            margin-right: 15px;
-        }
-
-        .reviewer-info h4 {
-            color: #2C5F8A;
-            margin-bottom: 5px;
-        }
-
-        .review-stars {
-            color: #FFD700;
-        }
-
-        /* Contact Form */
-        .contact {
-            padding: 80px 0;
-            background: rgba(44, 95, 138, 0.05);
-            border-radius: 30px;
-            margin: 40px 20px;
-            animation: fadeInUp 1s ease-out 1.4s both;
-        }
-
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            color: #2C5F8A;
-            font-weight: 500;
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid rgba(44, 95, 138, 0.2);
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background: white;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: #2C5F8A;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(44, 95, 138, 0.2);
-        }
-
-        .submit-btn {
-            background: #2C5F8A;
-            color: white;
-            padding: 15px 40px;
-            border: none;
-            border-radius: 50px;
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            padding: 18px 36px;
+            border: 2px solid var(--accent);
+            border-radius: 12px;
             font-size: 1.1rem;
             font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(44, 95, 138, 0.4);
-        }
-
-        /* Footer */
-        .footer {
-            background: #2C5F8A;
-            color: white;
-            padding: 50px 0 30px;
-            margin-top: 80px;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 40px;
-            margin-bottom: 30px;
-        }
-
-        .footer-section h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.3rem;
-            margin-bottom: 20px;
-        }
-
-        .footer-section p,
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.8);
             text-decoration: none;
-            transition: color 0.3s ease;
+            display: inline-block;
+            transition: all 0.3s ease;
         }
 
-        .footer-section a:hover {
+        .btn-secondary:hover {
+            background: var(--accent);
             color: white;
+            transform: scale(1.04);
         }
 
-        .footer-bottom {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-            color: rgba(255, 255, 255, 0.6);
-        }
-
-        /* Animations */
-        @keyframes slideDown {
-            from { transform: translateY(-100%); }
-            to { transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+        @keyframes fadeUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+        /* Section Base Styles */
+        .section {
+            padding: 120px 0;
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
-        @keyframes pulse {
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section:nth-child(even) {
+            background: var(--bg-secondary);
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 3rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 4rem;
+            color: var(--accent);
+        }
+
+        /* About Section */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about-text {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+            margin-bottom: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .contact-item svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--accent);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--card-bg);
+            padding: 3rem 2rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+            fill: var(--accent);
+        }
+
+        .service-card h3 {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .service-card p {
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        /* Social Proof Section */
+        .social-proof {
+            text-align: center;
+        }
+
+        .rating-display {
+            font-size: 5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .rating-stars {
+            font-size: 3rem;
+            color: #FFD700;
+            margin-bottom: 1rem;
+        }
+
+        .rating-stars.animate {
+            animation: scaleStars 0.8s ease-in-out;
+        }
+
+        @keyframes scaleStars {
             0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
+            50% { transform: scale(1.2); }
             100% { transform: scale(1); }
         }
 
-        /* Tablet Styles */
-        @media (min-width: 768px) {
-            .nav-links {
-                display: flex;
-            }
+        .reviews-count {
+            font-size: 1.5rem;
+            color: var(--text-medium);
+            margin-bottom: 2rem;
+        }
 
-            .menu-toggle {
+        /* Contact Section */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info-section h3 {
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            color: var(--accent);
+        }
+
+        .info-item {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .info-item svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent);
+            margin-top: 4px;
+        }
+
+        .contact-form {
+            background: var(--card-bg);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #E5E5E5;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-secondary);
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid rgba(44, 24, 16, 0.1);
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
                 display: none;
             }
 
             .hero h1 {
-                font-size: 4rem;
+                font-size: 3rem;
             }
 
-            .services-grid {
-                grid-template-columns: repeat(2, 1fr);
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
             }
 
             .footer-content {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        /* Desktop Styles */
-        @media (min-width: 1024px) {
-            .hero h1 {
-                font-size: 5rem;
-            }
-
-            .services-grid {
-                grid-template-columns: repeat(3, 1fr);
-            }
-
-            .footer-content {
-                grid-template-columns: repeat(3, 1fr);
+                flex-direction: column;
+                text-align: center;
             }
 
             .container {
-                padding: 0 40px;
+                padding: 0 16px;
+            }
+
+            .section {
+                padding: 80px 0;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-content">
-                <a href="#" class="logo">Les 100 Suisses</a>
-                <ul class="nav-links">
-                    <li><a href="#accueil">Accueil</a></li>
-                    <li><a href="#services">Services</a></li>
-                    <li><a href="#apropos">À Propos</a></li>
-                    <li><a href="#avis">Avis</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <button class="menu-toggle">☰</button>
-            </div>
+    <nav class="nav" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Les 100 Suisses</a>
+            <ul class="nav-links">
+                <li><a href="#about">À Propos</a></li>
+                <li><a href="#services">Spécialités</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="tel:+41213123456" class="cta-nav">Réserver</a>
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="hero" id="accueil">
+    <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Brasserie Les 100 Suisses</h1>
-                <p class="hero-subtitle">Découvrez l'authenticité de la cuisine suisse dans un cadre chaleureux et convivial au cœur de la ville.</p>
+                <h1>Brasserie<br>Les 100 Suisses</h1>
+                <p class="tagline">L'authenticité suisse au cœur de Lausanne</p>
                 <div class="rating-badge">
                     <span class="stars">★★★★★</span>
-                    <span>4.7/5 (599 avis)</span>
+                    <span class="rating-text">4.7 · 599 avis</span>
                 </div>
-                <br>
-                <a href="#contact" class="cta-button">Réserver une table</a>
+                <div class="hero-ctas">
+                    <a href="tel:+41213123456" class="btn-primary">Réserver une Table</a>
+                    <a href="#about" class="btn-secondary">Découvrir</a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
+    <section class="section" id="about">
         <div class="container">
-            <h2 class="section-title">Nos Services</h2>
+            <h2 class="section-title">Notre Histoire</h2>
+            <div class="about-content">
+                <p class="about-text">
+                    Depuis trois générations, la Brasserie Les 100 Suisses perpétue les traditions culinaires helvétiques au cœur de Lausanne. Notre nom rend hommage aux gardes suisses qui ont marqué l'histoire européenne, symbole de fierté et d'authenticité que nous cultivons dans chaque plat servi.
+                </p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <span>Rue Neuve 13, Lausanne</span>
+                    </div>
+                    <div class="contact-item">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <span>+41 21 312 34 56</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title">Nos Spécialités</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-icon">🍽️</div>
-                    <h3>Cuisine Traditionnelle</h3>
-                    <p>Savourez nos spécialités suisses préparées avec des ingrédients frais et locaux. Une expérience culinaire authentique vous attend.</p>
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M8.1 13.34l2.83-2.83L3.91 3.5c-1.56 1.56-1.56 4.09 0 5.66l4.19 4.18zm6.78-1.81c1.53.71 3.68.21 5.27-1.38 1.91-1.91 2.28-4.65.81-6.12-1.46-1.46-4.20-1.10-6.12.81-1.59 1.59-2.09 3.74-1.38 5.27L3.7 19.87l1.41 1.41L12 14.41l6.88 6.88 1.41-1.41L13.41 13l1.47-1.47z"/>
+                    </svg>
+                    <h3>Fondue Traditionnelle</h3>
+                    <p>Notre fondue au fromage authentique, préparée selon la recette familiale transmise de génération en génération.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🍺</div>
-                    <h3>Brasserie Artisanale</h3>
-                    <p>Dégustez nos bières artisanales brassées sur place, accompagnées de nos délicieux plats dans une ambiance décontractée.</p>
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M18.06 22.99h1.66c.84 0 1.53-.64 1.63-1.46L23 5.05h-5V1h-1.97v4.05h-4.97l.3 2.34c1.71.47 3.31 1.32 4.27 2.26 1.44 1.42 2.43 2.89 2.43 5.29v8.05zM1 21.99V21h15.03v.99c0 .55-.45 1-1.01 1H2.01c-.56 0-1.01-.45-1.01-1zM16.03 14.99c0-8-15.03-8-15.03 0h15.03zM1.02 17h15v1h-15z"/>
+                    </svg>
+                    <h3>Raclette du Valais</h3>
+                    <p>Fromage à raclette AOC du Valais, servi avec pommes de terre et cornichons dans la pure tradition suisse.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-icon">🎉</div>
-                    <h3>Événements Privés</h3>
-                    <p>Organisez vos événements spéciaux dans notre espace privatisable. Un service personnalisé pour des moments inoubliables.</p>
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <h3>Spécialités Saisonnières</h3>
+                    <p>Menu évolutif selon les saisons, mettant en valeur les produits locaux et les traditions culinaires régionales.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 24 24">
+                        <path d="M5 9V7l1-5c0-1.1.9-2 2-2h8c1.1 0 2 .9 2 2l1 5v2h2v10c0 1.1-.9 2-2 2H5c-1.1 0-2-.9-2-2V9h2zm2-6.5V7h10V2.5c0-.28-.22-.5-.5-.5h-9c-.28 0-.5.22-.5.5z"/>
+                    </svg>
+                    <h3>Cave à Vins Suisses</h3>
+                    <p>Sélection exclusive de vins suisses, des grands crus du Lavaux aux pépites valaisannes, conseillés par notre sommelier.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section class="about" id="apropos">
+    <section class="section social-proof">
         <div class="container">
-            <div class="about-content">
-                <h2>À Propos de Nous</h2>
-                <p>Située Rue Neuve 13, la Brasserie Les 100 Suisses est un établissement emblématique qui perpétue les traditions culinaires suisses depuis de nombreuses années.</p>
-                <p>Notre équipe passionnée vous accueille dans un cadre authentique où se mélangent tradition et modernité. Chaque plat est préparé avec soin pour vous offrir une expérience gastronomique exceptionnelle.</p>
-                <p>Venez découvrir notre carte variée, nos spécialités locales et notre atmosphère chaleureuse qui font de notre brasserie un lieu incontournable.</p>
-            </div>
+            <h2 class="section-title">Ils Nous Font Confiance</h2>
+            <div class="rating-display">4.7</div>
+            <div class="rating-stars" id="rating-stars">★★★★★</div>
+            <p class="reviews-count">Basé sur 599 avis clients</p>
+            <p style="font-size: 1.2rem; color: var(--text-medium); max-width: 600px; margin: 0 auto;">
+                "Une expérience culinaire authentique qui nous transporte au cœur des traditions suisses. Service impeccable et ambiance chaleureuse garantis."
+            </p>
         </div>
     </section>
 
-    <!-- Reviews Section -->
-    <section class="reviews" id="avis">
+    <section class="section" id="contact">
         <div class="container">
-            <h2 class="section-title">Avis Clients</h2>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="reviewer-avatar">M</div>
-                    <div class="reviewer-info">
-                        <h4>Marc Dubois</h4>
-                        <div class="review-stars">★★★★★</div>
+            <h2 class="section-title">Nous Contacter</h2>
+            <div class="contact-content">
+                <div class="contact-info-section">
+                    <h3>Informations Pratiques</h3>
+                    <div class="info-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                        <div>
+                            <strong>Adresse</strong><br>
+                            Rue Neuve 13<br>
+                            1003 Lausanne
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        <div>
+                            <strong>Téléphone</strong><br>
+                            +41 21 312 34 56
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                        <div>
+                            <strong>Horaires</strong><br>
+                            Lun-Dim: 11h30-14h30<br>
+                            18h30-22h30<br>
+                            Fermé le dimanche soir
+                        </div>
+                    </div>
+                    <div style="width: 100%; height: 200px; background: #E8E8E8; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: var(--text-medium); margin-top: 2rem;">
+                        Carte Google Maps
                     </div>
                 </div>
-                <p>"Excellente expérience ! La fondue était délicieuse et le service impeccable. Ambiance authentique et chaleureuse."</p>
-            </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="reviewer-avatar">S</div>
-                    <div class="reviewer-info">
-                        <h4>Sophie Martin</h4>
-                        <div class="review-stars">★★★★★</div>
+                <form class="contact-form">
+                    <h3 style="font-family: var(--font-display); font-size: 1.8rem; margin-bottom: 2rem; color: var(--accent);">Réservation</h3>
+                    <div class="form-group">
+                        <label for="name">Nom complet</label>
+                        <input type="text" id="name" name="name" required>
                     </div>
-                </div>
-                <p>"Un endroit parfait pour découvrir la cuisine suisse. Les röstis sont extraordinaires ! Personnel très accueillant."</p>
-            </div>
-            <div class="review-card">
-                <div class="review-header">
-                    <div class="reviewer-avatar">P</div>
-                    <div class="reviewer-info">
-                        <h4>Pierre Müller</h4>
-                        <div class="review-stars">★★★★⭐</div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
                     </div>
-                </div>
-                <p>"Brasserie authentique avec une excellente sélection de bières. Cadre typique et nourriture de qualité. Très recommandé !"</p>
+                    <div class="form-group">
+                        <label for="message">Message / Demande spéciale</label>
+                        <textarea id="message" name="message" placeholder="Nombre de personnes, date souhaitée, allergies..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;">Envoyer la Demande</button>
+                </form>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact" id="contact">
-        <div class="container">
-            <h2 class="section-title">Contactez-Nous</h2>
-            <form class="contact-form">
-                <div class="form-group">
-                    <label for="nom">Nom</label>
-                    <input type="text" id="nom" name="nom" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="telephone">Téléphone</label>
-                    <input type="tel" id="telephone" name="telephone">
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" name="message" rows="5" placeholder="Votre demande de réservation ou votre message..."></textarea>
-                </div>
-                <button type="submit" class="submit-btn">Envoyer</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>📍 Rue Neuve 13</p>
-                    <p>📞 <a href="tel:+41213123456">+41 21 312 34 56</a></p>
-                    <p>⭐ 4.7/5 (599 avis)</p>
+                <div class="footer-logo">Les 100 Suisses</div>
+                <div style="text-align: center;">
+                    <p>&copy; 2025 Brasserie Les 100 Suisses. Tous droits réservés.</p>
+                    <p style="margin-top: 8px; color: var(--text-medium);">Rue Neuve 13, Lausanne</p>
                 </div>
-                <div class="footer-section">
-                    <h3>Horaires</h3>
-                    <p>Lun - Jeu: 11h00 - 23h00</p>
-                    <p>Ven - Sam: 11h00 - 00h00</p>
-                    <p>Dimanche: 12h00 - 22h00</p>
+                <div style="font-size: 0.9rem; color: var(--text-medium);">
+                    Designed by Challenging Dawn
                 </div>
-                <div class="footer-section">
-                    <h3>Suivez-nous</h3>
-                    <p><a href="#">Facebook</a></p>
-                    <p><a href="#">Instagram</a></p>
-                    <p><a href="#">TripAdvisor</a></p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Brasserie Les 100 Suisses. Tous droits réservés.</p>
             </div>
         </div>
     </footer>
 
     <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Special animation for rating stars
+                    if (entry.target.classList.contains('social-proof')) {
+                        const stars = document.getElementById('rating-stars');
+                        setTimeout(() => {
+                            stars.classList.add('animate');
+                        }, 500);
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const button = e.target.querySelector('button');
+            const originalText = button.textContent;
+            button.textContent = 'Envoi en cours...';
+            button.style.background = '#6B7280';
+            
+            setTimeout(() => {
+                button.textContent = 'Message Envoyé !';
+                button.style.background = '#10B981';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '';
+                    e.target.reset();
+                }, 2000);
+            }, 1500);
+        });
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
@@ -659,42 +794,6 @@
                     });
                 }
             });
-        });
-
-        // Form submission
-        document.querySelector('.contact-form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Merci pour votre message ! Nous vous répondrons dans les plus brefs délais.');
-        });
-
-        // Add scroll effect to navbar
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 100) {
-                navbar.style.background = 'rgba(242, 237, 228, 0.98)';
-                navbar.style.boxShadow = '0 5px 20px rgba(44, 95, 138, 0.1)';
-            } else {
-                navbar.style.background = 'rgba(242, 237, 228, 0.95)';
-                navbar.style.boxShadow = 'none';
-            }
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver(function(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.animationPlayState = 'running';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.service-card, .review-card').forEach(el => {
-            observer.observe(el);
         });
     </script>
 </body>
