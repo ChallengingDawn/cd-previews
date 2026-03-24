@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Le Salon Bern - Dein Haar in besten Händen | Brunngasse 70, Bern</title>
+    <meta name="description" content="Le Salon Bern - traditionsreiches Friseursalon im Herzen der Berner Altstadt. Haarschnitt, Haarfarbe, Styling & Haarpflege. 4.9/5 Sterne ⭐ 031 525 77 37">
+    <meta name="keywords" content="Friseur Bern, Haarschnitt, Haarfarbe, Styling, Haarpflege, Brunngasse, Berner Altstadt">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Le Salon Bern",
+        "description": "Traditionsreiches Friseursalon im Herzen der Berner Altstadt",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Brunngasse 70",
+            "addressLocality": "Bern",
+            "postalCode": "3011",
+            "addressCountry": "CH"
+        },
+        "telephone": "031 525 77 37",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "60"
+        },
+        "priceRange": "$$",
+        "url": "https://lesalonbern.ch"
+    }
+    </script>
+
+    <style>
+        :root {
+            --accent: #8B7355;
+            --bg: #F2EDE4;
+            --bg2: #EBE4D8;
+            --text: #2c2c2c;
+            --white: #ffffff;
+            --shadow: rgba(139, 115, 85, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg);
+        }
+
+        .serif {
+            font-family: 'Crimson Text', serif;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(242, 237, 228, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 400;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .cta-nav {
+            background: var(--accent);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .cta-nav:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(139, 115, 85, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--bg);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(139, 115, 85, 0.03) 0%, rgba(139, 115, 85, 0.08) 50%, rgba(139, 115, 85, 0.03) 100%);
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(139, 115, 85, 0.05);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-shape:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-shape:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-shape:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            bottom: 30%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: 4rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: var(--text);
+            margin-bottom: 2rem;
+            font-style: italic;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .rating-badge {
+            background: var(--white);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            box-shadow: 0 4px 20px var(--shadow);
+            margin-bottom: 3rem;
+            display: inline-block;
+            font-weight: 500;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 0.9s forwards;
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease 1.2s forwards;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 25px rgba(139, 115, 85, 0.3);
+        }
+
+        .btn-secondary:hover {
+            background: var(--accent);
+            color: white;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Sections */
+        .section {
+            padding: 6rem 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section:nth-child(even) {
+            background: var(--bg2);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-family: 'Crimson Text', serif;
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 3rem;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(139, 115, 85, 0.2);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            fill: var(--accent);
+        }
+
+        .service-card h3 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.8rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--text);
+            line-height: 1.8;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .about-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text);
+        }
+
+        .address-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .address-card h3 {
+            font-family: 'Crimson Text', serif;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .address-card p {
+            margin-bottom: 0.5rem;
+        }
+
+        .phone-link {
+            color: var(--accent);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        /* Reviews */
+        .reviews-content {
+            text-align: center;
+        }
+
+        .reviews-display {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px var(--shadow);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .rating-large {
+            font-size: 4rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .stars {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .review-count {
+            font-size: 1.2rem;
+            color: var(--text);
+        }
+
+        /* Contact */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .contact-info h3 {
+            font-family: 'Crimson Text', serif;
+            color: var(--accent);
+            margin-bottom: 2rem;
+            font-size: 2rem;
+        }
+
+        .contact-form {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e5e5e5;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--accent);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Le Salon Bern</a>
+            <ul class="nav-links">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">Über uns</a></li>
+                <li><a href="#reviews">Bewertungen</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            <a href="tel:0315257737" class="cta-nav">031 525 77 37</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="floating-shape"></div>
+        <div class="hero-content">
+            <h1>Le Salon Bern</h1>
+            <p class="tagline serif">Dein Haar in besten Händen</p>
+            <div class="rating-badge">
+                4.9★★★★★ (60 Google Reviews)
+            </div>
+            <div class="hero-ctas">
+                <a href="tel:0315257737" class="btn-primary">Jetzt anrufen</a>
+                <a href="#services" class="btn-secondary">Unsere Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section" id="services">
+        <div class="container">
+            <h2 class="section-title">Unsere Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100">
+                        <path d="M50 10C30 10 15 25 15 45C15 65 30 80 50 80C70 80 85 65 85 45C85 25 70 10 50 10ZM35 40L45 50L65 30" stroke="currentColor" stroke-width="3" fill="none"/>
+                        <circle cx="50" cy="45" r="25" stroke="currentColor" stroke-width="2" fill="none"/>
+                    </svg>
+                    <h3>Haarschnitt</h3>
+                    <p>Professionelle Haarschnitte für Damen und Herren mit modernsten Techniken und individueller Beratung für den perfekten Look.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100">
+                        <circle cx="30" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="70" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="50" cy="60" r="8" fill="currentColor"/>
+                        <path d="M20 20Q50 40 80 20" stroke="currentColor" stroke-width="3" fill="none"/>
+                        <path d="M25 50Q50 70 75 50" stroke="currentColor" stroke-width="3" fill="none"/>
+                    </svg>
+                    <h3>Haarfarbe</h3>
+                    <p>Kreative Farbbehandlungen von natürlichen Tönen bis hin zu trendigen Highlights mit hochwertigen Produkten für optimale Haargesundheit.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100">
+                        <path d="M30 20Q50 10 70 20Q80 40 70 60Q50 70 30 60Q20 40 30 20Z" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <path d="M40 35L50 45L60 35" stroke="currentColor" stroke-width="2" fill="none"/>
+                        <circle cx="35" cy="30" r="3" fill="currentColor"/>
+                        <circle cx="65" cy="30" r="3" fill="currentColor"/>
+                    </svg>
+                    <h3>Styling & Haarpflege</h3>
+                    <p>Professionelles Styling für besondere Anlässe sowie intensive Haarpflegebehandlungen für gesundes und glänzendes Haar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">Über Le Salon Bern</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Le Salon Bern ist ein traditionsreiches Friseursalon im Herzen der Berner Altstadt, der seit Jahren Kundinnen und Kunden mit professionellen Haardienstleistungen verwöhnt. Mit erfahrenen Friseurinnen und Friseuren bietet das Salon moderne Techniken mit persönlicher Beratung.</p>
+                    <br>
+                    <p>Unser Team kombiniert handwerkliches Können mit den neuesten Trends der Friseurbranche. Wir legen grossen Wert auf individuelle Beratung und verwenden ausschliesslich hochwertige Produkte, die Ihr Haar nicht nur schön aussehen lassen, sondern auch gesund halten.</p>
+                    <br>
+                    <p>In unserem stilvollen Salon in der historischen Brunngasse schaffen wir eine entspannte Atmosphäre, in der Sie sich rundum wohlfühlen können. Jeder Besuch bei uns ist ein Erlebnis für alle Sinne.</p>
+                </div>
+                <div class="address-card">
+                    <h3>Besuchen Sie uns</h3>
+                    <p><strong>Le Salon Bern</strong></p>
+                    <p>Brunngasse 70</p>
+                    <p>3011 Bern</p>
+                    <br>
+                    <p><strong>Telefon:</strong></p>
+                    <p><a href="tel:0315257737" class="phone-link">031 525 77 37</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="section" id="reviews">
+        <div class="container">
+            <h2 class="section-title">Was unsere Kunden sagen</h2>
+            <div class="reviews-content">
+                <div class="reviews-display">
+                    <div class="rating-large">4.9</div>
+                    <div class="stars">★★★★★</div>
+                    <p class="review-count">Basierend auf 60 Google Bewertungen</p>
+                    <br>
+                    <p>Unsere Kunden schätzen die professionelle Beratung, die entspannte Atmosphäre und die hervorragenden Ergebnisse. Wir freuen uns über das Vertrauen und die positiven Rückmeldungen.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Kontakt & Termin</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Vereinbaren Sie Ihren Termin</h3>
+                    <p><strong>Adresse:</strong><br>
+                    Brunngasse 70<br>
+                    3011 Bern</p>
+                    <br>
+                    <p><strong>Telefon:</strong><br>
+                    <a href="tel:0315257737" class="phone-link">031 525 77 37</a></p>
+                    <br>
+                    <p><strong>Öffnungszeiten:</strong><br>
+                    Mo-Fr: 9:00 - 18:00<br>
+                    Sa: 9:00 - 16:00<br>
+                    So: Geschlossen</p>
+                    <br>
+                    <p>Rufen Sie uns an oder nutzen Sie unser Kontaktformular für Terminanfragen und Fragen zu unseren Services.</p>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Mail *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Gewünschter Service</label>
+                        <input type="text" id="service" name="service" placeholder="z.B. Haarschnitt, Farbe, Styling">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Nachricht</label>
+                        <textarea id="message" name="message" placeholder="Ihre Nachricht oder Terminwunsch..."></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Nachricht senden</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Le Salon Bern</h4>
+                    <p>Ihr traditionsreicher Friseursalon<br>im Herzen der Berner Altstadt</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt</h4>
+                    <p>Brunngasse 70, 3011 Bern<br>
+                    <a href="tel:0315257737">031 525 77 37</a></p>
+                </div>
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <p>Haarschnitt • Haarfarbe<br>Styling • Haarpflege</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Le Salon Bern. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(242, 237, 228, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(139, 115, 85, 0.1)';
+            } else {
+                navbar.style.background = 'rgba(242, 237, 228, 0.95)';
+                navbar.style.boxShadow = 'none';
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Vielen Dank für Ihre Nachricht! Wir melden uns bald bei Ihnen.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
