@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bäckerei Mueller Zürich | Langstrasse | Traditionelle Schweizer Backkunst</title>
+    <meta name="description" content="Bäckerei Mueller an der Langstrasse 45 in Zürich - Frische Backwaren, traditionelle Schweizer Spezialitäten und handwerkliche Qualität. 4.7/5 Sterne, 203 Bewertungen.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <meta property="og:title" content="Bäckerei Mueller Zürich | Traditionelle Schweizer Backkunst">
+    <meta property="og:description" content="Frische Backwaren und traditionelle Schweizer Spezialitäten an der Langstrasse 45 in Zürich">
+    <meta property="og:type" content="website">
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Bakery",
+        "name": "Bäckerei Mueller",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Langstrasse 45",
+            "addressLocality": "Zürich",
+            "postalCode": "8004",
+            "addressCountry": "CH"
+        },
+        "telephone": "+41 44 291 33 44",
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.7",
+            "reviewCount": "203"
+        }
+    }
+    </script>
+    <style>
+        :root {
+            --bg-primary: #F2EDE4;
+            --bg-secondary: #EBE4D8;
+            --accent: #8B4513;
+            --text-dark: #2C1810;
+            --text-medium: #5A4A3A;
+            --text-light: #8B7355;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            padding: 20px 0;
+        }
+
+        .nav.scrolled {
+            background-color: rgba(242, 237, 228, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .nav-cta {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 12px 24px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .nav-cta:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+        }
+
+        /* Hero */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-color: var(--bg-primary);
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.1s;
+        }
+
+        .hero-tagline {
+            font-size: clamp(18px, 3vw, 24px);
+            color: var(--text-medium);
+            margin-bottom: 30px;
+            font-weight: 300;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.3s;
+        }
+
+        .rating-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--white);
+            padding: 12px 24px;
+            border-radius: 50px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.4s;
+        }
+
+        .stars {
+            display: flex;
+            margin-right: 12px;
+        }
+
+        .star {
+            width: 20px;
+            height: 20px;
+            fill: #FFD700;
+            margin-right: 2px;
+        }
+
+        .rating-text {
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .hero-ctas {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeUp 1s ease forwards 0.5s;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--white);
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.04);
+            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent);
+            padding: 16px 32px;
+            border: 2px solid var(--accent);
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--accent);
+            color: var(--white);
+            transform: scale(1.04);
+        }
+
+        /* Sections */
+        .section {
+            padding: 100px 0;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+
+        .section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section:nth-child(even) {
+            background-color: var(--bg-secondary);
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(36px, 6vw, 64px);
+            font-weight: 700;
+            color: var(--text-dark);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 20px;
+            color: var(--text-medium);
+            text-align: center;
+            margin-bottom: 60px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 80px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            fill: var(--accent);
+        }
+
+        .service-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-bottom: 20px;
+        }
+
+        .service-card p {
+            color: var(--text-medium);
+            font-size: 16px;
+            line-height: 1.7;
+        }
+
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 30px;
+        }
+
+        .about-text p {
+            font-size: 18px;
+            color: var(--text-medium);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .contact-info {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 24px;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            color: var(--text-dark);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent);
+            margin-right: 12px;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            text-align: center;
+        }
+
+        .rating-display {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            margin: 60px 0;
+            flex-wrap: wrap;
+        }
+
+        .rating-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 96px;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        .rating-stars {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .large-stars {
+            display: flex;
+            margin-bottom: 10px;
+        }
+
+        .large-star {
+            width: 40px;
+            height: 40px;
+            fill: #FFD700;
+            margin-right: 8px;
+            transform: scale(0);
+            animation: starPop 0.5s ease forwards;
+        }
+
+        .large-star:nth-child(1) { animation-delay: 0.1s; }
+        .large-star:nth-child(2) { animation-delay: 0.2s; }
+        .large-star:nth-child(3) { animation-delay: 0.3s; }
+        .large-star:nth-child(4) { animation-delay: 0.4s; }
+        .large-star:nth-child(5) { animation-delay: 0.5s; }
+
+        .reviews-text {
+            font-size: 18px;
+            color: var(--text-medium);
+            font-weight: 600;
+        }
+
+        /* Contact */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-form {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid #E5E5E5;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 120px;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 60px 0 30px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+
+        .footer-address {
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.8;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .credit {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 14px;
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes starPop {
+            to {
+                transform: scale(1);
+            }
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .about-content,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-ctas {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .rating-display {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                max-width: 1400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-container">
+                <a href="#" class="logo">Mueller</a>
+                <ul class="nav-links">
+                    <li><a href="#services">Angebot</a></li>
+                    <li><a href="#about">Über uns</a></li>
+                    <li><a href="#reviews">Bewertungen</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+                <a href="#contact" class="nav-cta">Bestellung</a>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bäckerei Mueller</h1>
+            <p class="hero-tagline">Traditionelle Schweizer Backkunst im Herzen von Zürich</p>
+            <div class="rating-badge">
+                <div class="stars">
+                    <svg class="star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <svg class="star" viewBox="0 0 24 24">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                </div>
+                <span class="rating-text">4.7/5 · 203 Bewertungen</span>
+            </div>
+            <div class="hero-ctas">
+                <a href="#contact" class="btn-primary">Jetzt bestellen</a>
+                <a href="#services" class="btn-secondary">Unser Angebot</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">Unser Angebot</h2>
+            <p class="section-subtitle">Frische Backwaren täglich handwerklich hergestellt mit den besten Zutaten</p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100">
+                        <path d="M20 80h60c2.2 0 4-1.8 4-4V44c0-2.2-1.8-4-4-4h-8V24c0-6.6-5.4-12-12-12H40c-6.6 0-12 5.4-12 12v16h-8c-2.2 0-4 1.8-4 4v32c0 2.2 1.8 4 4 4zM32 24c0-4.4 3.6-8 8-8h20c4.4 0 8 3.6 8 8v16H32V24zm-8 20h52v28H24V44zm26 8c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z"/>
+                    </svg>
+                    <h3>Frisches Brot</h3>
+                    <p>Täglich gebackenes Schweizer Brot nach traditionellen Rezepten. Von knusprigem Ruchbrot bis zu feinem Weggen - alles aus unserer eigenen Backstube mit regionalen Zutaten.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100">
+                        <path d="M50 10C27.9 10 10 27.9 10 50s17.9 40 40 40 40-17.9 40-40S72.1 10 50 10zm0 76c-19.9 0-36-16.1-36-36s16.1-36 36-36 36 16.1 36 36-16.1 36-36 36zm-20-36c0-11 9-20 20-20s20 9 20 20-9 20-20 20-20-9-20-20zm16 0c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z"/>
+                    </svg>
+                    <h3>Feine Patisserie</h3>
+                    <p>Exquisite Torten, Petit Fours und saisonale Spezialitäten. Jedes Stück ein kleines Kunstwerk - perfekt für besondere Anlässe oder als süsse Versuchung zwischendurch.</p>
+                </div>
+                <div class="service-card">
+                    <svg class="service-icon" viewBox="0 0 100 100">
+                        <path d="M20 20h60c2.2 0 4 1.8 4 4v52c0 2.2-1.8 4-4 4H20c-2.2 0-4-1.8-4-4V24c0-2.2 1.8-4 4-4zm4 8v44h52V28H24zm46 16c0-6.6-5.4-12-12-12H42c-6.6 0-12 5.4-12 12v8c0 6.6 5.4 12 12 12h16c6.6 0 12-5.4 12-12v-8zm-8 0v8c0 2.2-1.8 4-4 4H42c-2.2 0-4-1.8-4-4v-8c0-2.2 1.8-4 4-4h16c2.2 0 4 1.8 4 4z"/>
+                    </svg>
+                    <h3>Café & Gipfeli</h3>
+                    <p>Geniessen Sie frische Gipfeli und hausgemachte Sandwiches zu unserem erstklassigen Kaffee. Der perfekte Start in den Tag oder eine gemütliche Pause zwischendurch.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="section">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>Tradition seit drei Generationen</h2>
+                    <p>Seit 1952 führt Familie Mueller ihre Bäckerei an der Langstrasse mit Leidenschaft und Hingabe. Was als kleine Nachbarschaftsbäckerei begann, ist heute eine Institution in Zürich - doch die Werte sind geblieben: Qualität, Tradition und der persönliche Kontakt zu unseren Kunden.</p>
+                    <p>Unsere Backstube arbeitet noch immer nach den bewährten Rezepten der Grossmutter, ergänzt durch moderne Techniken und die besten regionalen Zutaten. Jedes Brot, jedes Gebäck wird mit derselben Sorgfalt hergestellt, die schon vor 70 Jahren unsere Stammkunden begeistert hat.</p>
+                    <p>Besuchen Sie uns an der Langstrasse 45 und erleben Sie selbst, warum unsere Kunden seit Generationen zu uns kommen.</p>
+                </div>
+                <div class="contact-info">
+                    <h3>Besuchen Sie uns</h3>
+                    <p>
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
+                        </svg>
+                        Langstrasse 45, 8004 Zürich
+                    </p>
+                    <p>
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                        </svg>
+                        +41 44 291 33 44
+                    </p>
+                    <p>
+                        <svg class="contact-icon" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        4.7/5 Sterne (203 Bewertungen)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reviews" class="section social-proof">
+        <div class="container">
+            <h2 class="section-title">Was unsere Kunden sagen</h2>
+            <div class="rating-display">
+                <div class="rating-number">4.7</div>
+                <div class="rating-stars">
+                    <div class="large-stars">
+                        <svg class="large-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="large-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="large-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="large-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                        <svg class="large-star" viewBox="0 0 24 24">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <div class="reviews-text">Basierend auf 203 Google-Bewertungen</div>
+                </div>
+            </div>
+            <p class="section-subtitle">Unsere Kunden schätzen die Qualität unserer Backwaren, den freundlichen Service und die authentische Atmosphäre unserer traditionellen Bäckerei.</p>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Kontakt & Bestellung</h2>
+            <div class="contact-grid">
+                <div>
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 30px;">Lassen Sie sich verwöhnen</h3>
+                    <p style="font-size: 18px; color: var(--text-medium); margin-bottom: 40px; line-height: 1.8;">Besuchen Sie uns in unserer Bäckerei oder bestellen Sie Ihre Lieblings-Backwaren telefonisch vor. Wir freuen uns auf Sie!</p>
+                    <div class="contact-info">
+                        <h3>Öffnungszeiten</h3>
+                        <p>Montag - Freitag: 06:00 - 18:30</p>
+                        <p>Samstag: 06:00 - 17:00</p>
+                        <p>Sonntag: 07:00 - 16:00</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 30px;">Nachricht senden</h3>
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Nachricht</label>
+                            <textarea id="message" name="message" placeholder="Ihre Bestellung oder Anfrage..."></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%;">Nachricht senden</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <div class="footer-logo">Mueller</div>
+                    <div class="footer-address">
+                        Bäckerei Mueller<br>
+                        Langstrasse 45<br>
+                        8004 Zürich<br>
+                        +41 44 291 33 44
+                    </div>
+                </div>
+                <div>
+                    <h4 style="color: var(--accent); margin-bottom: 20px;">Öffnungszeiten</h4>
+                    <div class="footer-address">
+                        Mo-Fr: 06:00 - 18:30<br>
+                        Sa: 06:00 - 17:00<br>
+                        So: 07:00 - 16:00
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div>© 2025 Bäckerei Mueller. Alle Rechte vorbehalten.</div>
+                <div class="credit">Website erstellt von Challenging Dawn</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll navigation
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('.nav');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '-50px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Star animation trigger
+        const starObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const stars = entry.target.querySelectorAll('.large-star');
+                    stars.forEach((star, index) => {
+                        star.style.animationDelay = `${index * 0.1}s`;
+                        star.style.animation = 'starPop 0.5s ease forwards';
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const socialProofSection = document.querySelector('.social-proof');
+        if (socialProofSection) {
+            starObserver.observe(socialProofSection);
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
