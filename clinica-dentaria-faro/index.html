@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínica Dentária Faro — Cuidados Dentários de Excelência</title>
+<meta name="description" content="Clínica Dentária Faro — Cuidados dentários de excelência no coração de Faro. Implantes, ortodontia, branqueamento e muito mais. Avaliação 4.9/5. Rua de Santo António 22, 8000 Faro.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  "name": "Clínica Dentária Faro",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Rua de Santo António 22",
+    "addressLocality": "Faro",
+    "postalCode": "8000",
+    "addressCountry": "PT"
+  },
+  "telephone": "+351289821134",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "201"
+  }
+}
+</script>
+
+<style>
+:root {
+  --ink: #0a1628;
+  --ink2: #1c2e4a;
+  --ink3: #2d4263;
+  --accent: #1a6fbf;
+  --accent2: #c9a84c;
+  --cream: #fff8f2;
+  --cream2: #fdf4ed;
+  --muted: #7a8fa6;
+  --text: #0f1e35;
+  --textlt: #4a6080;
+  --font-d: 'Cormorant Garamond', serif;
+  --font-b: 'Plus Jakarta Sans', sans-serif;
+  --r: 10px;
+  --r-lg: 18px;
+  --sh: 0 8px 40px rgba(0,0,0,0.12);
+  --trans: all 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-b); background: var(--cream2); color: var(--text); overflow-x: hidden; }
+
+/* ═══════════════════════════════════════
+   NAV
+═══════════════════════════════════════ */
+#mainNav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 2000;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6vw;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0) 100%);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition: var(--trans);
+}
+
+#mainNav.scrolled {
+  height: 80px;
+  background: rgba(10,22,40,0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 2px 32px rgba(0,0,0,0.22);
+}
+
+.nav-logo {
+  font-family: var(--font-d);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  line-height: 1.1;
+}
+
+.nav-logo span {
+  display: block;
+  font-size: 0.65rem;
+  font-family: var(--font-b);
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: var(--accent2);
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-b);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.88);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: var(--trans);
+}
+
+.nav-links a:hover { color: var(--accent2); }
+
+.btn-nav {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: var(--r);
+  padding: 0.6rem 1.4rem;
+  font-family: var(--font-b);
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--trans);
+  letter-spacing: 0.02em;
+}
+
+.btn-nav:hover {
+  background: #1560a8;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(26,111,191,0.35);
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 8px;
+  background: none;
+  border: none;
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: var(--trans);
+}
+
+#mobileMenu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(10,22,40,0.98);
+  z-index: 1999;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+#mobileMenu.open { opacity: 1; }
+
+#mobileMenu a {
+  font-family: var(--font-d);
+  font-size: 2rem;
+  color: var(--cream);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--trans);
+}
+
+#mobileMenu a:hover { color: var(--accent2); }
+
+.mobile-close {
+  position: absolute;
+  top: 2rem; right: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--cream);
+}
+
+/* ═══════════════════════════════════════
+   HERO
+═══════════════════════════════════════ */
+#hero {
+  height: 100vh;
+  min-height: 600px;
+  background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-bottom: 80px;
+  padding-left: 8vw;
+  padding-right: 8vw;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.50) 40%, rgba(0,0,0,0.18) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 740px;
+}
+
+.glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  padding: 6px 16px;
+  color: rgba(255,255,255,0.90);
+  font-family: var(--font-b);
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.2rem;
+}
+
+.hero-title {
+  font-family: var(--font-d);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  color: var(--cream);
+  line-height: 1.05;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-tagline {
+  font-family: var(--font-b);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255,248,242,0.88);
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 1.6rem;
+  max-width: 520px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.85rem 2rem;
+  font-family: var(--font-b);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--trans);
+  letter-spacing: 0.02em;
+}
+
+.btn-primary:hover {
+  background: #1560a8;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(26,111,191,0.40);
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--cream);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 8px;
+  padding: 0.85rem 2rem;
+  font-family: var(--font-b);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: var(--trans);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-ghost:hover {
+  background: rgba(255,255,255,0.20);
+  border-color: rgba(255,255,255,0.45);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  right: 8vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,255,255,0.55);
+  font-family: var(--font-b);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 50px;
+  background: rgba(255,255,255,0.40);
+  animation: pulseScroll 1.8s ease-in-out infinite;
+}
+
+@keyframes pulseScroll {
+  0%, 100% { opacity: 0.3; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.15); }
+}
+
+/* ═══════════════════════════════════════
+   TRUST BAR
+═══════════════════════════════════════ */
+#trustBar {
+  background: var(--accent);
+  padding: 24px 8vw;
+}
+
+.trust-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1.5rem;
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+
+.trust-item:first-child { padding-left: 0; }
+.trust-item:last-child { border-right: none; }
+
+.trust-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trust-icon svg { width: 20px; height: 20px; fill: none; stroke: #fff; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+.trust-label {
+  font-family: var(--font-b);
+  font-size: 0.72rem;
+  font-weight: 400;
+  color: rgba(255,255,255,0.72);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin-bottom: 3px;
+}
+
+.trust-value {
+  font-family: var(--font-d);
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1;
+}
+
+/* ═══════════════════════════════════════
+   GALLERY
+═══════════════════════════════════════ */
+#gallery {
+  background: var(--cream2);
+  padding: 100px 8vw;
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-b);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-d);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.section-lead {
+  font-family: var(--font-b);
+  font-size: 1rem;
+  color: var(--textlt);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-bottom: 3rem;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.photo-card {
+  aspect-ratio: 4/3;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.photo-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
+}
+
+.photo-card:hover .photo-card-bg { transform: scale(1.04); }
+
+.photo-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.08) 60%);
+  z-index: 1;
+}
+
+.photo-card-label {
+  position: absolute;
+  bottom: 1.4rem;
+  left: 1.4rem;
+  z-index: 2;
+  color: #fff;
+}
+
+.photo-card-label h3 {
+  font-family: var(--font-d);
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 3px;
+}
+
+.photo-card-label p {
+  font-family: var(--font-b);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.75);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+}
+
+/* ═══════════════════════════════════════
+   ABOUT
+═══════════════════════════════════════ */
+#about {
+  background: var(--cream);
+  padding: 100px 8vw;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 60fr 40fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.about-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1.4rem;
+}
+
+.about-line { width: 40px; height: 2px; background: var(--accent); }
+
+.about-story {
+  font-family: var(--font-b);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--textlt);
+  margin-bottom: 1.5rem;
+}
+
+.info-block { display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem; }
+
+.info-row { display: flex; align-items: flex-start; gap: 0.75rem; font-family: var(--font-b); font-size: 0.9rem; color: var(--text); font-weight: 500; }
+
+.info-row svg { width: 18px; height: 18px; flex-shrink: 0; fill: none; stroke: var(--accent); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-top: 2px; }
+
+.info-row-text strong { display: block; font-family: var(--font-b); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 2px; }
+
+.info-row-text p { font-family: var(--font-b); font-size: 0.95rem; color: var(--text); }
+
+.highlights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+.highlight-card {
+  background: var(--cream2);
+  border-radius: var(--r-lg);
+  padding: 1.4rem;
+  border: 1px solid rgba(26,111,191,0.10);
+  transition: var(--trans);
+}
+
+.highlight-card:hover { border-color: rgba(26,111,191,0.25); box-shadow: var(--sh); transform: translateY(-3px); }
+
+.highlight-num { font-family: var(--font-d); font-size: 2.2rem; font-weight: 700; color: var(--accent); line-height: 1; margin-bottom: 0.3rem; }
+
+.highlight-desc { font-family: var(--font-b); font-size: 0.8rem; color: var(--textlt); line-height: 1.4; }
+
+/* ═══════════════════════════════════════
+   REVIEWS
+═══════════════════════════════════════ */
+#reviews {
+  background: linear-gradient(135deg, rgba(26,111,191,0.08) 0%, var(--cream2) 100%);
+  padding: 100px 8vw;
+}
+
+.reviews-header { text-align: center; margin-bottom: 3.5rem; }
+
+.big-rating { font-family: var(--font-d); font-size: 5rem; font-weight: 700; color: var(--ink); line-height: 1; margin-bottom: 0.5rem; }
+
+.big-rating span { font-size: 2rem; color: var(--textlt); }
+
+.stars-large { display: flex; justify-content: center; gap: 4px; margin-bottom: 0.5rem; }
+.stars-large svg { width: 22px; height: 22px; fill: var(--accent2); }
+
+.reviews-count { font-family: var(--font-b); font-size: 0.875rem; color: var(--muted); }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+.review-card {
+  background: rgba(255,255,255,0.80);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(26,111,191,0.12);
+  border-radius: var(--r-lg);
+  padding: 1.5rem;
+  transition: var(--trans);
+}
+
+.review-card:hover { transform: translateY(-4px); box-shadow: var(--sh); border-color: rgba(26,111,191,0.25); }
+
+.review-stars { display: flex; gap: 2px; margin-bottom: 0.8rem; }
+.review-stars svg { width: 14px; height: 14px; fill: var(--accent2); }
+
+.review-text { font-family: var(--font-d); font-style: italic; font-size: 1rem; line-height: 1.65; color: var(--text); margin-bottom: 1rem; }
+
+.review-author { display: flex; align-items: center; justify-content: space-between; }
+
+.review-name { font-family: var(--font-b); font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+
+.review-badge { background: rgba(26,111,191,0.10); border-radius: 20px; padding: 2px 8px; font-family: var(--font-b); font-size: 0.68rem; font-weight: 600; color: var(--accent); letter-spacing: 0.04em; }
+
+.reviews-dots { display: none; justify-content: center; gap: 6px; margin-top: 1.5rem; }
+
+.dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(26,111,191,0.25); cursor: pointer; transition: var(--trans); }
+.dot.active { background: var(--accent); width: 20px; border-radius: 4px; }
+
+/* ═══════════════════════════════════════
+   CONTACT
+═══════════════════════════════════════ */
+#contact { background: var(--cream); padding: 100px 8vw; }
+
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+
+.hours-title { font-family: var(--font-d); font-size: 1.5rem; font-weight: 700; color: var(--ink); margin-bottom: 1.2rem; margin-top: 2rem; }
+
+.hours-table { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 0; border-radius: var(--r); overflow: hidden; }
+
+.hours-day, .hours-time { background: var(--cream2); padding: 0.55rem 1rem; font-family: var(--font-b); font-size: 0.875rem; border-bottom: 1px solid rgba(26,111,191,0.07); }
+
+.hours-day { font-weight: 600; color: var(--text); }
+.hours-time { color: var(--textlt); text-align: right; }
+.hours-time.closed { color: #c0392b; }
+
+.contact-form { background: var(--cream2); border-radius: var(--r-lg); padding: 2.5rem; border: 1px solid rgba(26,111,191,0.10); box-shadow: var(--sh); }
+
+.form-title { font-family: var(--font-d); font-size: 1.8rem; font-weight: 700; color: var(--ink); margin-bottom: 0.5rem; }
+.form-subtitle { font-family: var(--font-b); font-size: 0.875rem; color: var(--muted); margin-bottom: 1.8rem; }
+
+.form-group { margin-bottom: 1.2rem; }
+
+.form-group label { display: block; font-family: var(--font-b); font-size: 0.8rem; font-weight: 600; color: var(--text); letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 0.4rem; }
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  background: var(--cream);
+  border: 1px solid rgba(26,111,191,0.15);
+  border-radius: var(--r);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-b);
+  font-size: 0.95rem;
+  color: var(--text);
+  outline: none;
+  transition: var(--trans);
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(26,111,191,0.12); }
+
+.form-group textarea { min-height: 120px; }
+
+.btn-submit { width: 100%; background: var(--accent); color: #fff; border: none; border-radius: var(--r); padding: 0.95rem 2rem; font-family: var(--font-b); font-size: 1rem; font-weight: 600; cursor: pointer; transition: var(--trans); letter-spacing: 0.02em; }
+
+.btn-submit:hover { background: #1560a8; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(26,111,191,0.35); }
+
+/* ═══════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════ */
+#footer { background: #07111e; padding: 70px 8vw 0; }
+
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 4rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+
+.footer-brand-name { font-family: var(--font-d); font-size: 1.6rem; font-weight: 700; color: var(--cream); margin-bottom: 0.2rem; }
+
+.footer-tagline { font-family: var(--font-b); font-size: 0.82rem; color: rgba(255,255,255,0.45); margin-bottom: 1.5rem; line-height: 1.5; }
+
+.social-row { display: flex; gap: 10px; }
+
+.social-btn { width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: var(--trans); text-decoration: none; }
+
+.social-btn.ig { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+.social-btn.fb { background: #1877f2; }
+.social-btn.gm { background: #ea4335; }
+
+.social-btn:hover { transform: translateY(-3px) scale(1.08); }
+.social-btn svg { width: 18px; height: 18px; }
+
+.footer-col-title { font-family: var(--font-b); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent2); margin-bottom: 1.2rem; }
+
+.footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+
+.footer-links a { font-family: var(--font-b); font-size: 0.875rem; color: rgba(255,255,255,0.60); text-decoration: none; transition: var(--trans); }
+.footer-links a:hover { color: var(--cream); }
+
+.footer-contact-item { display: flex; align-items: flex-start; gap: 0.6rem; margin-bottom: 0.8rem; }
+
+.footer-contact-item svg { width: 16px; height: 16px; flex-shrink: 0; fill: none; stroke: var(--accent2); stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; margin-top: 2px; }
+
+.footer-contact-item p { font-family: var(--font-b); font-size: 0.85rem; color: rgba(255,255,255,0.60); line-height: 1.5; }
+
+.footer-bottom { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 0; }
+
+.footer-copy { font-family: var(--font-b); font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+
+.footer-dev { font-family: var(--font-b); font-size: 0.78rem; color: rgba(255,255,255,0.35); }
+
+.footer-dev a { color: var(--accent2); text-decoration: none; }
+.footer-dev a:hover { text-decoration: underline; }
+
+/* ═══════════════════════════════════════
+   ANIMATIONS
+═══════════════════════════════════════ */
+.fade-up { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+
+.hero-stagger-1 { animation: fadeUpHero 0.8s ease 0.3s both; }
+.hero-stagger-2 { animation: fadeUpHero 0.8s ease 0.5s both; }
+.hero-stagger-3 { animation: fadeUpHero 0.8s ease 0.7s both; }
+.hero-stagger-4 { animation: fadeUpHero 0.8s ease 0.9s both; }
+.hero-stagger-5 { animation: fadeUpHero 0.8s ease 1.1s both; }
+
+@keyframes fadeUpHero {
+  from { opacity: 0; transform: translateY(28px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ═══════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════ */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .btn-nav.desktop-cta { display: none; }
+  .hamburger { display: flex; }
+  #mobileMenu { display: flex; }
+
+  .trust-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  .trust-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.12); padding: 0.8rem 0.5rem; }
+  .trust-item:nth-child(2), .trust-item:nth-child(4) { border-bottom: none; }
+
+  .cards-grid { grid-template-columns: 1fr 1fr; }
+  .cards-grid .photo-card:last-child { grid-column: span 2; }
+
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+  .reviews-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    padding-bottom: 1rem;
+    scrollbar-width: none;
+  }
+  .reviews-grid::-webkit-scrollbar { display: none; }
+  .review-card { flex: 0 0 85vw; scroll-snap-align: center; }
+  .reviews-dots { display: flex; }
+
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+  .footer-grid > *:first-child { grid-column: span 2; }
+}
+
+@media (max-width: 600px) {
+  #hero { padding-left: 6vw; padding-right: 6vw; padding-bottom: 60px; }
+  #trustBar { padding: 20px 5vw; }
+  #gallery, #about, #reviews, #contact { padding: 70px 6vw; }
+  #footer { padding: 50px 6vw 0; }
+
+  .cards-grid { grid-template-columns: 1fr; }
+  .cards-grid .photo-card:last-child { grid-column: span 1; }
+  .highlights-grid { grid-template-columns: 1fr 1fr; }
+
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-grid > *:first-child { grid-column: span 1; }
+  .footer-bottom { flex-direction: column; gap: 0.5rem; text-align: center; }
+
+  .hero-ctas { flex-direction: column; }
+  .btn-primary, .btn-ghost { text-align: center; justify-content: center; }
+  .contact-form { padding: 1.8rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ NAV ═══════════ -->
+<nav id="mainNav">
+  <a href="#" class="nav-logo">
+    Clínica Dentária
+    <span>Faro · Saúde Oral</span>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#gallery">Serviços</a></li>
+    <li><a href="#about">Sobre Nós</a></li>
+    <li><a href="#reviews">Avaliações</a></li>
+    <li><a href="#contact">Contacto</a></li>
+    <li><a href="#contact" class="btn-nav desktop-cta">Marcar Consulta</a></li>
+  </ul>
+
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" role="dialog" aria-modal="true">
+  <button class="mobile-close" id="mobileClose" aria-label="Fechar menu">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      <path d="M18 6L6 18M6 6l12 12"/>
+    </svg>
+  </button>
+  <a href="#gallery" class="mobile-nav-link">Serviços</a>
+  <a href="#about" class="mobile-nav-link">Sobre Nós</a>
+  <a href="#reviews" class="mobile-nav-link">Avaliações</a>
+  <a href="#contact" class="mobile-nav-link">Contacto</a>
+  <a href="#contact" class="btn-primary mobile-nav-link" style="font-size:1.1rem;padding:1rem 2.5rem;">Marcar Consulta</a>
+</div>
+
+<!-- ═══════════ HERO ═══════════ -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="glass-pill hero-stagger-1">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+        <circle cx="12" cy="9" r="2.5"/>
+      </svg>
+      Rua de Santo António 22, Faro
+    </div>
+
+    <h1 class="hero-title hero-stagger-2">
+      Clínica Dentária<br>Faro
+    </h1>
+
+    <p class="hero-tagline hero-stagger-3">
+      Um sorriso saudável começa aqui. Tratamentos de excelência com tecnologia de ponta, no coração do Algarve.
+    </p>
+
+    <div class="glass-pill hero-stagger-4" style="margin-bottom:1.8rem;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="#c9a84c"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      4.9 / 5 &nbsp;·&nbsp; 201 avaliações Google
+    </div>
+
+    <div class="hero-ctas hero-stagger-5">
+      <a href="#contact" class="btn-primary">Marcar Consulta</a>
+      <a href="tel:+351289821134" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/>
+        </svg>
+        +351 289 821 134
+      </a>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>rolar</span>
+  </div>
+</section>
+
+<!-- ═══════════ TRUST BAR ═══════════ -->
+<div id="trustBar">
+  <div class="trust-grid">
+    <div class="trust-item fade-up stagger-1">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div>
+        <div class="trust-label">Experiência</div>
+        <div class="trust-value">+20 Anos</div>
+      </div>
+    </div>
+
+    <div class="trust-item fade-up stagger-2">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+      </div>
+      <div>
+        <div class="trust-label">Pacientes Tratados</div>
+        <div class="trust-value">+5 000</div>
+      </div>
+    </div>
+
+    <div class="trust-item fade-up stagger-3">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <div>
+        <div class="trust-label">Avaliação Google</div>
+        <div class="trust-value">4.9 / 5</div>
+      </div>
+    </div>
+
+    <div class="trust-item fade-up stagger-4">
+      <div class="trust-icon">
+        <svg viewBox="0 0 24 24"><path d="M9 12l2 2 4-4"/><path d="M12 2a10 10 0 100 20A10 10 0 0012 2z"/></svg>
+      </div>
+      <div>
+        <div class="trust-label">Especialidades</div>
+        <div class="trust-value">8 Áreas</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════ GALLERY / SERVICES ═══════════ -->
+<section id="gallery">
+  <div class="fade-up">
+    <span class="section-tag">Os Nossos Serviços</span>
+    <h2 class="section-title">Cuidados Dentários<br>para Toda a Família</h2>
+    <p class="section-lead">Da prevenção à reabilitação, oferecemos uma gama completa de tratamentos dentários com equipamentos de última geração e uma equipa especializada e dedicada.</p>
+  </div>
+
+  <div class="cards-grid">
+    <div class="photo-card fade-up stagger-1">
+      <div class="photo-card-bg" style="background-image:url('https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="photo-card-label">
+        <h3>Implantes Dentários</h3>
+        <p>Reabilitação oral completa e definitiva</p>
+      </div>
+    </div>
+
+    <div class="photo-card fade-up stagger-2">
+      <div class="photo-card-bg" style="background-image:url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="photo-card-label">
+        <h3>Ortodontia</h3>
+        <p>Alinhamento perfeito com Invisalign e brackets</p>
+      </div>
+    </div>
+
+    <div class="photo-card fade-up stagger-3">
+      <div class="photo-card-bg" style="background-image:url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="photo-card-label">
+        <h3>Estética Dentária</h3>
+        <p>Branqueamento, facetas e design do sorriso</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ABOUT ═══════════ -->
+<section id="about">
+  <div class="about-grid">
+    <div class="fade-up">
+      <div class="about-eyebrow">
+        <div class="about-line"></div>
+        <span class="section-tag" style="margin:0">A Nossa História</span>
+      </div>
+      <h2 class="section-title" style="font-size:clamp(1.8rem,3.5vw,2.6rem)">Mais de Duas Décadas ao Serviço de Faro</h2>
+      <p class="about-story">Fundada no coração do Algarve, a Clínica Dentária Faro nasceu do compromisso de oferecer cuidados dentários de excelência à população de Faro e arredores. Durante mais de 20 anos, construímos relações de confiança com as famílias algarvias, aliando competência técnica a um atendimento caloroso e personalizado.</p>
+      <p class="about-story">A nossa equipa de especialistas utiliza tecnologia de ponta — desde scanner 3D a lasers dentários — para garantir diagnósticos precisos e tratamentos minimamente invasivos. Acreditamos que um sorriso saudável transforma vidas, e é com essa convicção que trabalhamos todos os dias na Rua de Santo António.</p>
+
+      <div class="info-block">
+        <div class="info-row">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <div class="info-row-text">
+            <strong>Morada</strong>
+            <p>Rua de Santo António 22, 8000 Faro</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+          <div class="info-row-text">
+            <strong>Telefone</strong>
+            <p>+351 289 821 134</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="highlights-grid fade-up stagger-2">
+      <div class="highlight-card">
+        <div class="highlight-num">+20</div>
+        <div class="highlight-desc">Anos de experiência em saúde oral no Algarve</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">8</div>
+        <div class="highlight-desc">Especialidades dentárias sob o mesmo tecto</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">4.9</div>
+        <div class="highlight-desc">Avaliação média em 201 recensões Google</div>
+      </div>
+      <div class="highlight-card">
+        <div class="highlight-num">12</div>
+        <div class="highlight-desc">Profissionais de saúde oral certificados</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ REVIEWS ═══════════ -->
+<section id="reviews">
+  <div class="reviews-header fade-up">
+    <div class="big-rating">4.9 <span>/ 5</span></div>
+    <div class="stars-large">
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+    <p class="reviews-count">Baseado em 201 avaliações no Google</p>
+  </div>
+
+  <div class="reviews-grid" id="reviewsGrid">
+    <div class="review-card fade-up stagger-1">
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">"Realizei o tratamento de implante dentário na Clínica Dentária Faro e o resultado superou todas as expectativas. A equipa é extremamente profissional, o ambiente da clínica é acolhedor e moderno, e nunca senti dor durante todo o processo. O acompanhamento pós-operatório foi exemplar. Recomendo vivamente a qualquer pessoa em Faro ou no Algarve."</p>
+      <div class="review-author">
+        <span class="review-name">Maria S.</span>
+        <span class="review-badge">Google</span>
+      </div>
+    </div>
+
+    <div class="review-card fade-up stagger-2">
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">"Levo os meus filhos à Clínica Dentária Faro há vários anos e nunca fui mal atendido. Os médicos têm uma paciência enorme com as crianças e explicam cada passo do tratamento de forma clara e tranquila. O tratamento de ortodontia do meu filho foi um sucesso completo, com resultados visíveis ao fim de poucos meses. Uma clínica verdadeiramente de referência no Algarve."</p>
+      <div class="review-author">
+        <span class="review-name">João F.</span>
+        <span class="review-badge">Google</span>
+      </div>
+    </div>
+
+    <div class="review-card fade-up stagger-3">
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">"Fiz o branqueamento dentário e o Invisalign em simultâneo e estou absolutamente encantada com os resultados. O meu sorriso mudou completamente ao longo de um ano de tratamento. A Dra. explicou-me cada etapa com muita atenção e disponibilidade. A clínica é moderna, limpa e de fácil acesso no centro de Faro. Vale cada cêntimo investido."</p>
+      <div class="review-author">
+        <span class="review-name">Ana P.</span>
+        <span class="review-badge">Google</span>
+      </div>
+    </div>
+
+    <div class="review-card fade-up stagger-4">
+      <div class="review-stars">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">"Cheguei à clínica com muita ansiedade dentária acumulada ao longo de anos e fui recebido com uma calma e profissionalismo que me tranquilizou imediatamente. A equipa foi incrivelmente atenciosa, explica tudo antes de começar, e o tratamento decorreu sem qualquer stress ou dor inesperada. Hoje já não tenho medo de ir ao dentista. Obrigado a toda a equipa da Rua de Santo António!"</p>
+      <div class="review-author">
+        <span class="review-name">Carlos M.</span>
+        <span class="review-badge">Google</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="reviews-dots" id="reviewsDots">
+    <div class="dot active" data-index="0"></div>
+    <div class="dot" data-index="1"></div>
+    <div class="dot" data-index="2"></div>
+    <div class="dot" data-index="3"></div>
+  </div>
+</section>
+
+<!-- ═══════════ CONTACT ═══════════ -->
+<section id="contact">
+  <div class="fade-up" style="margin-bottom:3rem">
+    <span class="section-tag">Contacto &amp; Horário</span>
+    <h2 class="section-title">Estamos Aqui para Si</h2>
+    <p class="section-lead">Marque a sua consulta ou tire as suas dúvidas. A nossa equipa responde rapidamente.</p>
+  </div>
+
+  <div class="contact-grid">
+    <div class="fade-up stagger-1">
+      <div class="info-block">
+        <div class="info-row">
+          <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          <div class="info-row-text">
+            <strong>Morada</strong>
+            <p>Rua de Santo António 22<br>8000 Faro, Portugal</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+          <div class="info-row-text">
+            <strong>Telefone</strong>
+            <p>+351 289 821 134</p>
+          </div>
+        </div>
+        <div class="info-row">
+          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <div class="info-row-text">
+            <strong>Email</strong>
+            <p>clinica@clinicadentariafaro.pt</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="hours-title">Horário de Atendimento</div>
+      <div class="hours-table">
+        <div class="hours-day">Segunda-feira</div>
+        <div class="hours-time">09:00 – 19:00</div>
+        <div class="hours-day">Terça-feira</div>
+        <div class="hours-time">09:00 – 19:00</div>
+        <div class="hours-day">Quarta-feira</div>
+        <div class="hours-time">09:00 – 19:00</div>
+        <div class="hours-day">Quinta-feira</div>
+        <div class="hours-time">09:00 – 19:00</div>
+        <div class="hours-day">Sexta-feira</div>
+        <div class="hours-time">09:00 – 18:00</div>
+        <div class="hours-day">Sábado</div>
+        <div class="hours-time">09:00 – 13:00</div>
+        <div class="hours-day">Domingo</div>
+        <div class="hours-time closed">Encerrado</div>
+      </div>
+    </div>
+
+    <div class="contact-form fade-up stagger-2">
+      <div class="form-title">Marcar Consulta</div>
+      <p class="form-subtitle">Preencha o formulário e entraremos em contacto em menos de 24 horas.</p>
+
+      <form>
+        <div class="form-group">
+          <label>Nome Completo</label>
+          <input type="text" placeholder="O seu nome">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="email@exemplo.pt">
+        </div>
+        <div class="form-group">
+          <label>Telefone</label>
+          <input type="tel" placeholder="+351 9XX XXX XXX">
+        </div>
+        <div class="form-group">
+          <label>Serviço Pretendido</label>
+          <select>
+            <option value="">Selecione um serviço</option>
+            <option>Consulta de Avaliação</option>
+            <option>Implantes Dentários</option>
+            <option>Ortodontia / Invisalign</option>
+            <option>Branqueamento Dentário</option>
+            <option>Estética Dentária</option>
+            <option>Periodontologia</option>
+            <option>Medicina Dentária Infantil</option>
+            <option>Urgência Dentária</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensagem</label>
+          <textarea placeholder="Descreva a sua situação ou coloque as suas questões..."></textarea>
+        </div>
+        <button type="submit" class="btn-submit">Enviar Pedido de Consulta</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer id="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Clínica Dentária Faro</div>
+      <p class="footer-tagline">Cuidados dentários de excelência no coração do Algarve.<br>O seu sorriso é a nossa missão.</p>
+      <div class="social-row">
+        <a href="#" class="social-btn ig" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="#" class="social-btn fb" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="#fff">
+            <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+          </svg>
+        </a>
+        <a href="#" class="social-btn gm" aria-label="Google Maps">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Navegação</div>
+      <ul class="footer-links">
+        <li><a href="#gallery">Serviços</a></li>
+        <li><a href="#about">Sobre Nós</a></li>
+        <li><a href="#reviews">Avaliações</a></li>
+        <li><a href="#contact">Contacto</a></li>
+        <li><a href="#contact">Marcar Consulta</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <p>Rua de Santo António 22<br>8000 Faro, Portugal</p>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 14.92z"/></svg>
+        <p>+351 289 821 134</p>
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <p>clinica@clinicadentariafaro.pt</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2026 Clínica Dentária Faro. Todos os direitos reservados.</span>
+    <span class="footer-dev">Desenvolvido por <a href="https://challengingdawn.pt" target="_blank" rel="noopener">ChallengingDawn.pt</a></span>
+  </div>
+</footer>
+
+<script>
+// ── 1. NAV SCROLL ──────────────────────────────────
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+// ── 2. MOBILE HAMBURGER ────────────────────────────
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
+
+function openMenu() {
+  mobileMenu.style.display = 'flex';
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      mobileMenu.classList.add('open');
+    });
+  });
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMenu() {
+  mobileMenu.classList.remove('open');
+  setTimeout(() => { mobileMenu.style.display = 'none'; }, 300);
+  document.body.style.overflow = '';
+}
+
+hamburgerBtn.addEventListener('click', openMenu);
+mobileClose.addEventListener('click', closeMenu);
+
+document.querySelectorAll('.mobile-nav-link').forEach(link => {
+  link.addEventListener('click', closeMenu);
+});
+
+// ── 3. INTERSECTION OBSERVER (fade-up) ────────────
+const fadeEls = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+fadeEls.forEach(el => observer.observe(el));
+
+// ── 4. REVIEWS CAROUSEL (mobile) ──────────────────
+const reviewsGrid = document.getElementById('reviewsGrid');
+const dots = document.querySelectorAll('#reviewsDots .dot');
+let touchStartX = 0;
+let activeIndex = 0;
+
+function updateDots(index) {
+  dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+}
+
+function goToCard(index) {
+  if (window.innerWidth > 960) return;
+  const cards = reviewsGrid.querySelectorAll('.review-card');
+  if (index < 0) index = 0;
+  if (index >= cards.length) index = cards.length - 1;
+  activeIndex = index;
+  const card = cards[index];
+  const containerRect = reviewsGrid.getBoundingClientRect();
+  const cardRect = card.getBoundingClientRect();
+  const scrollOffset = reviewsGrid.scrollLeft + cardRect.left - containerRect.left - (reviewsGrid.offsetWidth / 2) + (card.offsetWidth / 2);
+  reviewsGrid.scrollTo({ left: scrollOffset, behavior: 'smooth' });
+  updateDots(activeIndex);
+}
+
+dots.forEach(dot => {
+  dot.addEventListener('click', () => goToCard(parseInt(dot.dataset.index)));
+});
+
+reviewsGrid.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].clientX;
+}, { passive: true });
+
+reviewsGrid.addEventListener('touchend', (e) => {
+  const dx = touchStartX - e.changedTouches[0].clientX;
+  if (Math.abs(dx) > 50) goToCard(activeIndex + (dx > 0 ? 1 : -1));
+}, { passive: true });
+
+reviewsGrid.addEventListener('scroll', () => {
+  if (window.innerWidth > 960) return;
+  const cards = reviewsGrid.querySelectorAll('.review-card');
+  if (!cards.length) return;
+  const cardWidth = cards[0].offsetWidth + 16;
+  const newIndex = Math.min(Math.max(Math.round(reviewsGrid.scrollLeft / cardWidth), 0), cards.length - 1);
+  if (newIndex !== activeIndex) { activeIndex = newIndex; updateDots(activeIndex); }
+}, { passive: true });
+
+// ── 5. FORM SUBMIT ─────────────────────────────────
+document.querySelector('form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const btn = document.querySelector('.btn-submit');
+  btn.textContent = 'Pedido Enviado — Obrigado!';
+  btn.style.background = '#27ae60';
+  setTimeout(() => {
+    btn.textContent = 'Enviar Pedido de Consulta';
+    btn.style.background = '';
+  }, 4000);
+});
+</script>
+</body>
+</html>
