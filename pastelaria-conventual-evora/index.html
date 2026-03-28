@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pastelaria Conventual Évora — Doces Tradicionais do Alentejo</title>
+<meta name="description" content="Pastelaria Conventual Évora, na Praça do Giraldo 14. Doces conventuais artesanais, receitas do século XVII, no coração de Évora. 4.9/5 em 423 avaliações.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Pastelaria Conventual Évora",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Praça do Giraldo 14",
+    "addressLocality": "Évora",
+    "postalCode": "7000",
+    "addressCountry": "PT"
+  },
+  "telephone": "+351266702345",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "423"
+  }
+}
+</script>
+
+<style>
+:root {
+  --ink: #1c0e04;
+  --ink2: #2e1a0a;
+  --ink3: #4a2c14;
+  --accent: #8b3a0f;
+  --accent2: #c9943a;
+  --cream: #fff8f2;
+  --cream2: #fdf4ed;
+  --muted: #9a7a65;
+  --text: #2a1505;
+  --textlt: #6b4e38;
+  --font-d: 'Cormorant Garamond', serif;
+  --font-b: 'Outfit', sans-serif;
+  --r: 10px;
+  --r-lg: 18px;
+  --sh: 0 8px 40px rgba(0,0,0,0.12);
+  --trans: all 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-b);
+  background: var(--cream2);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── NAV ── */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 2000;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6vw;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0) 100%);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
+  transition: var(--trans);
+}
+
+#nav.scrolled {
+  height: 80px;
+  background: rgba(28,14,4,0.96);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.28);
+}
+
+.nav-logo {
+  font-family: var(--font-d);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--cream);
+  text-decoration: none;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+}
+
+.nav-logo span {
+  display: block;
+  font-size: 0.75rem;
+  font-family: var(--font-b);
+  font-weight: 400;
+  color: rgba(255,248,242,0.65);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-b);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255,248,242,0.88);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  transition: var(--trans);
+}
+
+.nav-links a:hover { color: var(--accent2); }
+
+.btn-nav {
+  background: var(--accent);
+  color: var(--cream) !important;
+  padding: 0.55rem 1.3rem;
+  border-radius: var(--r);
+  font-weight: 600 !important;
+  transition: var(--trans) !important;
+}
+
+.btn-nav:hover {
+  background: var(--accent2) !important;
+  color: var(--ink) !important;
+}
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: var(--trans);
+}
+
+#mobileMenu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1999;
+  background: rgba(28,14,4,0.97);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+}
+
+#mobileMenu.open { display: flex; }
+
+#mobileMenu a {
+  font-family: var(--font-d);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: var(--trans);
+}
+
+#mobileMenu a:hover { color: var(--accent2); }
+
+.menu-close {
+  position: absolute;
+  top: 30px; right: 6vw;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--cream);
+  font-size: 2rem;
+  line-height: 1;
+}
+
+/* ── HERO ── */
+#hero {
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  background-image: url('https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.50) 40%, rgba(0,0,0,0.20) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 10;
+  padding-bottom: 80px;
+  padding-left: 8vw;
+  padding-right: 8vw;
+  max-width: 860px;
+}
+
+.glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  padding: 6px 16px;
+  font-family: var(--font-b);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255,248,242,0.92);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.hero-title {
+  font-family: var(--font-d);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.05;
+  margin: 1.2rem 0 1rem;
+  letter-spacing: -0.01em;
+}
+
+.hero-tagline {
+  font-family: var(--font-d);
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  font-weight: 400;
+  font-style: italic;
+  color: rgba(255,248,242,0.88);
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.hero-rating {
+  margin-bottom: 2rem;
+}
+
+.star-icon {
+  width: 14px;
+  height: 14px;
+  fill: var(--accent2);
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--cream);
+  border: none;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-family: var(--font-b);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: var(--trans);
+  letter-spacing: 0.03em;
+}
+
+.btn-primary:hover {
+  background: var(--accent2);
+  color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139,58,15,0.45);
+}
+
+.btn-secondary {
+  background: rgba(255,255,255,0.10);
+  color: var(--cream);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-family: var(--font-b);
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: var(--trans);
+  letter-spacing: 0.03em;
+}
+
+.btn-secondary:hover {
+  background: rgba(255,255,255,0.20);
+  border-color: rgba(255,255,255,0.45);
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 10;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(255,248,242,0.8), rgba(255,248,242,0));
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+
+.scroll-label {
+  font-family: var(--font-b);
+  font-size: 0.65rem;
+  color: rgba(255,248,242,0.55);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  writing-mode: vertical-rl;
+  margin-top: 4px;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.4; transform: scaleY(1); }
+  50% { opacity: 1; transform: scaleY(1.15); }
+}
+
+/* ── FADE-UP ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.fade-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+
+/* ── STATS BAR ── */
+#stats {
+  background: var(--accent);
+  padding: 20px 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  flex: 1;
+  min-width: 180px;
+  padding: 10px 0;
+}
+
+.stat-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.14);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--cream);
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.stat-info strong {
+  display: block;
+  font-family: var(--font-d);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.1;
+}
+
+.stat-info span {
+  font-family: var(--font-b);
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: rgba(255,248,242,0.72);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.14);
+  flex-shrink: 0;
+}
+
+/* ── SECTION SHARED ── */
+.section-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 6vw;
+}
+
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-b);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 0.8rem;
+}
+
+.section-title {
+  font-family: var(--font-d);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 1.2rem;
+}
+
+.section-lead {
+  font-family: var(--font-b);
+  font-size: 1.05rem;
+  color: var(--textlt);
+  line-height: 1.7;
+  max-width: 560px;
+}
+
+/* ── GALLERY ── */
+#gallery {
+  background: var(--cream2);
+  padding: 100px 0;
+}
+
+.gallery-header {
+  margin-bottom: 3rem;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.gallery-card {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: var(--sh);
+}
+
+.gallery-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+}
+
+.gallery-card:hover .gallery-card-bg {
+  transform: scale(1.04);
+}
+
+.gallery-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.10) 55%, transparent 100%);
+}
+
+.gallery-card-label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 1.5rem 1.5rem 1.4rem;
+}
+
+.gallery-card-label h3 {
+  font-family: var(--font-d);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 0.3rem;
+}
+
+.gallery-card-label p {
+  font-family: var(--font-b);
+  font-size: 0.82rem;
+  color: rgba(255,248,242,0.72);
+  font-weight: 400;
+}
+
+/* ── ABOUT ── */
+#about {
+  background: var(--cream);
+  padding: 100px 0;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 60fr 40fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.about-body {
+  font-family: var(--font-b);
+  font-size: 1.05rem;
+  color: var(--textlt);
+  line-height: 1.8;
+  margin: 1.5rem 0 2rem;
+}
+
+.about-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.contact-line {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-b);
+  font-size: 0.95rem;
+  color: var(--textlt);
+}
+
+.contact-line svg {
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+}
+
+.highlights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.highlight-card {
+  background: var(--cream2);
+  border-radius: var(--r-lg);
+  padding: 1.6rem 1.3rem;
+  border: 1px solid rgba(139,58,15,0.10);
+  transition: var(--trans);
+}
+
+.highlight-card:hover {
+  border-color: rgba(139,58,15,0.25);
+  box-shadow: 0 6px 24px rgba(139,58,15,0.10);
+  transform: translateY(-3px);
+}
+
+.highlight-icon {
+  width: 42px;
+  height: 42px;
+  background: rgba(139,58,15,0.10);
+  border-radius: var(--r);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.highlight-icon svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.highlight-card strong {
+  display: block;
+  font-family: var(--font-d);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.1;
+  margin-bottom: 0.3rem;
+}
+
+.highlight-card p {
+  font-family: var(--font-b);
+  font-size: 0.82rem;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── REVIEWS ── */
+#reviews {
+  background: linear-gradient(135deg, rgba(139,58,15,0.08) 0%, var(--cream2) 60%);
+  padding: 100px 0;
+}
+
+.reviews-top {
+  display: flex;
+  align-items: flex-end;
+  gap: 2rem;
+  margin-bottom: 3.5rem;
+  flex-wrap: wrap;
+}
+
+.reviews-score {
+  font-family: var(--font-d);
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+}
+
+.reviews-meta p {
+  font-family: var(--font-b);
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-top: 0.4rem;
+}
+
+.stars-row {
+  display: flex;
+  gap: 3px;
+  margin-bottom: 0.3rem;
+}
+
+.stars-row svg {
+  width: 20px;
+  height: 20px;
+  fill: var(--accent2);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.review-card {
+  background: rgba(255,255,255,0.80);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(139,58,15,0.12);
+  border-radius: var(--r-lg);
+  padding: 1.8rem 1.5rem;
+  transition: var(--trans);
+}
+
+.review-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(139,58,15,0.12);
+}
+
+.review-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(139,58,15,0.08);
+  border-radius: 20px;
+  padding: 0.3rem 0.75rem;
+  font-family: var(--font-b);
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.review-badge svg {
+  width: 12px;
+  height: 12px;
+  fill: var(--accent);
+}
+
+.review-stars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 0.9rem;
+}
+
+.review-stars svg {
+  width: 14px;
+  height: 14px;
+  fill: var(--accent2);
+}
+
+.review-text {
+  font-family: var(--font-d);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--text);
+  line-height: 1.65;
+  margin-bottom: 1.2rem;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.review-avatar {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-d);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cream);
+  flex-shrink: 0;
+}
+
+.review-name {
+  font-family: var(--font-b);
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.review-date {
+  font-family: var(--font-b);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.reviews-dots {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+
+.reviews-dots button {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(139,58,15,0.25);
+  border: none;
+  cursor: pointer;
+  transition: var(--trans);
+  padding: 0;
+}
+
+.reviews-dots button.active {
+  background: var(--accent);
+  width: 22px;
+  border-radius: 4px;
+}
+
+/* ── CONTACT ── */
+#contact {
+  background: var(--cream);
+  padding: 100px 0;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+
+.hours-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.5rem 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.hours-day {
+  font-family: var(--font-b);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+
+.hours-time {
+  font-family: var(--font-b);
+  font-size: 0.9rem;
+  color: var(--textlt);
+}
+
+.hours-divider {
+  grid-column: 1/-1;
+  height: 1px;
+  background: rgba(139,58,15,0.10);
+  margin: 6px 0;
+}
+
+.contact-info-block {
+  margin-top: 2rem;
+}
+
+.contact-form {
+  background: var(--cream2);
+  border-radius: var(--r-lg);
+  padding: 2.5rem;
+  border: 1px solid rgba(139,58,15,0.10);
+  box-shadow: var(--sh);
+}
+
+.form-title {
+  font-family: var(--font-d);
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  display: block;
+  font-family: var(--font-b);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--textlt);
+  margin-bottom: 0.45rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: var(--cream);
+  border: 1.5px solid rgba(139,58,15,0.15);
+  border-radius: var(--r);
+  padding: 0.8rem 1rem;
+  font-family: var(--font-b);
+  font-size: 0.95rem;
+  color: var(--text);
+  outline: none;
+  transition: var(--trans);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(139,58,15,0.10);
+}
+
+.form-group textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+
+.btn-form {
+  width: 100%;
+  background: var(--accent);
+  color: var(--cream);
+  border: none;
+  padding: 0.95rem 2rem;
+  border-radius: var(--r);
+  font-family: var(--font-b);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--trans);
+  letter-spacing: 0.04em;
+  margin-top: 0.5rem;
+}
+
+.btn-form:hover {
+  background: var(--accent2);
+  color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(139,58,15,0.35);
+}
+
+/* ── FOOTER ── */
+#footer {
+  background: #120600;
+  padding: 70px 0 0;
+}
+
+.footer-grid {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 6vw 3rem;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 4rem;
+}
+
+.footer-brand-name {
+  font-family: var(--font-d);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+  font-family: var(--font-d);
+  font-size: 1rem;
+  font-style: italic;
+  color: rgba(255,248,242,0.50);
+  margin-bottom: 1.8rem;
+  line-height: 1.5;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.social-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(255,248,242,0.08);
+  border: 1px solid rgba(255,248,242,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: var(--trans);
+}
+
+.social-btn:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+
+.social-btn svg {
+  width: 18px;
+  height: 18px;
+}
+
+.footer-col-title {
+  font-family: var(--font-d);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 1.3rem;
+  letter-spacing: 0.02em;
+}
+
+.footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.footer-links a {
+  font-family: var(--font-b);
+  font-size: 0.9rem;
+  color: rgba(255,248,242,0.50);
+  text-decoration: none;
+  transition: var(--trans);
+}
+
+.footer-links a:hover { color: var(--accent2); }
+
+.footer-contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.footer-contact-line {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  font-family: var(--font-b);
+  font-size: 0.88rem;
+  color: rgba(255,248,242,0.50);
+  line-height: 1.5;
+}
+
+.footer-contact-line svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: var(--accent2);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.footer-bar {
+  border-top: 1px solid rgba(255,248,242,0.07);
+  padding: 1.2rem 6vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.footer-bar-left {
+  font-family: var(--font-b);
+  font-size: 0.82rem;
+  color: rgba(255,248,242,0.30);
+}
+
+.footer-bar-right {
+  font-family: var(--font-b);
+  font-size: 0.82rem;
+  color: rgba(255,248,242,0.30);
+}
+
+.footer-bar-right a {
+  color: var(--accent2);
+  text-decoration: none;
+  transition: var(--trans);
+}
+
+.footer-bar-right a:hover { color: var(--cream); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+
+  .stat-divider { display: none; }
+
+  .stat-item {
+    flex: 1 1 45%;
+    padding: 14px 8px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .gallery-grid .gallery-card:last-child {
+    grid-column: 1 / -1;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .reviews-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding-bottom: 12px;
+    scrollbar-width: none;
+  }
+
+  .reviews-grid::-webkit-scrollbar { display: none; }
+
+  .review-card {
+    flex: 0 0 80vw;
+    max-width: 340px;
+    scroll-snap-align: start;
+  }
+
+  .reviews-dots { display: flex; }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer-grid > div:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 600px) {
+  .hero-content {
+    padding-left: 6vw;
+    padding-right: 6vw;
+    padding-bottom: 60px;
+  }
+
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery-grid .gallery-card:last-child {
+    grid-column: auto;
+  }
+
+  .highlights-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-item {
+    flex: 1 1 100%;
+  }
+
+  .review-card {
+    flex: 0 0 88vw;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .footer-grid > div:first-child {
+    grid-column: auto;
+  }
+
+  .footer-bar {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">
+    Pastelaria Conventual
+    <span>Évora · Desde 1978</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#gallery">Especialidades</a></li>
+    <li><a href="#about">A Nossa História</a></li>
+    <li><a href="#reviews">Avaliações</a></li>
+    <li><a href="#contact">Contacto</a></li>
+    <li><a href="#contact" class="btn-nav">Encomendar</a></li>
+  </ul>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Abrir menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu">
+  <button class="menu-close" id="menuClose" aria-label="Fechar menu">
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M18 6 6 18M6 6l12 12"/>
+    </svg>
+  </button>
+  <a href="#gallery" onclick="closeMobileMenu()">Especialidades</a>
+  <a href="#about" onclick="closeMobileMenu()">A Nossa História</a>
+  <a href="#reviews" onclick="closeMobileMenu()">Avaliações</a>
+  <a href="#contact" onclick="closeMobileMenu()">Contacto</a>
+  <a href="#contact" onclick="closeMobileMenu()" style="color:var(--accent2);">Encomendar</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="glass-pill fade-up stagger-1">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,248,242,0.9)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+        <circle cx="12" cy="9" r="2.5"/>
+      </svg>
+      Praça do Giraldo, Évora
+    </div>
+    <h1 class="hero-title fade-up stagger-2">Pastelaria<br>Conventual Évora</h1>
+    <p class="hero-tagline fade-up stagger-3">Receitas secretas dos conventos do Alentejo,<br>guardadas com devoção desde o século XVII.</p>
+    <div class="hero-rating fade-up stagger-4">
+      <div class="glass-pill">
+        <svg class="star-icon" viewBox="0 0 24 24" fill="var(--accent2)" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        4.9 / 5 &nbsp;·&nbsp; 423 avaliações no Google
+      </div>
+    </div>
+    <div class="hero-ctas fade-up stagger-5">
+      <a href="#gallery" class="btn-primary">Ver Especialidades</a>
+      <a href="#contact" class="btn-secondary">Encomendar Agora</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span class="scroll-label">Explorar</span>
+  </div>
+</section>
+
+<!-- STATS BAR -->
+<section id="stats">
+  <div class="stat-item fade-up">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/>
+        <polyline points="12 6 12 12 16 14"/>
+      </svg>
+    </div>
+    <div class="stat-info">
+      <strong>Desde 1978</strong>
+      <span>46 anos de tradição</span>
+    </div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item fade-up stagger-1">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 6h18M3 12h18M3 18h18"/>
+      </svg>
+    </div>
+    <div class="stat-info">
+      <strong>38 Receitas</strong>
+      <span>Doces conventuais</span>
+    </div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item fade-up stagger-2">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+    </div>
+    <div class="stat-info">
+      <strong>4.9 / 5</strong>
+      <span>423 avaliações Google</span>
+    </div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item fade-up stagger-3">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--cream)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 12V22H4V12"/>
+        <path d="M22 7H2v5h20V7z"/>
+        <path d="M12 22V7"/>
+        <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+        <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+      </svg>
+    </div>
+    <div class="stat-info">
+      <strong>Encomendas</strong>
+      <span>Casamentos e festas</span>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-inner">
+    <div class="gallery-header fade-up">
+      <span class="section-tag">As Nossas Especialidades</span>
+      <h2 class="section-title">Doçaria feita com alma<br>e ingredientes do Alentejo</h2>
+      <p class="section-lead">Cada doce é preparado artesanalmente com ovos de galinha do campo, amêndoas de Elvas e mel de sobreiro — tal como faziam as freiras carmelitas do século XVII.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-card fade-up stagger-1">
+        <div class="gallery-card-bg" style="background-image:url('https://images.unsplash.com/photo-1549925931-ef769a3e4f57?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="gallery-card-overlay"></div>
+        <div class="gallery-card-label">
+          <h3>Sericaia Conventual</h3>
+          <p>A rainha dos doces alentejanos, com canela e ameixa de Elvas</p>
+        </div>
+      </div>
+      <div class="gallery-card fade-up stagger-2">
+        <div class="gallery-card-bg" style="background-image:url('https://images.unsplash.com/photo-1464454709131-ffd692591ee5?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="gallery-card-overlay"></div>
+        <div class="gallery-card-label">
+          <h3>Encharcada de Évora</h3>
+          <p>Doce de ovos e calda, receita original do Convento dos Lóios</p>
+        </div>
+      </div>
+      <div class="gallery-card fade-up stagger-3">
+        <div class="gallery-card-bg" style="background-image:url('https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="gallery-card-overlay"></div>
+        <div class="gallery-card-label">
+          <h3>Encomendas Especiais</h3>
+          <p>Caixas de presentear e cestas para casamentos, batizados e datas festivas</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-inner">
+    <div class="about-grid">
+      <div class="about-story fade-up">
+        <span class="section-tag">A Nossa História</span>
+        <h2 class="section-title">Uma herança conventual<br>no coração de Évora</h2>
+        <p class="about-body">
+          Fundada em 1978 pela família Fonseca, a Pastelaria Conventual Évora nasceu do desejo de preservar as receitas secretas que as freiras do Convento das Maltesas partilharam antes do encerramento do convento. Instalada na icónica Praça do Giraldo, a dois passos da Sé Catedral e do Templo Romano, a nossa pastelaria tornou-se um ponto de referência incontornável para os eborenses e para todos os que visitam este tesouro patrimonial da humanidade. Trabalhamos diariamente com produtos locais — ovos de aviário próprio, mel das colmeias da herdade da família e amêndoas da região de Elvas — para que cada doce seja uma homenagem genuína à rica tradição conventual alentejana.
+        </p>
+        <div class="about-contact">
+          <div class="contact-line">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            <span>Praça do Giraldo 14, 7000-500 Évora</span>
+          </div>
+          <div class="contact-line">
+            <svg viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.36a2 2 0 0 1 1.98-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>+351 266 702 345</span>
+          </div>
+        </div>
+      </div>
+      <div class="highlights-grid">
+        <div class="highlight-card fade-up stagger-1">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <strong>46 anos</strong>
+          <p>De tradição familiar ininterrupta na Praça do Giraldo</p>
+        </div>
+        <div class="highlight-card fade-up stagger-2">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M3 6h18M3 12h18M3 18h18"/>
+            </svg>
+          </div>
+          <strong>38 Receitas</strong>
+          <p>Doces conventuais autênticos, muitos exclusivos desta casa</p>
+        </div>
+        <div class="highlight-card fade-up stagger-3">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <strong>DOP Alentejo</strong>
+          <p>Certificação de origem para os nossos produtos regionais</p>
+        </div>
+        <div class="highlight-card fade-up stagger-4">
+          <div class="highlight-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <strong>12 Artesãos</strong>
+          <p>Pasteleiros formados na tradição conventual alentejana</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-inner">
+    <div class="reviews-top fade-up">
+      <div class="reviews-score">4.9</div>
+      <div class="reviews-meta">
+        <div class="stars-row">
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p>Com base em 423 avaliações Google</p>
+      </div>
+    </div>
+    <div class="reviews-grid" id="reviewsGrid">
+
+      <div class="review-card fade-up stagger-1">
+        <div class="review-badge">
+          <svg viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Google Review
+        </div>
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">"A Encharcada de Évora desta pastelaria é simplesmente transcendente — nunca provei nada semelhante em toda a minha vida. A textura sedosa e o equilíbrio perfeito da doçura revelam claramente que as receitas são genuínas e preservadas com muito cuidado. O espaço na Praça do Giraldo tem um charme muito especial, com as paredes em pedra e o aroma a canela que nos envolve logo à entrada. Uma visita absolutamente obrigatória para quem vier a Évora."</p>
+        <div class="review-author">
+          <div class="review-avatar">M</div>
+          <div>
+            <div class="review-name">Margarida F.</div>
+            <div class="review-date">Setembro 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card fade-up stagger-2">
+        <div class="review-badge">
+          <svg viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Google Review
+        </div>
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">"Encomendei uma caixa de doces conventuais para o aniversário de casamento dos meus pais e foi um sucesso absoluto entre todos os convidados. A Sericaia com ameixa de Elvas deixou toda a gente rendida desde o primeiro garfado. O serviço de encomenda foi impecável — muito atencioso ao telefone, entrega atempada e a embalagem era lindíssima. Voltarei certamente a encomendar para o próximo evento especial."</p>
+        <div class="review-author">
+          <div class="review-avatar">T</div>
+          <div>
+            <div class="review-name">Tomás B.</div>
+            <div class="review-date">Julho 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card fade-up stagger-3">
+        <div class="review-badge">
+          <svg viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Google Review
+        </div>
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">"Vim a Évora especificamente por causa desta pastelaria, depois de a descobrir num guia de gastronomia portuguesa, e não me desiludiu minimamente. As Tigeladas têm uma cremosidade e perfume a limão que nunca encontrei noutro lugar. O atendimento é caloroso e genuíno, com a D. Lurdes a explicar a história de cada doce com paixão evidente. Um tesouro gastronómico que merece toda a fama que tem."</p>
+        <div class="review-author">
+          <div class="review-avatar">S</div>
+          <div>
+            <div class="review-name">Sofia A.</div>
+            <div class="review-date">Maio 2024</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="review-card fade-up stagger-4">
+        <div class="review-badge">
+          <svg viewBox="0 0 24 24" fill="var(--accent)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Google Review
+        </div>
+        <div class="review-stars">
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg viewBox="0 0 24 24" fill="var(--accent2)"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <p class="review-text">"Sou de Évora e venho aqui desde criança com a minha avó — é um ritual que nunca deixei de cumprir. Os Papos de Anjo derretem literalmente na boca e os Bolos de Mel de sobreiro são de uma qualidade absolutamente ímpar. É simplesmente impossível passar pela Praça do Giraldo sem parar aqui. Esta pastelaria é um verdadeiro tesouro da nossa cidade que temos o dever de preservar."</p>
+        <div class="review-author">
+          <div class="review-avatar">R</div>
+          <div>
+            <div class="review-name">Ricardo M.</div>
+            <div class="review-date">Março 2024</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="reviews-dots" id="reviewsDots">
+      <button class="active" data-idx="0"></button>
+      <button data-idx="1"></button>
+      <button data-idx="2"></button>
+      <button data-idx="3"></button>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="contact-grid">
+      <div class="fade-up">
+        <span class="section-tag">Visitar e Contactar</span>
+        <h2 class="section-title">Estamos no coração<br>de Évora</h2>
+        <div class="hours-grid">
+          <div class="hours-day">Segunda</div>
+          <div class="hours-time">08h00 – 19h30</div>
+          <div class="hours-divider"></div>
+          <div class="hours-day">Terça</div>
+          <div class="hours-time">08h00 – 19h30</div>
+          <div class="hours-divider"></div>
+          <div class="hours-day">Quarta</div>
+          <div class="hours-time">08h00 – 19h30</div>
+          <div class="hours-divider"></div>
+          <div class="hours-day">Quinta</div>
+          <div class="hours-time">08h00 – 19h30</div>
+          <div class="hours-divider"></div>
+          <div class="hours-day">Sexta</div>
+          <div class="hours-time">08h00 – 20h00</div>
+          <div class="hours-divider"></div>
+          <div class="hours-day">Sábado</div>
+          <div class="hours-time">09h00 – 20h00</div>
+          <div class="hours-divider"></div>
+          <div class="hours-day">Domingo</div>
+          <div class="hours-time">09h00 – 14h00</div>
+        </div>
+        <div class="contact-info-block">
+          <div class="contact-line" style="margin-bottom:0.75rem;">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+              <circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            <span>Praça do Giraldo 14, 7000-500 Évora</span>
+          </div>
+          <div class="contact-line">
+            <svg viewBox="0 0 24 24">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.36a2 2 0 0 1 1.98-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            <span>+351 266 702 345</span>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form fade-up stagger-2">
+        <h3 class="form-title">Envie uma Mensagem</h3>
+        <form onsubmit="return false;">
+          <div class="form-group">
+            <label for="f-name">Nome completo</label>
+            <input id="f-name" type="text" placeholder="O seu nome">
+          </div>
+          <div class="form-group">
+            <label for="f-email">Endereço de email</label>
+            <input id="f-email" type="email" placeholder="email@exemplo.pt">
+          </div>
+          <div class="form-group">
+            <label for="f-msg">Mensagem ou encomenda</label>
+            <textarea id="f-msg" placeholder="Descreva a sua encomenda, quantidade e data pretendida..."></textarea>
+          </div>
+          <button class="btn-form" type="submit">Enviar Mensagem</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Pastelaria Conventual Évora</div>
+      <p class="footer-tagline">Guardando os segredos das freiras<br>desde 1978, no coração do Alentejo.</p>
+      <div class="footer-socials">
+        <a href="#" class="social-btn" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,248,242,0.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+          </svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="Facebook">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(255,248,242,0.85)" stroke="none">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="https://maps.google.com" class="social-btn" aria-label="Google Maps">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,248,242,0.85)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navegação</div>
+      <ul class="footer-links">
+        <li><a href="#gallery">Especialidades</a></li>
+        <li><a href="#about">A Nossa História</a></li>
+        <li><a href="#reviews">Avaliações</a></li>
+        <li><a href="#contact">Horários</a></li>
+        <li><a href="#contact">Encomendas</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Contacto</div>
+      <div class="footer-contact-items">
+        <div class="footer-contact-line">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+            <circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          <span>Praça do Giraldo 14<br>7000-500 Évora, Portugal</span>
+        </div>
+        <div class="footer-contact-line">
+          <svg viewBox="0 0 24 24">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.36a2 2 0 0 1 1.98-2.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6 6l.92-.92a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          <span>+351 266 702 345</span>
+        </div>
+        <div class="footer-contact-line">
+          <svg viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span>Seg–Sex: 08h00–19h30<br>Sáb: 09h00–20h00 · Dom: 09h00–14h00</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bar">
+    <span class="footer-bar-left">&copy; 2026 Pastelaria Conventual Évora — Todos os direitos reservados</span>
+    <span class="footer-bar-right">Desenvolvido por <a href="https://challengingdawn.pt" target="_blank" rel="noopener">ChallengingDawn.pt</a></span>
+  </div>
+</footer>
+
+<script>
+// 1. NAV SCROLL
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+}, { passive: true });
+
+// 2. MOBILE HAMBURGER
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu   = document.getElementById('mobileMenu');
+const menuClose    = document.getElementById('menuClose');
+
+hamburgerBtn.addEventListener('click', () => {
+  mobileMenu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+
+menuClose.addEventListener('click', closeMobileMenu);
+
+function closeMobileMenu() {
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+// 3. INTERSECTION OBSERVER (fade-up)
+const fadeEls = document.querySelectorAll('.fade-up');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.10 });
+
+fadeEls.forEach(el => observer.observe(el));
+
+// 4. HERO FADE-UP (immediate)
+window.addEventListener('load', () => {
+  const heroFadeEls = document.querySelectorAll('#hero .fade-up');
+  heroFadeEls.forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), 250 + i * 160);
+  });
+});
+
+// 5. REVIEWS CAROUSEL (mobile dots + swipe)
+const reviewsGrid = document.getElementById('reviewsGrid');
+const dots        = document.querySelectorAll('#reviewsDots button');
+let currentDot    = 0;
+let touchStartX   = 0;
+
+function updateDots(idx) {
+  dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+  currentDot = idx;
+}
+
+dots.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const idx   = parseInt(btn.dataset.idx);
+    const cards = reviewsGrid.querySelectorAll('.review-card');
+    if (cards[idx]) {
+      reviewsGrid.scrollTo({ left: cards[idx].offsetLeft - reviewsGrid.offsetLeft, behavior: 'smooth' });
+      updateDots(idx);
+    }
+  });
+});
+
+reviewsGrid.addEventListener('touchstart', e => {
+  touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+reviewsGrid.addEventListener('touchend', e => {
+  const dx    = touchStartX - e.changedTouches[0].screenX;
+  const cards = reviewsGrid.querySelectorAll('.review-card');
+  if (Math.abs(dx) > 50) {
+    if (dx > 0 && currentDot < cards.length - 1) {
+      const next = currentDot + 1;
+      reviewsGrid.scrollTo({ left: cards[next].offsetLeft - reviewsGrid.offsetLeft, behavior: 'smooth' });
+      updateDots(next);
+    } else if (dx < 0 && currentDot > 0) {
+      const prev = currentDot - 1;
+      reviewsGrid.scrollTo({ left: cards[prev].offsetLeft - reviewsGrid.offsetLeft, behavior: 'smooth' });
+      updateDots(prev);
+    }
+  }
+}, { passive: true });
+
+reviewsGrid.addEventListener('scroll', () => {
+  const cards = reviewsGrid.querySelectorAll('.review-card');
+  let closest = 0, minDist = Infinity;
+  cards.forEach((card, i) => {
+    const dist = Math.abs(card.offsetLeft - reviewsGrid.offsetLeft - reviewsGrid.scrollLeft);
+    if (dist < minDist) { minDist = dist; closest = i; }
+  });
+  updateDots(closest);
+}, { passive: true });
+</script>
+</body>
+</html>
