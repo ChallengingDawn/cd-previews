@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salon Coiffure Neuchâtel – Avenue de la Gare 15</title>
+<meta name="description" content="Salon Coiffure Neuchâtel – Votre salon de coiffure de confiance à Neuchâtel. Coupes, colorations, soins capillaires. Avenue de la Gare 15, Neuchâtel. Tél: +41 32 721 45 67">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Salon Coiffure Neuchâtel",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Avenue de la Gare 15",
+    "addressLocality": "Neuchâtel",
+    "postalCode": "2000",
+    "addressCountry": "CH"
+  },
+  "telephone": "+41327214567",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.5",
+    "reviewCount": "94"
+  }
+}
+</script>
+<style>
+:root {
+  --ink: #1a0e1f;
+  --ink2: #2d1a36;
+  --ink3: #3d2447;
+  --accent: #a0527a;
+  --accent2: #c9956e;
+  --cream: #fff8f2;
+  --cream2: #fdf4ed;
+  --muted: #8a7a8f;
+  --text: #2a1a30;
+  --textlt: #6b5a73;
+  --font-d: 'Cormorant Garamond', serif;
+  --font-b: 'Manrope', sans-serif;
+  --r: 10px;
+  --r-lg: 18px;
+  --sh: 0 8px 40px rgba(0,0,0,0.12);
+  --trans: all 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: var(--font-b);
+  background: var(--cream2);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── FADE-UP ANIMATION ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+
+/* ── STICKY NAV ── */
+#nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 2000;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6vw;
+  background: linear-gradient(to bottom, rgba(26,14,31,0.82) 0%, transparent 100%);
+  backdrop-filter: blur(0px);
+  transition: var(--trans), height 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+#nav.scrolled {
+  height: 80px;
+  background: rgba(26,14,31,0.96);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.28);
+}
+.nav-logo {
+  font-family: var(--font-d);
+  font-size: 1.65rem;
+  font-weight: 600;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  line-height: 1.1;
+}
+.nav-logo span { color: var(--accent2); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-family: var(--font-b);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255,248,242,0.85);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transition: var(--trans);
+}
+.nav-links a:hover { color: var(--accent2); }
+.nav-cta {
+  background: var(--accent);
+  color: var(--cream) !important;
+  padding: 0.55rem 1.3rem;
+  border-radius: 50px;
+  font-weight: 600 !important;
+  transition: var(--trans) !important;
+}
+.nav-cta:hover { background: var(--accent2) !important; transform: translateY(-1px); }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 6px;
+}
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: var(--trans);
+}
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.mobile-drawer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1999;
+  background: rgba(26,14,31,0.97);
+  backdrop-filter: blur(20px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.32s ease;
+}
+.mobile-drawer.open { opacity: 1; pointer-events: all; }
+.mobile-drawer a {
+  font-family: var(--font-d);
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--cream);
+  text-decoration: none;
+  transition: var(--trans);
+}
+.mobile-drawer a:hover { color: var(--accent2); }
+.mobile-drawer .m-cta {
+  margin-top: 1rem;
+  background: var(--accent);
+  padding: 0.7rem 2.5rem;
+  border-radius: 50px;
+  font-size: 1rem !important;
+  font-family: var(--font-b) !important;
+  font-weight: 600 !important;
+}
+
+/* ── HERO ── */
+#hero {
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0 6vw;
+  background-image:
+    linear-gradient(135deg,
+      #0e0714 0%,
+      #1e0a24 25%,
+      #3a1040 50%,
+      #2a1535 70%,
+      #0d0610 100%);
+  overflow: hidden;
+}
+#hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 70% 40%, rgba(160,82,122,0.22) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 20% 80%, rgba(201,149,110,0.12) 0%, transparent 60%);
+}
+#hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 180px;
+  background: linear-gradient(to top, var(--cream2) 0%, transparent 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 50px;
+  padding: 0.4rem 1rem;
+  color: rgba(255,248,242,0.9);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 1.4rem;
+  animation: fadeUp 0.7s 0.3s both;
+}
+.hero-badge svg { opacity: 0.7; }
+.hero-title {
+  font-family: var(--font-d);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-weight: 600;
+  color: var(--cream);
+  line-height: 1.08;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.2rem;
+  animation: fadeUp 0.7s 0.5s both;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--accent2);
+}
+.hero-tagline {
+  font-family: var(--font-b);
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: rgba(255,248,242,0.82);
+  font-weight: 300;
+  line-height: 1.6;
+  max-width: 540px;
+  margin-bottom: 1.8rem;
+  animation: fadeUp 0.7s 0.7s both;
+}
+.hero-rating {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 50px;
+  padding: 0.45rem 1.1rem;
+  color: var(--cream);
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+  animation: fadeUp 0.7s 0.85s both;
+}
+.stars { color: #f5c842; letter-spacing: 2px; font-size: 0.9rem; }
+.hero-btns {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  animation: fadeUp 0.7s 1s both;
+}
+.btn-primary {
+  background: var(--accent);
+  color: var(--cream);
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  font-family: var(--font-b);
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  transition: var(--trans);
+  border: 2px solid var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-primary:hover { background: var(--accent2); border-color: var(--accent2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(160,82,122,0.4); }
+.btn-ghost {
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+  color: var(--cream);
+  padding: 0.85rem 2rem;
+  border-radius: 50px;
+  font-family: var(--font-b);
+  font-size: 0.9rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.03em;
+  border: 2px solid rgba(255,255,255,0.2);
+  transition: var(--trans);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.btn-ghost:hover { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.14); transform: translateY(-2px); }
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255,248,242,0.5);
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: linear-gradient(to bottom, rgba(255,248,242,0.5), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%, 100% { opacity: 0.3; transform: scaleY(0.6) translateY(0); }
+  50% { opacity: 1; transform: scaleY(1) translateY(4px); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── TRUST BAR ── */
+#trust {
+  background: var(--accent);
+  padding: 24px 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+.trust-item:not(:last-child) {
+  border-right: 1px solid rgba(255,255,255,0.2);
+  padding-right: 1.5rem;
+  margin-right: 0.5rem;
+}
+.trust-icon {
+  width: 40px;
+  height: 40px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.trust-icon svg { fill: none; stroke: var(--cream); }
+.trust-label {
+  color: rgba(255,248,242,0.75);
+  font-size: 0.72rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+.trust-value {
+  color: var(--cream);
+  font-family: var(--font-d);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+/* ── SERVICES ── */
+#services {
+  padding: 100px 6vw;
+  background: var(--cream2);
+}
+.section-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.7rem;
+}
+.section-title {
+  font-family: var(--font-d);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.section-lead {
+  font-size: 1rem;
+  color: var(--textlt);
+  line-height: 1.7;
+  max-width: 540px;
+  margin-bottom: 3.5rem;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.service-card {
+  background: #fff;
+  border-radius: var(--r-lg);
+  padding: 2.2rem 2rem;
+  box-shadow: var(--sh);
+  transition: transform 0.35s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s cubic-bezier(0.4,0,0.2,1);
+  border: 1px solid rgba(160,82,122,0.07);
+}
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 60px rgba(160,82,122,0.18);
+}
+.service-icon {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--accent), var(--accent2));
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.4rem;
+}
+.service-icon svg { fill: none; stroke: #fff; }
+.service-name {
+  font-family: var(--font-d);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.7rem;
+  line-height: 1.2;
+}
+.service-desc {
+  font-size: 0.88rem;
+  color: var(--textlt);
+  line-height: 1.7;
+}
+.service-price {
+  display: inline-block;
+  margin-top: 1.2rem;
+  background: rgba(160,82,122,0.08);
+  color: var(--accent);
+  font-size: 0.8rem;
+  font-weight: 700;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  letter-spacing: 0.04em;
+}
+
+/* ── ABOUT ── */
+#about {
+  padding: 100px 6vw;
+  background: var(--cream);
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+.about-tag { margin-bottom: 0.7rem; }
+.about-title {
+  font-family: var(--font-d);
+  font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.2;
+  margin-bottom: 1.4rem;
+}
+.about-story {
+  font-size: 1rem;
+  color: var(--textlt);
+  line-height: 1.8;
+  margin-bottom: 1.6rem;
+}
+.about-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin-top: 1.2rem;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--text);
+  font-weight: 500;
+}
+.contact-item svg { flex-shrink: 0; }
+.about-stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+.stat-block {
+  background: #fff;
+  border-radius: var(--r-lg);
+  padding: 1.6rem 1.4rem;
+  box-shadow: var(--sh);
+  border-left: 3px solid var(--accent);
+}
+.stat-number {
+  font-family: var(--font-d);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.4rem;
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--muted);
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* ── REVIEWS ── */
+#reviews {
+  padding: 100px 6vw;
+  background: linear-gradient(135deg, #f7eef4 0%, #fdf4ed 50%, #f2eaf7 100%);
+  overflow: hidden;
+}
+.reviews-header {
+  text-align: center;
+  margin-bottom: 3.5rem;
+}
+.big-rating {
+  font-family: var(--font-d);
+  font-size: clamp(3.5rem, 8vw, 6rem);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+.big-rating span { font-size: 0.45em; color: var(--muted); }
+.stars-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 0.5rem;
+}
+.star-svg { width: 22px; height: 22px; }
+.review-count { font-size: 0.85rem; color: var(--muted); font-weight: 500; }
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.review-card {
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(8px);
+  border-radius: var(--r-lg);
+  padding: 1.6rem 1.4rem;
+  border: 1px solid rgba(255,255,255,0.6);
+  box-shadow: 0 4px 20px rgba(160,82,122,0.09);
+}
+.review-stars { display: flex; gap: 3px; margin-bottom: 0.9rem; }
+.review-star { width: 14px; height: 14px; }
+.review-text {
+  font-family: var(--font-d);
+  font-style: italic;
+  font-size: 0.97rem;
+  color: var(--text);
+  line-height: 1.65;
+  margin-bottom: 1.1rem;
+}
+.review-author { font-size: 0.8rem; font-weight: 700; color: var(--text); }
+.review-platform { font-size: 0.72rem; color: var(--muted); margin-top: 2px; }
+.review-dots { display: none; justify-content: center; gap: 8px; margin-top: 1.4rem; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(160,82,122,0.25); cursor: pointer; transition: var(--trans); }
+.dot.active { background: var(--accent); }
+
+/* ── CONTACT ── */
+#contact {
+  padding: 100px 6vw;
+  background: var(--cream2);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.contact-info .section-title { margin-bottom: 0.8rem; }
+.hours-grid {
+  margin-top: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.hours-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(160,82,122,0.1);
+  font-size: 0.88rem;
+}
+.hours-row:last-child { border-bottom: none; }
+.hours-day { font-weight: 600; color: var(--text); }
+.hours-time { color: var(--textlt); }
+.hours-closed { color: var(--accent); font-weight: 500; }
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1.4rem;
+}
+
+.contact-form {
+  background: #fff;
+  border-radius: var(--r-lg);
+  padding: 2.4rem 2rem;
+  box-shadow: var(--sh);
+}
+.form-title {
+  font-family: var(--font-d);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.form-sub { font-size: 0.85rem; color: var(--muted); margin-bottom: 1.8rem; }
+.form-group { margin-bottom: 1.2rem; }
+.form-group label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 0.4rem;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: var(--cream2);
+  border: 1.5px solid rgba(160,82,122,0.15);
+  border-radius: var(--r);
+  padding: 0.75rem 1rem;
+  font-family: var(--font-b);
+  font-size: 0.9rem;
+  color: var(--text);
+  outline: none;
+  transition: var(--trans);
+  resize: vertical;
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(160,82,122,0.1);
+}
+.form-group textarea { min-height: 110px; }
+.btn-submit {
+  width: 100%;
+  background: var(--accent);
+  color: var(--cream);
+  border: none;
+  padding: 0.9rem 2rem;
+  border-radius: 50px;
+  font-family: var(--font-b);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: var(--trans);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.btn-submit:hover { background: var(--ink2); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(160,82,122,0.35); }
+
+/* ── FOOTER ── */
+#footer {
+  background: linear-gradient(135deg, #0a050e 0%, #120818 50%, #0e0612 100%);
+  padding: 72px 6vw 0;
+  color: rgba(255,248,242,0.75);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand .nav-logo { display: block; margin-bottom: 1rem; }
+.footer-tagline { font-size: 0.85rem; line-height: 1.7; color: rgba(255,248,242,0.55); margin-bottom: 1.4rem; }
+.social-row { display: flex; gap: 10px; }
+.social-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--trans);
+  text-decoration: none;
+}
+.social-btn:hover { transform: translateY(-3px); }
+.social-btn.ig { background: linear-gradient(135deg, #e1306c, #833ab4); }
+.social-btn.fb { background: #1877f2; }
+.social-btn.gm { background: #ea4335; }
+.social-btn svg { fill: #fff; }
+
+.footer-col h4 {
+  font-family: var(--font-d);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.03em;
+}
+.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+.footer-col ul a {
+  color: rgba(255,248,242,0.55);
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: var(--trans);
+}
+.footer-col ul a:hover { color: var(--accent2); }
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 9px;
+  font-size: 0.85rem;
+  color: rgba(255,248,242,0.55);
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+.footer-contact-item svg { flex-shrink: 0; margin-top: 2px; opacity: 0.7; }
+
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 0;
+  font-size: 0.76rem;
+  color: rgba(255,248,242,0.3);
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.footer-bottom a { color: rgba(255,248,242,0.4); text-decoration: none; transition: var(--trans); }
+.footer-bottom a:hover { color: var(--accent2); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .mobile-drawer { display: flex; }
+
+  .services-grid { grid-template-columns: 1fr 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+
+  #trust { flex-wrap: wrap; gap: 1.5rem; }
+  .trust-item { min-width: 45%; }
+  .trust-item:not(:last-child) { border-right: none; }
+
+  .reviews-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px;
+    padding-bottom: 1rem;
+    scroll-padding-left: 0;
+  }
+  .reviews-grid::-webkit-scrollbar { display: none; }
+  .review-card {
+    flex: 0 0 78vw;
+    max-width: 320px;
+    scroll-snap-align: start;
+  }
+  .review-dots { display: flex; }
+}
+
+@media (max-width: 600px) {
+  #hero { padding: 0 5vw; align-items: flex-end; padding-bottom: 14vh; }
+  .services-grid { grid-template-columns: 1fr; }
+  .about-stats { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  #trust { flex-direction: column; }
+  .trust-item { min-width: 100%; border-right: none !important; padding-right: 0; }
+  .review-card { flex: 0 0 90vw; }
+  #services, #about, #reviews, #contact { padding: 70px 5vw; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Salon<span> Coiffure</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">Notre Histoire</a></li>
+    <li><a href="#reviews">Avis</a></li>
+    <li><a href="#contact" class="nav-cta">Prendre RDV</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mobile-drawer" id="mobileDrawer">
+  <a href="#services" class="drawer-link">Services</a>
+  <a href="#about" class="drawer-link">Notre Histoire</a>
+  <a href="#reviews" class="drawer-link">Avis Clients</a>
+  <a href="#contact" class="drawer-link">Contact</a>
+  <a href="#contact" class="drawer-link m-cta">Prendre RDV</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-badge fade-up stagger-1">
+      <svg width="12" height="14" viewBox="0 0 12 14" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M6 1C3.79 1 2 2.79 2 5c0 3.25 4 8 4 8s4-4.75 4-8c0-2.21-1.79-4-4-4z"/>
+        <circle cx="6" cy="5" r="1.2"/>
+      </svg>
+      Avenue de la Gare 15, Neuchâtel
+    </div>
+    <h1 class="hero-title">L'art de la <em>coiffure</em><br>au cœur de Neuchâtel</h1>
+    <p class="hero-tagline">Coupes raffinées, colorations lumineuses et soins experts — un salon où chaque visite est une expérience de bien-être pensée pour vous.</p>
+    <div class="hero-rating fade-up stagger-3">
+      <span class="stars">★★★★★</span>
+      <strong>4.5 / 5</strong>
+      <span style="opacity:0.6;">· 94 avis vérifiés</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#contact" class="btn-primary">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><rect x="1" y="3" width="14" height="11" rx="2"/><path d="M1 5l7 5 7-5"/></svg>
+        Prendre rendez-vous
+      </a>
+      <a href="#services" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="8" r="7"/><path d="M8 5v3l2 2"/></svg>
+        Nos prestations
+      </a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Défiler</span>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section id="trust">
+  <div class="trust-item fade-up stagger-1">
+    <div class="trust-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="10" cy="10" r="8"/><path d="M10 6v4l2.5 2.5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="trust-value">+15 ans</div>
+      <div class="trust-label">D'expérience à Neuchâtel</div>
+    </div>
+  </div>
+  <div class="trust-item fade-up stagger-2">
+    <div class="trust-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M10 2C6.13 2 3 5.13 3 9c0 4.25 5.4 9.4 6.4 10.3a.84.84 0 001.2 0C11.6 18.4 17 13.25 17 9c0-3.87-3.13-7-7-7z"/>
+        <circle cx="10" cy="9" r="2.5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="trust-value">+2 000</div>
+      <div class="trust-label">Clients fidèles</div>
+    </div>
+  </div>
+  <div class="trust-item fade-up stagger-3">
+    <div class="trust-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="10,2 12.5,7.5 18.5,8.2 14.25,12.1 15.5,18 10,15.1 4.5,18 5.75,12.1 1.5,8.2 7.5,7.5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="trust-value">4.5 / 5</div>
+      <div class="trust-label">Note moyenne Google</div>
+    </div>
+  </div>
+  <div class="trust-item fade-up stagger-4">
+    <div class="trust-icon">
+      <svg width="20" height="20" viewBox="0 0 20 20" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M3 6c0-1.1.9-2 2-2h10a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V6z"/>
+        <path d="M3 8h14M7 4v2M13 4v2"/>
+      </svg>
+    </div>
+    <div>
+      <div class="trust-value">6 jours / 7</div>
+      <div class="trust-label">Ouvert du lundi au samedi</div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <p class="section-tag fade-up">Nos Prestations</p>
+  <h2 class="section-title fade-up stagger-1">Des soins capillaires<br>d'exception</h2>
+  <p class="section-lead fade-up stagger-2">De la coupe à la coloration en passant par les soins restructurants, notre équipe de stylistes passionnés met son savoir-faire à votre service.</p>
+  <div class="services-grid">
+    <div class="service-card fade-up stagger-1">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 26 26" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 3C8.58 3 5 6.58 5 11c0 2.76 1.34 5.2 3.4 6.72L7 22h12l-1.4-4.28A8 8 0 0021 11c0-4.42-3.58-8-8-8z"/>
+          <path d="M10 15c.83.63 1.87 1 3 1s2.17-.37 3-1"/>
+          <path d="M10 11h.01M16 11h.01"/>
+        </svg>
+      </div>
+      <h3 class="service-name">Coupes & Coiffures</h3>
+      <p class="service-desc">Coupes femmes, hommes et enfants réalisées avec précision. Chaque coupe est pensée selon la morphologie du visage et la texture de vos cheveux pour un résultat qui vous ressemble.</p>
+      <span class="service-price">Dès CHF 45</span>
+    </div>
+    <div class="service-card fade-up stagger-2">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 26 26" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 22V8l9-5 9 5v14"/>
+          <path d="M9 22v-6h8v6"/>
+          <circle cx="13" cy="11" r="2"/>
+        </svg>
+      </div>
+      <h3 class="service-name">Colorations & Mèches</h3>
+      <p class="service-desc">Colorations permanentes, balayages, ombré hair et mèches tendance. Nous utilisons des produits professionnels respectueux du cheveu pour des couleurs éclatantes et durables.</p>
+      <span class="service-price">Dès CHF 75</span>
+    </div>
+    <div class="service-card fade-up stagger-3">
+      <div class="service-icon">
+        <svg width="26" height="26" viewBox="0 0 26 26" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 3v4M13 19v4M3 13h4M19 13h4"/>
+          <circle cx="13" cy="13" r="6"/>
+          <path d="M9.5 9.5l7 7M16.5 9.5l-7 7"/>
+        </svg>
+      </div>
+      <h3 class="service-name">Soins & Traitements</h3>
+      <p class="service-desc">Soins kératine, masques hydratants, lissages brésiliens et reconstructions intensives. Redonnez vie et brillance à vos cheveux abîmés grâce à nos protocoles professionnels.</p>
+      <span class="service-price">Dès CHF 55</span>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="fade-up">
+      <p class="section-tag about-tag">Notre Histoire</p>
+      <h2 class="about-title">Un salon ancré dans<br>le cœur de Neuchâtel</h2>
+      <p class="about-story">Depuis plus de quinze ans, le Salon Coiffure Neuchâtel accueille les habitants du quartier de la gare avec chaleur et expertise. Fondé par des passionnés de la beauté capillaire, notre salon est devenu un repère de confiance où l'on vient non seulement pour se coiffer, mais aussi pour prendre soin de soi.</p>
+      <p class="about-story" style="margin-top:0.8rem;">Notre équipe de stylistes diplômés se forme régulièrement aux dernières tendances européennes pour vous offrir un service à la hauteur de vos attentes. Chaque client reçoit une consultation personnalisée pour que le résultat soit toujours à la hauteur de ses envies.</p>
+      <div class="about-contact">
+        <div class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round">
+            <path d="M8 1C5.24 1 3 3.24 3 6c0 3.75 5 9 5 9s5-5.25 5-9c0-2.76-2.24-5-5-5z"/>
+            <circle cx="8" cy="6" r="1.5"/>
+          </svg>
+          Avenue de la Gare 15, 2000 Neuchâtel
+        </div>
+        <div class="contact-item">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round">
+            <path d="M2 2.5C2 2.5 3.5 1 5 2.5l1.5 1.5c.5.5.5 1.5 0 2L5.5 7c.5 1 1.5 2.5 3.5 3.5l1-1c.5-.5 1.5-.5 2 0l1.5 1.5c1.5 1.5 0 3 0 3-1.5 1.5-8-2-9.5-6.5C2.5 4 2 2.5 2 2.5z"/>
+          </svg>
+          +41 32 721 45 67
+        </div>
+      </div>
+    </div>
+    <div class="about-stats fade-up stagger-2">
+      <div class="stat-block">
+        <div class="stat-number">15+</div>
+        <div class="stat-label">Années d'expérience à Neuchâtel</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">4</div>
+        <div class="stat-label">Stylistes diplômés dans notre équipe</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">94</div>
+        <div class="stat-label">Avis clients sur Google</div>
+      </div>
+      <div class="stat-block">
+        <div class="stat-number">4.5</div>
+        <div class="stat-label">Note moyenne sur 5 étoiles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-header fade-up">
+    <p class="section-tag" style="text-align:center;">Avis Clients</p>
+    <div class="big-rating">4.5<span>/5</span></div>
+    <div class="stars-row">
+      <svg class="star-svg" viewBox="0 0 22 22"><polygon points="11,2 13.8,8.5 21,9.3 16,14 17.6,21 11,17.4 4.4,21 6,14 1,9.3 8.2,8.5" fill="#f5c842"/></svg>
+      <svg class="star-svg" viewBox="0 0 22 22"><polygon points="11,2 13.8,8.5 21,9.3 16,14 17.6,21 11,17.4 4.4,21 6,14 1,9.3 8.2,8.5" fill="#f5c842"/></svg>
+      <svg class="star-svg" viewBox="0 0 22 22"><polygon points="11,2 13.8,8.5 21,9.3 16,14 17.6,21 11,17.4 4.4,21 6,14 1,9.3 8.2,8.5" fill="#f5c842"/></svg>
+      <svg class="star-svg" viewBox="0 0 22 22"><polygon points="11,2 13.8,8.5 21,9.3 16,14 17.6,21 11,17.4 4.4,21 6,14 1,9.3 8.2,8.5" fill="#f5c842"/></svg>
+      <svg class="star-svg" viewBox="0 0 22 22"><defs><clipPath id="half"><rect x="0" y="0" width="11" height="22"/></clipPath></defs><polygon points="11,2 13.8,8.5 21,9.3 16,14 17.6,21 11,17.4 4.4,21 6,14 1,9.3 8.2,8.5" fill="#e2d0f0"/><polygon points="11,2 13.8,8.5 21,9.3 16,14 17.6,21 11,17.4 4.4,21 6,14 1,9.3 8.2,8.5" fill="#f5c842" clip-path="url(#half)"/></svg>
+    </div>
+    <p class="review-count">Basé sur 94 avis Google vérifiés</p>
+  </div>
+  <div class="reviews-grid" id="reviewsGrid">
+    <div class="review-card fade-up stagger-1">
+      <div class="review-stars">
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+      </div>
+      <p class="review-text">« Je viens ici depuis trois ans et je ne changerais pour rien au monde. Sophie comprend exactement ce que je veux, même quand j'arrive avec une vague idée. La coloration tient parfaitement et mes cheveux sont en super état. »</p>
+      <div class="review-author">Camille R.</div>
+      <div class="review-platform">Google · il y a 2 semaines</div>
+    </div>
+    <div class="review-card fade-up stagger-2">
+      <div class="review-stars">
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+      </div>
+      <p class="review-text">« Accueil chaleureux, équipe professionnelle et résultat impeccable. Mon balayage est exactement ce que j'espérais — naturel et lumineux. Le salon est propre, moderne et l'atmosphère est vraiment agréable. Je recommande vivement ! »</p>
+      <div class="review-author">Léa M.</div>
+      <div class="review-platform">Google · il y a 1 mois</div>
+    </div>
+    <div class="review-card fade-up stagger-3">
+      <div class="review-stars">
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#e2d0f0"/></svg>
+      </div>
+      <p class="review-text">« Très bonne expérience, surtout pour le soin kératine que j'ai fait pour la première fois ici. Mes cheveux frisottent beaucoup moins et brillent vraiment bien. La coiffeuse a pris le temps de tout expliquer. Je reviendrai sans hésiter. »</p>
+      <div class="review-author">Thomas V.</div>
+      <div class="review-platform">Google · il y a 6 semaines</div>
+    </div>
+    <div class="review-card fade-up stagger-4">
+      <div class="review-stars">
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+        <svg class="review-star" viewBox="0 0 14 14"><polygon points="7,1 8.8,5.5 13.5,5.9 10,9 11.1,13.5 7,11 2.9,13.5 4,9 0.5,5.9 5.2,5.5" fill="#f5c842"/></svg>
+      </div>
+      <p class="review-text">« Le meilleur salon de Neuchâtel selon moi. Pratique, bien situé juste à côté de la gare, et surtout une équipe au top. J'ai demandé une coupe assez radicale et le résultat est exactement ce que j'imaginais. Merci beaucoup ! »</p>
+      <div class="review-author">Isabelle F.</div>
+      <div class="review-platform">Google · il y a 2 mois</div>
