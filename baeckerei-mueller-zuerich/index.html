@@ -1,832 +1,1261 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bäckerei Mueller Zürich | Langstrasse | Traditionelle Schweizer Backkunst</title>
-    <meta name="description" content="Bäckerei Mueller an der Langstrasse 45 in Zürich - Frische Backwaren, traditionelle Schweizer Spezialitäten und handwerkliche Qualität. 4.7/5 Sterne, 203 Bewertungen.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <meta property="og:title" content="Bäckerei Mueller Zürich | Traditionelle Schweizer Backkunst">
-    <meta property="og:description" content="Frische Backwaren und traditionelle Schweizer Spezialitäten an der Langstrasse 45 in Zürich">
-    <meta property="og:type" content="website">
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "Bakery",
-        "name": "Bäckerei Mueller",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Langstrasse 45",
-            "addressLocality": "Zürich",
-            "postalCode": "8004",
-            "addressCountry": "CH"
-        },
-        "telephone": "+41 44 291 33 44",
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.7",
-            "reviewCount": "203"
-        }
-    }
-    </script>
-    <style>
-        :root {
-            --bg-primary: #F2EDE4;
-            --bg-secondary: #EBE4D8;
-            --accent: #8B4513;
-            --text-dark: #2C1810;
-            --text-medium: #5A4A3A;
-            --text-light: #8B7355;
-            --white: #FFFFFF;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Source Sans 3', sans-serif;
-            background-color: var(--bg-primary);
-            color: var(--text-dark);
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 1000;
-            transition: all 0.3s ease;
-            padding: 20px 0;
-        }
-
-        .nav.scrolled {
-            background-color: rgba(242, 237, 228, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(139, 69, 19, 0.1);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--accent);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--accent);
-        }
-
-        .nav-cta {
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 12px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .nav-cta:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
-        }
-
-        /* Hero */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background-color: var(--bg-primary);
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(48px, 8vw, 96px);
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s ease forwards 0.1s;
-        }
-
-        .hero-tagline {
-            font-size: clamp(18px, 3vw, 24px);
-            color: var(--text-medium);
-            margin-bottom: 30px;
-            font-weight: 300;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s ease forwards 0.3s;
-        }
-
-        .rating-badge {
-            display: inline-flex;
-            align-items: center;
-            background-color: var(--white);
-            padding: 12px 24px;
-            border-radius: 50px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s ease forwards 0.4s;
-        }
-
-        .stars {
-            display: flex;
-            margin-right: 12px;
-        }
-
-        .star {
-            width: 20px;
-            height: 20px;
-            fill: #FFD700;
-            margin-right: 2px;
-        }
-
-        .rating-text {
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .hero-ctas {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeUp 1s ease forwards 0.5s;
-        }
-
-        .btn-primary {
-            background-color: var(--accent);
-            color: var(--white);
-            padding: 16px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn-primary:hover {
-            transform: scale(1.04);
-            box-shadow: 0 8px 25px rgba(139, 69, 19, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--accent);
-            padding: 16px 32px;
-            border: 2px solid var(--accent);
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--accent);
-            color: var(--white);
-            transform: scale(1.04);
-        }
-
-        /* Sections */
-        .section {
-            padding: 100px 0;
-            opacity: 0;
-            transform: translateY(50px);
-            transition: all 0.8s ease;
-        }
-
-        .section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .section:nth-child(even) {
-            background-color: var(--bg-secondary);
-        }
-
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(36px, 6vw, 64px);
-            font-weight: 700;
-            color: var(--text-dark);
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .section-subtitle {
-            font-size: 20px;
-            color: var(--text-medium);
-            text-align: center;
-            margin-bottom: 60px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Services */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin-top: 80px;
-        }
-
-        .service-card {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 16px;
-            text-align: center;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .service-card:hover {
-            transform: translateY(-12px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-        }
-
-        .service-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 30px;
-            fill: var(--accent);
-        }
-
-        .service-card h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--text-dark);
-            margin-bottom: 20px;
-        }
-
-        .service-card p {
-            color: var(--text-medium);
-            font-size: 16px;
-            line-height: 1.7;
-        }
-
-        /* About */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 48px;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin-bottom: 30px;
-        }
-
-        .about-text p {
-            font-size: 18px;
-            color: var(--text-medium);
-            margin-bottom: 30px;
-            line-height: 1.8;
-        }
-
-        .contact-info {
-            background-color: var(--white);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-info h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        .contact-info p {
-            color: var(--text-dark);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-        }
-
-        .contact-icon {
-            width: 20px;
-            height: 20px;
-            fill: var(--accent);
-            margin-right: 12px;
-        }
-
-        /* Social Proof */
-        .social-proof {
-            text-align: center;
-        }
-
-        .rating-display {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            margin: 60px 0;
-            flex-wrap: wrap;
-        }
-
-        .rating-number {
-            font-family: 'Playfair Display', serif;
-            font-size: 96px;
-            font-weight: 700;
-            color: var(--accent);
-        }
-
-        .rating-stars {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .large-stars {
-            display: flex;
-            margin-bottom: 10px;
-        }
-
-        .large-star {
-            width: 40px;
-            height: 40px;
-            fill: #FFD700;
-            margin-right: 8px;
-            transform: scale(0);
-            animation: starPop 0.5s ease forwards;
-        }
-
-        .large-star:nth-child(1) { animation-delay: 0.1s; }
-        .large-star:nth-child(2) { animation-delay: 0.2s; }
-        .large-star:nth-child(3) { animation-delay: 0.3s; }
-        .large-star:nth-child(4) { animation-delay: 0.4s; }
-        .large-star:nth-child(5) { animation-delay: 0.5s; }
-
-        .reviews-text {
-            font-size: 18px;
-            color: var(--text-medium);
-            font-weight: 600;
-        }
-
-        /* Contact */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 80px;
-        }
-
-        .contact-form {
-            background-color: var(--white);
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 16px;
-            border: 2px solid #E5E5E5;
-            border-radius: 8px;
-            font-size: 16px;
-            font-family: inherit;
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--accent);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            height: 120px;
-        }
-
-        /* Footer */
-        .footer {
-            background-color: var(--text-dark);
-            color: var(--white);
-            padding: 60px 0 30px;
-            text-align: center;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--accent);
-            margin-bottom: 20px;
-        }
-
-        .footer-address {
-            color: rgba(255, 255, 255, 0.8);
-            line-height: 1.8;
-        }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .credit {
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 14px;
-        }
-
-        /* Animations */
-        @keyframes fadeUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes starPop {
-            to {
-                transform: scale(1);
-            }
-        }
-
-        /* Mobile Responsiveness */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .about-content,
-            .contact-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
-
-            .hero-ctas {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .rating-display {
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (min-width: 1200px) {
-            .container {
-                max-width: 1400px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bäckerei Müller Zürich – Handwerksbrot & Feingebäck seit 1987</title>
+<meta name="description" content="Bäckerei Müller an der Langstrasse 45, 8004 Zürich. Frisches Handwerksbrot, feine Viennoiseries und Torten nach Mass. Täglich frisch gebacken. Jetzt bestellen!">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Bäckerei Müller Zürich",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Langstrasse 45",
+    "addressLocality": "Zürich",
+    "postalCode": "8004",
+    "addressCountry": "CH"
+  },
+  "telephone": "+41442913344",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.7",
+    "reviewCount": "203"
+  },
+  "openingHours": ["Mo-Fr 06:30-19:00","Sa 07:00-17:00","Su 08:00-13:00"],
+  "url": "https://baeckerei-mueller-zuerich.ch"
+}
+</script>
+
+<style>
+:root {
+  --ink: #1c0f05;
+  --ink2: #2e1a0a;
+  --ink3: #4a2e14;
+  --accent: #b85c1a;
+  --accent2: #c9973a;
+  --cream: #fff8f2;
+  --cream2: #fdf4ed;
+  --muted: #8a6e57;
+  --text: #2a1505;
+  --textlt: #7a5c42;
+  --font-d: 'Playfair Display', serif;
+  --font-b: 'Outfit', sans-serif;
+  --r: 10px;
+  --r-lg: 18px;
+  --sh: 0 8px 40px rgba(0,0,0,0.12);
+  --trans: all 0.28s cubic-bezier(0.4,0,0.2,1);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-b);
+  background: var(--cream2);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── FADE-UP ── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+.fade-up.visible { opacity: 1; transform: translateY(0); }
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+.stagger-4 { transition-delay: 0.4s; }
+.stagger-5 { transition-delay: 0.5s; }
+
+/* ── NAV ── */
+#mainNav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 2000;
+  height: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8vw;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0) 100%);
+  backdrop-filter: blur(0px);
+  transition: var(--trans);
+}
+#mainNav.scrolled {
+  height: 80px;
+  background: rgba(28, 15, 5, 0.96);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 4px 32px rgba(0,0,0,0.28);
+}
+.nav-logo {
+  font-family: var(--font-d);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: 0.01em;
+  line-height: 1.15;
+}
+.nav-logo span { color: var(--accent2); }
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+.nav-links a {
+  font-family: var(--font-b);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: rgba(255,248,242,0.88);
+  text-decoration: none;
+  transition: var(--trans);
+}
+.nav-links a:hover { color: var(--accent2); }
+.btn-nav {
+  background: var(--accent);
+  color: var(--cream) !important;
+  padding: 0.55rem 1.35rem;
+  border-radius: var(--r);
+  font-weight: 600 !important;
+  transition: var(--trans) !important;
+}
+.btn-nav:hover { background: var(--accent2) !important; color: var(--ink) !important; }
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  padding: 4px;
+  background: none;
+  border: none;
+}
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--cream);
+  border-radius: 2px;
+  transition: var(--trans);
+}
+
+/* Mobile Drawer */
+#mobileMenu {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1999;
+  background: rgba(28,15,5,0.97);
+  backdrop-filter: blur(20px);
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+#mobileMenu.open { display: flex; }
+#mobileMenu a {
+  font-family: var(--font-d);
+  font-size: 2rem;
+  color: var(--cream);
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--trans);
+}
+#mobileMenu a:hover { color: var(--accent2); }
+.mobile-close {
+  position: absolute;
+  top: 30px; right: 8vw;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.mobile-close svg { width: 28px; height: 28px; }
+
+/* ── HERO ── */
+#hero {
+  width: 100%;
+  height: 100vh;
+  min-height: 600px;
+  position: relative;
+  background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1920&q=80');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.50) 40%, rgba(0,0,0,0.20) 100%);
+}
+.hero-content {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 80px;
+  padding-left: 8vw;
+  max-width: 720px;
+}
+.glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 20px;
+  padding: 0.38rem 0.95rem;
+  color: rgba(255,248,242,0.92);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+.glass-pill svg { width:14px; height:14px; flex-shrink:0; }
+.hero-title {
+  font-family: var(--font-d);
+  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  color: var(--cream);
+  line-height: 1.05;
+  font-weight: 700;
+  margin: 0.65rem 0 0.8rem;
+}
+.hero-title em { color: var(--accent2); font-style: italic; }
+.hero-tagline {
+  font-family: var(--font-b);
+  font-size: clamp(1rem, 2.2vw, 1.25rem);
+  color: rgba(255,248,242,0.88);
+  font-weight: 300;
+  max-width: 520px;
+  line-height: 1.65;
+  margin-bottom: 1.2rem;
+}
+.hero-badges { display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+.star-row { display: flex; align-items: center; gap: 3px; }
+.star-icon { width:14px; height:14px; fill: var(--accent2); }
+.hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  background: var(--accent);
+  color: var(--cream);
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-family: var(--font-b);
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: var(--trans);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-primary:hover { background: var(--accent2); color: var(--ink); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(184,92,26,0.4); }
+.btn-secondary {
+  background: rgba(255,255,255,0.10);
+  backdrop-filter: blur(8px);
+  color: var(--cream);
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+  font-family: var(--font-b);
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.24);
+  cursor: pointer;
+  transition: var(--trans);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.btn-secondary:hover { background: rgba(255,255,255,0.18); transform: translateY(-2px); }
+.scroll-indicator {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  z-index: 1;
+}
+.scroll-line {
+  width: 1px;
+  height: 48px;
+  background: rgba(255,255,255,0.4);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse {
+  0%,100% { opacity: 0.2; transform: scaleY(0.6); }
+  50% { opacity: 1; transform: scaleY(1); }
+}
+
+/* ── STATS BAR ── */
+#statsBar {
+  background: var(--accent);
+  padding: 20px 8vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  flex: 1;
+  min-width: 160px;
+}
+.stat-icon { width: 36px; height: 36px; background: rgba(255,255,255,0.15); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.stat-icon svg { width: 20px; height: 20px; }
+.stat-text strong { display: block; color: var(--cream); font-weight: 700; font-size: 1.1rem; font-family: var(--font-d); }
+.stat-text span { color: rgba(255,248,242,0.78); font-size: 0.82rem; font-weight: 400; }
+.stat-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.15); flex-shrink: 0; }
+
+/* ── GALLERY ── */
+#gallery {
+  background: var(--cream2);
+  padding: 96px 8vw;
+}
+.section-tag {
+  display: inline-block;
+  background: rgba(184,92,26,0.1);
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.35rem 0.9rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(184,92,26,0.2);
+}
+.section-title {
+  font-family: var(--font-d);
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  color: var(--ink);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.section-lead {
+  font-size: 1.05rem;
+  color: var(--textlt);
+  max-width: 560px;
+  line-height: 1.75;
+  margin-bottom: 3rem;
+}
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.gallery-card {
+  position: relative;
+  aspect-ratio: 4/3;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  cursor: pointer;
+}
+.gallery-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.55s cubic-bezier(0.4,0,0.2,1);
+}
+.gallery-card:hover .gallery-card-bg { transform: scale(1.06); }
+.gallery-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.1) 55%, transparent 100%);
+}
+.gallery-card-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  padding: 1.5rem 1.4rem;
+  z-index: 1;
+}
+.gallery-card-label h3 {
+  font-family: var(--font-d);
+  font-size: 1.35rem;
+  color: var(--cream);
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+.gallery-card-label p {
+  font-size: 0.85rem;
+  color: rgba(255,248,242,0.78);
+  font-weight: 400;
+}
+
+/* ── ABOUT ── */
+#about {
+  background: var(--cream);
+  padding: 96px 8vw;
+}
+.about-grid {
+  display: grid;
+  grid-template-columns: 60fr 40fr;
+  gap: 4rem;
+  align-items: start;
+}
+.about-tag { margin-bottom: 1rem; }
+.about-story {
+  font-size: 1.08rem;
+  color: var(--textlt);
+  line-height: 1.85;
+  margin-bottom: 2rem;
+}
+.about-story p { margin-bottom: 1rem; }
+.contact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1.5rem;
+}
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 500;
+}
+.contact-item svg { width: 18px; height: 18px; flex-shrink: 0; color: var(--accent); }
+.highlights-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+.highlight-card {
+  background: var(--cream2);
+  border: 1px solid rgba(184,92,26,0.12);
+  border-radius: var(--r-lg);
+  padding: 1.4rem 1.2rem;
+  transition: var(--trans);
+}
+.highlight-card:hover { transform: translateY(-4px); box-shadow: var(--sh); border-color: rgba(184,92,26,0.3); }
+.highlight-card svg { width: 26px; height: 26px; color: var(--accent); margin-bottom: 0.65rem; }
+.highlight-card strong {
+  display: block;
+  font-family: var(--font-d);
+  font-size: 1.6rem;
+  color: var(--ink);
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+.highlight-card span { font-size: 0.83rem; color: var(--muted); font-weight: 400; }
+
+/* ── REVIEWS ── */
+#reviews {
+  padding: 96px 8vw;
+  background: linear-gradient(135deg, rgba(184,92,26,0.08) 0%, var(--cream2) 60%);
+}
+.reviews-header { text-align: center; margin-bottom: 3.5rem; }
+.big-rating {
+  font-family: var(--font-d);
+  font-size: 4.5rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1;
+}
+.big-rating span { color: var(--accent); }
+.rating-label { font-size: 0.9rem; color: var(--muted); margin-top: 0.3rem; }
+.star-row-lg { display: flex; align-items: center; justify-content: center; gap: 4px; margin: 0.5rem 0; }
+.star-lg { width: 22px; height: 22px; fill: var(--accent2); }
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+.review-card {
+  background: rgba(255,255,255,0.80);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(184,92,26,0.15);
+  border-radius: var(--r-lg);
+  padding: 1.5rem 1.3rem;
+  transition: var(--trans);
+}
+.review-card:hover { transform: translateY(-4px); box-shadow: var(--sh); }
+.review-stars { display: flex; gap: 2px; margin-bottom: 0.8rem; }
+.review-star { width: 15px; height: 15px; fill: var(--accent2); }
+.review-text {
+  font-family: var(--font-d);
+  font-style: italic;
+  font-size: 0.93rem;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.review-author {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.reviewer-name { font-weight: 600; font-size: 0.88rem; color: var(--ink); }
+.google-badge {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.72rem;
+  color: var(--muted);
+  font-weight: 500;
+}
+.google-badge svg { width: 14px; height: 14px; }
+
+.reviews-dots {
+  display: none;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 1.5rem;
+}
+.dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(184,92,26,0.25);
+  cursor: pointer;
+  transition: var(--trans);
+}
+.dot.active { background: var(--accent); width: 22px; border-radius: 4px; }
+
+/* ── CONTACT ── */
+#contact {
+  background: var(--cream);
+  padding: 96px 8vw;
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+.hours-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.55rem 1.5rem;
+  margin-top: 1.5rem;
+}
+.hours-grid .day { font-weight: 600; color: var(--ink); font-size: 0.93rem; }
+.hours-grid .time { color: var(--textlt); font-size: 0.93rem; }
+.hours-grid .closed { color: var(--muted); font-style: italic; }
+.contact-info-block { margin-bottom: 2.2rem; }
+.contact-info-block h3 {
+  font-family: var(--font-d);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.8rem;
+}
+.contact-form-card {
+  background: var(--cream2);
+  border: 1px solid rgba(184,92,26,0.12);
+  border-radius: var(--r-lg);
+  padding: 2.2rem;
+}
+.form-group { margin-bottom: 1.2rem; }
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 0.45rem;
+  letter-spacing: 0.02em;
+}
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: var(--cream);
+  border: 1.5px solid rgba(74,46,20,0.15);
+  border-radius: var(--r);
+  padding: 0.8rem 1rem;
+  font-family: var(--font-b);
+  font-size: 0.95rem;
+  color: var(--text);
+  outline: none;
+  transition: var(--trans);
+}
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(184,92,26,0.12);
+}
+.form-group textarea { resize: vertical; min-height: 120px; }
+.btn-form {
+  width: 100%;
+  background: var(--accent);
+  color: var(--cream);
+  border: none;
+  border-radius: 8px;
+  padding: 0.95rem 1.5rem;
+  font-family: var(--font-b);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: var(--trans);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+.btn-form:hover { background: var(--accent2); color: var(--ink); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(184,92,26,0.35); }
+.btn-form svg { width: 18px; height: 18px; }
+
+/* ── FOOTER ── */
+#footer {
+  background: #1a0a00;
+  padding: 64px 8vw 0;
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+.footer-brand-name {
+  font-family: var(--font-d);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--cream);
+  margin-bottom: 0.5rem;
+}
+.footer-brand-name span { color: var(--accent2); }
+.footer-tagline {
+  font-size: 0.88rem;
+  color: rgba(255,248,242,0.5);
+  line-height: 1.6;
+  margin-bottom: 1.4rem;
+}
+.social-row { display: flex; gap: 0.7rem; }
+.social-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--trans);
+  cursor: pointer;
+  text-decoration: none;
+}
+.social-btn:hover { background: var(--accent); transform: translateY(-3px); }
+.social-btn svg { width: 18px; height: 18px; }
+.footer-nav-title {
+  font-family: var(--font-d);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--cream);
+  margin-bottom: 1.2rem;
+  letter-spacing: 0.04em;
+}
+.footer-nav-list { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; }
+.footer-nav-list a {
+  color: rgba(255,248,242,0.55);
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: var(--trans);
+}
+.footer-nav-list a:hover { color: var(--accent2); }
+.footer-contact-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  color: rgba(255,248,242,0.55);
+  font-size: 0.88rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.5;
+}
+.footer-contact-item svg { width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px; color: var(--accent2); }
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 0;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.footer-bottom p { font-size: 0.82rem; color: rgba(255,248,242,0.35); }
+.footer-bottom a { color: var(--accent2); text-decoration: none; transition: var(--trans); }
+.footer-bottom a:hover { color: var(--cream); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 960px) {
+  .nav-links { display: none; }
+  .hamburger { display: flex; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .gallery-grid .gallery-card:last-child { grid-column: span 2; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .reviews-grid {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 14px;
+    padding-bottom: 1rem;
+    scrollbar-width: none;
+  }
+  .reviews-grid::-webkit-scrollbar { display: none; }
+  .review-card {
+    scroll-snap-align: start;
+    min-width: 82vw;
+    flex-shrink: 0;
+  }
+  .reviews-dots { display: flex; }
+  #statsBar { flex-wrap: wrap; gap: 0.8rem; }
+  .stat-divider { display: none; }
+  .stat-item { min-width: 45%; }
+}
+
+@media (max-width: 600px) {
+  #mainNav { padding: 0 5vw; }
+  .hero-content { padding-left: 5vw; padding-bottom: 64px; }
+  .gallery-grid { grid-template-columns: 1fr; }
+  .gallery-grid .gallery-card:last-child { grid-column: span 1; }
+  .highlights-grid { grid-template-columns: 1fr 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  #gallery, #about, #reviews, #contact { padding: 64px 5vw; }
+  #statsBar { padding: 18px 5vw; }
+  .stat-item { min-width: 100%; }
+  .review-card { min-width: 90vw; }
+}
+</style>
 </head>
 <body>
-    <nav class="nav">
-        <div class="container">
-            <div class="nav-container">
-                <a href="#" class="logo">Mueller</a>
-                <ul class="nav-links">
-                    <li><a href="#services">Angebot</a></li>
-                    <li><a href="#about">Über uns</a></li>
-                    <li><a href="#reviews">Bewertungen</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
-                </ul>
-                <a href="#contact" class="nav-cta">Bestellung</a>
-            </div>
+
+<!-- NAV -->
+<nav id="mainNav" aria-label="Hauptnavigation">
+  <a href="#" class="nav-logo">Bäckerei <span>Müller</span></a>
+  <ul class="nav-links">
+    <li><a href="#gallery">Sortiment</a></li>
+    <li><a href="#about">Über uns</a></li>
+    <li><a href="#reviews">Bewertungen</a></li>
+    <li><a href="#contact" class="btn-nav">Bestellen</a></li>
+  </ul>
+  <button class="hamburger" id="hamburgerBtn" aria-label="Menü öffnen">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobilmenü">
+  <button class="mobile-close" id="mobileClose" aria-label="Menü schliessen">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff8f2" stroke-width="2.2" stroke-linecap="round">
+      <path d="M18 6 6 18M6 6l12 12"/>
+    </svg>
+  </button>
+  <a href="#gallery" onclick="closeMobile()">Sortiment</a>
+  <a href="#about" onclick="closeMobile()">Über uns</a>
+  <a href="#reviews" onclick="closeMobile()">Bewertungen</a>
+  <a href="#contact" onclick="closeMobile()">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<section id="hero" aria-label="Hero">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="glass-pill fade-up stagger-1">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
+      </svg>
+      Langstrasse 45, 8004 Zürich
+    </div>
+    <h1 class="hero-title fade-up stagger-2">
+      Bäckerei<br><em>Müller</em>
+    </h1>
+    <p class="hero-tagline fade-up stagger-3">
+      Seit 1987 backen wir täglich frisches Brot und feine Viennoiseries – mit Liebe zum Handwerk, Schweizer Zutaten und dem Aroma der Langstrasse.
+    </p>
+    <div class="hero-badges fade-up stagger-4">
+      <div class="glass-pill">
+        <div class="star-row">
+          <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         </div>
-    </nav>
+        4.7 / 5 · 203 Google-Bewertungen
+      </div>
+    </div>
+    <div class="hero-ctas fade-up stagger-5">
+      <a href="#contact" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M3 3h18v13H3zM3 3l9 8 9-8"/></svg>
+        Jetzt anfragen
+      </a>
+      <a href="#gallery" class="btn-secondary">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><path d="M2 12h20M12 2l10 10-10 10"/></svg>
+        Sortiment entdecken
+      </a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+  </div>
+</section>
 
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Bäckerei Mueller</h1>
-            <p class="hero-tagline">Traditionelle Schweizer Backkunst im Herzen von Zürich</p>
-            <div class="rating-badge">
-                <div class="stars">
-                    <svg class="star" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                    <svg class="star" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                    <svg class="star" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                    <svg class="star" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                    <svg class="star" viewBox="0 0 24 24">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                </div>
-                <span class="rating-text">4.7/5 · 203 Bewertungen</span>
-            </div>
-            <div class="hero-ctas">
-                <a href="#contact" class="btn-primary">Jetzt bestellen</a>
-                <a href="#services" class="btn-secondary">Unser Angebot</a>
-            </div>
+<!-- STATS BAR -->
+<div id="statsBar">
+  <div class="stat-item fade-up">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff8f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+      </svg>
+    </div>
+    <div class="stat-text">
+      <strong>Seit 1987</strong>
+      <span>37 Jahre Handwerkskunst</span>
+    </div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item fade-up stagger-1">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff8f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/><path d="M7 8h10M7 12h6"/>
+      </svg>
+    </div>
+    <div class="stat-text">
+      <strong>52 Sorten</strong>
+      <span>Brote, Brötli & Gebäck</span>
+    </div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item fade-up stagger-2">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff8f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+      </svg>
+    </div>
+    <div class="stat-text">
+      <strong>4.7 / 5.0</strong>
+      <span>203 Google-Bewertungen</span>
+    </div>
+  </div>
+  <div class="stat-divider"></div>
+  <div class="stat-item fade-up stagger-3">
+    <div class="stat-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff8f2" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+      </svg>
+    </div>
+    <div class="stat-text">
+      <strong>Ab 06:30 Uhr</strong>
+      <span>Täglich frisch aus dem Ofen</span>
+    </div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-tag fade-up">Unser Sortiment</div>
+  <h2 class="section-title fade-up stagger-1">Frisch gebacken,<br>täglich für Sie</h2>
+  <p class="section-lead fade-up stagger-2">
+    Von rustikalen Sauerteigbroten bis zu zartblättrigen Croissants – bei der Bäckerei Müller entstehen alle Produkte in liebevoller Handarbeit mit regionalen Schweizer Zutaten.
+  </p>
+  <div class="gallery-grid">
+    <div class="gallery-card fade-up stagger-1">
+      <div class="gallery-card-bg" style="background-image: url('https://images.unsplash.com/photo-1554995207-c18c203602cb?auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="gallery-card-overlay"></div>
+      <div class="gallery-card-label">
+        <h3>Handwerksbrot</h3>
+        <p>Sauerteig, Dinkel & Roggen nach alter Tradition</p>
+      </div>
+    </div>
+    <div class="gallery-card fade-up stagger-2">
+      <div class="gallery-card-bg" style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="gallery-card-overlay"></div>
+      <div class="gallery-card-label">
+        <h3>Viennoiseries</h3>
+        <p>Butterige Croissants, Gipfeli & Plundergebäck</p>
+      </div>
+    </div>
+    <div class="gallery-card fade-up stagger-3">
+      <div class="gallery-card-bg" style="background-image: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&w=800&q=80');"></div>
+      <div class="gallery-card-overlay"></div>
+      <div class="gallery-card-label">
+        <h3>Festtagstorten</h3>
+        <p>Massgeschneiderte Torten für jeden Anlass</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div>
+      <div class="about-tag"><span class="section-tag fade-up">Unsere Geschichte</span></div>
+      <h2 class="section-title fade-up stagger-1">Leidenschaft für das<br>Bäckerhandwerk</h2>
+      <div class="about-story fade-up stagger-2">
+        <p>Die Bäckerei Müller ist seit 1987 ein fester Bestandteil des Zürcher Quartiers 4. Was Ernst Müller mit einem kleinen Holzofenbetrieb an der Langstrasse begann, hat sich über Generationen zu einer der beliebtesten Handwerksbäckereien der Stadt entwickelt.</p>
+        <p>Wir backen noch heute mit dem Wissen, das von Meister zu Lehrling weitergegeben wurde – langsam geführte Sauerteige, schonende Teigführungen über Nacht und ausschliesslich Zutaten aus der Schweiz und den angrenzenden Alpenregionen.</p>
+        <p>Unsere Backstube beginnt jeden Morgen um 3:00 Uhr, damit Sie ab 6:30 Uhr ofenfrische Brote, knusprige Brötli und duftende Gipfeli geniessen können – so, wie es an der Langstrasse schon immer war.</p>
+      </div>
+      <div class="contact-row fade-up stagger-3">
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
+          </svg>
+          Langstrasse 45, 8004 Zürich
         </div>
-    </section>
-
-    <section id="services" class="section">
-        <div class="container">
-            <h2 class="section-title">Unser Angebot</h2>
-            <p class="section-subtitle">Frische Backwaren täglich handwerklich hergestellt mit den besten Zutaten</p>
-            <div class="services-grid">
-                <div class="service-card">
-                    <svg class="service-icon" viewBox="0 0 100 100">
-                        <path d="M20 80h60c2.2 0 4-1.8 4-4V44c0-2.2-1.8-4-4-4h-8V24c0-6.6-5.4-12-12-12H40c-6.6 0-12 5.4-12 12v16h-8c-2.2 0-4 1.8-4 4v32c0 2.2 1.8 4 4 4zM32 24c0-4.4 3.6-8 8-8h20c4.4 0 8 3.6 8 8v16H32V24zm-8 20h52v28H24V44zm26 8c-4.4 0-8 3.6-8 8s3.6 8 8 8 8-3.6 8-8-3.6-8-8-8z"/>
-                    </svg>
-                    <h3>Frisches Brot</h3>
-                    <p>Täglich gebackenes Schweizer Brot nach traditionellen Rezepten. Von knusprigem Ruchbrot bis zu feinem Weggen - alles aus unserer eigenen Backstube mit regionalen Zutaten.</p>
-                </div>
-                <div class="service-card">
-                    <svg class="service-icon" viewBox="0 0 100 100">
-                        <path d="M50 10C27.9 10 10 27.9 10 50s17.9 40 40 40 40-17.9 40-40S72.1 10 50 10zm0 76c-19.9 0-36-16.1-36-36s16.1-36 36-36 36 16.1 36 36-16.1 36-36 36zm-20-36c0-11 9-20 20-20s20 9 20 20-9 20-20 20-20-9-20-20zm16 0c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z"/>
-                    </svg>
-                    <h3>Feine Patisserie</h3>
-                    <p>Exquisite Torten, Petit Fours und saisonale Spezialitäten. Jedes Stück ein kleines Kunstwerk - perfekt für besondere Anlässe oder als süsse Versuchung zwischendurch.</p>
-                </div>
-                <div class="service-card">
-                    <svg class="service-icon" viewBox="0 0 100 100">
-                        <path d="M20 20h60c2.2 0 4 1.8 4 4v52c0 2.2-1.8 4-4 4H20c-2.2 0-4-1.8-4-4V24c0-2.2 1.8-4 4-4zm4 8v44h52V28H24zm46 16c0-6.6-5.4-12-12-12H42c-6.6 0-12 5.4-12 12v8c0 6.6 5.4 12 12 12h16c6.6 0 12-5.4 12-12v-8zm-8 0v8c0 2.2-1.8 4-4 4H42c-2.2 0-4-1.8-4-4v-8c0-2.2 1.8-4 4-4h16c2.2 0 4 1.8 4 4z"/>
-                    </svg>
-                    <h3>Café & Gipfeli</h3>
-                    <p>Geniessen Sie frische Gipfeli und hausgemachte Sandwiches zu unserem erstklassigen Kaffee. Der perfekte Start in den Tag oder eine gemütliche Pause zwischendurch.</p>
-                </div>
-            </div>
+        <div class="contact-item">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.93 3.5 2 2 0 0 1 3.93 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+          +41 44 291 33 44
         </div>
-    </section>
+      </div>
+    </div>
+    <div class="highlights-grid fade-up stagger-2">
+      <div class="highlight-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>
+        </svg>
+        <strong>37</strong>
+        <span>Jahre Handwerksbäckerei</span>
+      </div>
+      <div class="highlight-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <strong>Bio</strong>
+        <span>Zertifizierte Bio-Zutaten</span>
+      </div>
+      <div class="highlight-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/><path d="M7 8h10M7 12h8M7 16h4"/>
+        </svg>
+        <strong>52</strong>
+        <span>Brot- & Gebäcksorten</span>
+      </div>
+      <div class="highlight-card">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <strong>14</strong>
+        <span>Mitarbeitende im Team</span>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <section id="about" class="section">
-        <div class="container">
-            <div class="about-content">
-                <div class="about-text">
-                    <h2>Tradition seit drei Generationen</h2>
-                    <p>Seit 1952 führt Familie Mueller ihre Bäckerei an der Langstrasse mit Leidenschaft und Hingabe. Was als kleine Nachbarschaftsbäckerei begann, ist heute eine Institution in Zürich - doch die Werte sind geblieben: Qualität, Tradition und der persönliche Kontakt zu unseren Kunden.</p>
-                    <p>Unsere Backstube arbeitet noch immer nach den bewährten Rezepten der Grossmutter, ergänzt durch moderne Techniken und die besten regionalen Zutaten. Jedes Brot, jedes Gebäck wird mit derselben Sorgfalt hergestellt, die schon vor 70 Jahren unsere Stammkunden begeistert hat.</p>
-                    <p>Besuchen Sie uns an der Langstrasse 45 und erleben Sie selbst, warum unsere Kunden seit Generationen zu uns kommen.</p>
-                </div>
-                <div class="contact-info">
-                    <h3>Besuchen Sie uns</h3>
-                    <p>
-                        <svg class="contact-icon" viewBox="0 0 24 24">
-                            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
-                        </svg>
-                        Langstrasse 45, 8004 Zürich
-                    </p>
-                    <p>
-                        <svg class="contact-icon" viewBox="0 0 24 24">
-                            <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
-                        </svg>
-                        +41 44 291 33 44
-                    </p>
-                    <p>
-                        <svg class="contact-icon" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        4.7/5 Sterne (203 Bewertungen)
-                    </p>
-                </div>
-            </div>
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="reviews-header fade-up">
+    <div class="section-tag" style="display:inline-block;margin-bottom:1rem;">Kundenstimmen</div>
+    <div class="big-rating"><span>4.7</span>/5</div>
+    <div class="star-row-lg">
+      <svg class="star-lg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-lg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-lg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-lg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      <svg class="star-lg" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+    </div>
+    <p class="rating-label">Basierend auf 203 Google-Bewertungen</p>
+  </div>
+  <div class="reviews-grid" id="reviewsGrid">
+    <div class="review-card fade-up stagger-1">
+      <div class="review-stars">
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">„Das Dinkelbrot hier ist schlichtweg unvergleichlich. Ich wohne jetzt seit fünf Jahren an der Langstrasse und komme jeden Samstagmorgen – dieser Duft, wenn man die Tür öffnet, macht sofort gute Laune. Die Gipfeli sind buttrig und knusprig wie in keiner anderen Bäckerei in Zürich."</p>
+      <div class="review-author">
+        <span class="reviewer-name">Sabine K.</span>
+        <div class="google-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Google
         </div>
-    </section>
-
-    <section id="reviews" class="section social-proof">
-        <div class="container">
-            <h2 class="section-title">Was unsere Kunden sagen</h2>
-            <div class="rating-display">
-                <div class="rating-number">4.7</div>
-                <div class="rating-stars">
-                    <div class="large-stars">
-                        <svg class="large-star" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg class="large-star" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg class="large-star" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg class="large-star" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                        <svg class="large-star" viewBox="0 0 24 24">
-                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                        </svg>
-                    </div>
-                    <div class="reviews-text">Basierend auf 203 Google-Bewertungen</div>
-                </div>
-            </div>
-            <p class="section-subtitle">Unsere Kunden schätzen die Qualität unserer Backwaren, den freundlichen Service und die authentische Atmosphäre unserer traditionellen Bäckerei.</p>
+      </div>
+    </div>
+    <div class="review-card fade-up stagger-2">
+      <div class="review-stars">
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">„Wir haben unsere Hochzeitstorte bei Bäckerei Müller bestellt – absolut perfekt. Die haben unsere Wünsche wirklich ernst genommen und etwas Einzigartiges geschaffen. Auch der Preis war fair. Alle Gäste waren begeistert und fragten sofort, woher die Torte stammt."</p>
+      <div class="review-author">
+        <span class="reviewer-name">Markus & Lena W.</span>
+        <div class="google-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Google
         </div>
-    </section>
-
-    <section id="contact" class="section">
-        <div class="container">
-            <h2 class="section-title">Kontakt & Bestellung</h2>
-            <div class="contact-grid">
-                <div>
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 30px;">Lassen Sie sich verwöhnen</h3>
-                    <p style="font-size: 18px; color: var(--text-medium); margin-bottom: 40px; line-height: 1.8;">Besuchen Sie uns in unserer Bäckerei oder bestellen Sie Ihre Lieblings-Backwaren telefonisch vor. Wir freuen uns auf Sie!</p>
-                    <div class="contact-info">
-                        <h3>Öffnungszeiten</h3>
-                        <p>Montag - Freitag: 06:00 - 18:30</p>
-                        <p>Samstag: 06:00 - 17:00</p>
-                        <p>Sonntag: 07:00 - 16:00</p>
-                    </div>
-                </div>
-                <div class="contact-form">
-                    <h3 style="font-family: 'Playfair Display', serif; font-size: 24px; margin-bottom: 30px;">Nachricht senden</h3>
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">E-Mail</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Telefon</label>
-                            <input type="tel" id="phone" name="phone">
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Nachricht</label>
-                            <textarea id="message" name="message" placeholder="Ihre Bestellung oder Anfrage..."></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary" style="width: 100%;">Nachricht senden</button>
-                    </form>
-                </div>
-            </div>
+      </div>
+    </div>
+    <div class="review-card fade-up stagger-3">
+      <div class="review-stars">
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">„Endlich eine Bäckerei, die noch echten Sauerteig versteht. Das Roggenbrot mit Kernen ist mein absolutes Lieblingsprodukt – knusprige Kruste, saftige Krume, hält auch nach drei Tagen noch super. Das Team ist immer freundlich und die Schlange am Morgen lohnt sich wirklich."</p>
+      <div class="review-author">
+        <span class="reviewer-name">Thomas B.</span>
+        <div class="google-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Google
         </div>
-    </section>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div>
-                    <div class="footer-logo">Mueller</div>
-                    <div class="footer-address">
-                        Bäckerei Mueller<br>
-                        Langstrasse 45<br>
-                        8004 Zürich<br>
-                        +41 44 291 33 44
-                    </div>
-                </div>
-                <div>
-                    <h4 style="color: var(--accent); margin-bottom: 20px;">Öffnungszeiten</h4>
-                    <div class="footer-address">
-                        Mo-Fr: 06:00 - 18:30<br>
-                        Sa: 06:00 - 17:00<br>
-                        So: 07:00 - 16:00
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <div>© 2025 Bäckerei Mueller. Alle Rechte vorbehalten.</div>
-                <div class="credit">Website erstellt von Challenging Dawn</div>
-            </div>
+      </div>
+    </div>
+    <div class="review-card fade-up stagger-4">
+      <div class="review-stars">
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        <svg class="review-star" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <p class="review-text">„Als Quereinsteigerin ins Quartier war die Bäckerei Müller meine erste Adresse – und ich bin so froh, dass mir die Nachbarin den Tipp gab. Die frischen Buttergipfeli am Sonntag sind ein Ritual geworden. Ich bestelle auch regelmässig Focaccia für Büroevents, immer zuverlässig und lecker."</p>
+      <div class="review-author">
+        <span class="reviewer-name">Nina H.</span>
+        <div class="google-badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+          Google
         </div>
-    </footer>
+      </div>
+    </div>
+  </div>
+  <div class="reviews-dots" id="reviewsDots">
+    <div class="dot active" data-index="0"></div>
+    <div class="dot" data-index="1"></div>
+    <div class="dot" data-index="2"></div>
+    <div class="dot" data-index="3"></div>
+  </div>
+</section>
 
-    <script>
-        // Scroll navigation
-        window.addEventListener('scroll', () => {
-            const nav = document.querySelector('.nav');
-            if (window.scrollY > 100) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-        });
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div>
+      <span class="section-tag fade-up">Kontakt & Öffnungszeiten</span>
+      <h2 class="section-title fade-up stagger-1">Besuchen Sie uns<br>an der Langstrasse</h2>
+      <div class="contact-info-block fade-up stagger-2">
+        <h3>Adresse & Telefon</h3>
+        <div class="contact-row">
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
+            </svg>
+            Langstrasse 45, 8004 Zürich
+          </div>
+          <div class="contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.93 3.5 2 2 0 0 1 3.93 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            +41 44 291 33 44
+          </div>
+        </div>
+      </div>
+      <div class="contact-info-block fade-up stagger-3">
+        <h3>Öffnungszeiten</h3>
+        <div class="hours-grid">
+          <span class="day">Montag</span><span class="time">06:30 – 19:00 Uhr</span>
+          <span class="day">Dienstag</span><span class="time">06:30 – 19:00 Uhr</span>
+          <span class="day">Mittwoch</span><span class="time">06:30 – 19:00 Uhr</span>
+          <span class="day">Donnerstag</span><span class="time">06:30 – 19:00 Uhr</span>
+          <span class="day">Freitag</span><span class="time">06:30 – 19:00 Uhr</span>
+          <span class="day">Samstag</span><span class="time">07:00 – 17:00 Uhr</span>
+          <span class="day">Sonntag</span><span class="time">08:00 – 13:00 Uhr</span>
+        </div>
+      </div>
+    </div>
+    <div class="contact-form-card fade-up stagger-2">
+      <h3 style="font-family:var(--font-d);font-size:1.4rem;font-weight:700;color:var(--ink);margin-bottom:1.6rem;">Nachricht senden</h3>
+      <form onsubmit="return false;">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Ihr vollständiger Name" autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label for="email">E-Mail-Adresse</label>
+          <input type="email" id="email" placeholder="ihre@email.ch" autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="message">Ihre Nachricht</label>
+          <textarea id="message" placeholder="Bestellung, Anfrage oder eine nette Nachricht – wir freuen uns!"></textarea>
+        </div>
+        <button type="submit" class="btn-form">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+          Nachricht absenden
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
 
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '-50px'
-        };
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand-name">Bäckerei <span>Müller</span></div>
+      <p class="footer-tagline">Handwerksbrot & feine Backwaren<br>seit 1987 – täglich frisch an der Langstrasse.</p>
+      <div class="social-row">
+        <a href="#" class="social-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff8f2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff8f2" stroke="none"/>
+          </svg>
+        </a>
+        <a href="#" class="social-btn" aria-label="Facebook">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff8f2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+          </svg>
+        </a>
+        <a href="https://maps.google.com/?q=Langstrasse+45,+8004+Zürich" class="social-btn" aria-label="Google Maps" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#fff8f2" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-nav-title">Navigation</div>
+      <ul class="footer-nav-list">
+        <li><a href="#gallery">Sortiment</a></li>
+        <li><a href="#about">Über uns</a></li>
+        <li><a href="#reviews">Bewertungen</a></li>
+        <li><a href="#contact">Kontakt</a></li>
+        <li><a href="#contact">Bestellungen</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-nav-title">Kontakt</div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/>
+        </svg>
+        Langstrasse 45<br>8004 Zürich, Schweiz
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.93 3.5 2 2 0 0 1 3.93 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        +41 44 291 33 44
+      </div>
+      <div class="footer-contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/>
+        </svg>
+        Mo–Fr 06:30–19:00<br>Sa 07:00–17:00 · So 08:00–13:00
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 Bäckerei Müller Zürich. Alle Rechte vorbehalten.</p>
+    <p>Entwickelt von <a href="https://challengingdawn.pt" target="_blank" rel="noopener">ChallengingDawn.pt</a></p>
+  </div>
+</footer>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
+<script>
+// ── NAV SCROLL ──
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 80);
+});
 
-        document.querySelectorAll('.section').forEach(section => {
-            observer.observe(section);
-        });
+// ── HAMBURGER MENU ──
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
 
-        // Star animation trigger
-        const starObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const stars = entry.target.querySelectorAll('.large-star');
-                    stars.forEach((star, index) => {
-                        star.style.animationDelay = `${index * 0.1}s`;
-                        star.style.animation = 'starPop 0.5s ease forwards';
-                    });
-                }
-            });
-        }, { threshold: 0.5 });
+hamburgerBtn.addEventListener('click', () => {
+  mobileMenu.classList.add('open');
+  document.body.style.overflow = 'hidden';
+});
+mobileClose.addEventListener('click', () => closeMobile());
+function closeMobile() {
+  mobileMenu.classList.remove('open');
+  document.body.style.overflow = '';
+}
 
-        const socialProofSection = document.querySelector('.social-proof');
-        if (socialProofSection) {
-            starObserver.observe(socialProofSection);
-        }
+// ── INTERSECTION OBSERVER (FADE-UP) ──
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.12 });
 
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-    </script>
+document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+// ── REVIEWS CAROUSEL (MOBILE) ──
+const reviewsGrid = document.getElementById('reviewsGrid');
+const dots = document.querySelectorAll('.reviews-dots .dot');
+let touchStartX = 0;
+let touchEndX = 0;
+let currentDot = 0;
+
+function updateDots(index) {
+  dots.forEach(d => d.classList.remove('active'));
+  if (dots[index]) dots[index].classList.add('active');
+  currentDot = index;
+}
+
+if (reviewsGrid) {
+  reviewsGrid.addEventListener('scroll', () => {
+    const cards = reviewsGrid.querySelectorAll('.review-card');
+    const scrollLeft = reviewsGrid.scrollLeft;
+    const cardWidth = cards[0] ? cards[0].offsetWidth + 14 : 300;
+    const idx = Math.round(scrollLeft / cardWidth);
+    updateDots(Math.min(idx, dots.length - 1));
+  });
+
+  reviewsGrid.addEventListener('touchstart', e => {
+    touchStartX = e.changedTouches[0].clientX;
+  }, { passive: true });
+
+  reviewsGrid.addEventListener('touchend', e => {
+    touchEndX = e.changedTouches[0].clientX;
+    const dx = touchStartX - touchEndX;
+    if (Math.abs(dx) > 50) {
+      const cards = reviewsGrid.querySelectorAll('.review-card');
+      const cardWidth = cards[0] ? cards[0].offsetWidth + 14 : 300;
+      if (dx > 0) {
+        const next = Math.min(currentDot + 1, cards.length - 1);
+        reviewsGrid.scrollTo({ left: next * cardWidth, behavior: 'smooth' });
+        updateDots(next);
+      } else {
+        const prev = Math.max(currentDot - 1, 0);
+        reviewsGrid.scrollTo({ left: prev * cardWidth, behavior: 'smooth' });
+        updateDots(prev);
+      }
+    }
+  }, { passive: true });
+}
+
+dots.forEach(dot => {
+  dot.addEventListener('click', () => {
+    const idx = parseInt(dot.dataset.index);
+    const cards = reviewsGrid ? reviewsGrid.querySelectorAll('.review-card') : [];
+    const cardWidth = cards[0] ? cards[0].offsetWidth + 14 : 300;
+    reviewsGrid.scrollTo({ left: idx * cardWidth, behavior: 'smooth' });
+    updateDots(idx);
+  });
+});
+</script>
 </body>
 </html>
